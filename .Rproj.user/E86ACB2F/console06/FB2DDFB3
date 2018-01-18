@@ -1,7 +1,128 @@
-[0m[0K]0;[?25l
-[0;32mad3716@WPIA-DIDE223 [0;35m [0;33m~/Documents/PhD/MERS Simple Stochastic Model[0m[0K
-$[0K[3G[?25h[?25l$ g[0K[?25hi[0Kt[0K[7G[?25l$ git s[0K[7G[?25h[8G[?25l$ git st[0K[?25ha[0Kt[0Ku[0Ks[0K[?25l
-[0K[?25hfatal: Not a git repository (or any of the parent directories): .git[0K[?25l
+[?25l$ g[0K[?25hi[0Kt[0K[7G[?25l$ git s[0K[?25ht[0Ka[0Ktu[0Ks[0K[?25l
+[0K[?25hOn branch master[0K[?25l
+Changes not staged for commit:[0K
+  (use "git add <file>..." to update what will be committed)[0K
+  (use "git checkout -- <file>..." to discard changes in working directory)[0K
+[0K
+        [0;31mmodified:   .Rproj.user/E86ACB2F/console06/FB2DDFB3[0m[0K
+[0K
+no changes added to commit (use "git add" and/or "git commit -a")[0K
 [0K[?25h[?25l
-[0;32mad3716@WPIA-DIDE223 [0;35m [0;33m~/Documents/PhD/MERS Simple Stochastic Model[0m[0K
-$[0K[3G[?25h
+[0;32mad3716@WPIA-DIDE223 [0;35m [0;33m~/Documents/PhD/MERS Simple Stochastic Model[0;36m (master)[0m[0K
+$[0K[3G[?25h[?25l$ g[0K[?25ho[0Kt[0K[7G[6G[?25l$ go[0K[?25h[?25l$ g[0K[?25hi[0Kt[0K[7G[?25l$ git a[0K[?25hd[0Kd[0K[11G[?25l$ git add *[0K[?25h[?25l
+[0K[?25h[?25l
+[0;32mad3716@WPIA-DIDE223 [0;35m [0;33m~/Documents/PhD/MERS Simple Stochastic Model[0;36m (master)[0m[0K
+$[0K[3G[?25h[?25l$ git add *[0K[?25h[?25l$ git status[0K[?25h[?25l$ git add *[0K[?25h[?25l$ git status[0K[?25h[?25l
+[0K[?25hOn branch master[0K[?25l
+Changes not staged for commit:[0K
+  (use "git add <file>..." to update what will be committed)[0K
+  (use "git checkout -- <file>..." to discard changes in working directory)[0K
+[0K
+        [0;31mmodified:   .Rproj.user/E86ACB2F/console06/FB2DDFB3[0m[0K
+[0K
+no changes added to commit (use "git add" and/or "git commit -a")[0K
+[0K[?25h[?25l
+[0;32mad3716@WPIA-DIDE223 [0;35m [0;33m~/Documents/PhD/MERS Simple Stochastic Model[0;36m (master)[0m[0K
+$[0K[3G[?25h[?25l$ l[0K[?25hs[0K[6G[?25l$ ls -[0K[?25ha[0K[9G[?25l
+[0K[?25h.          .Rproj.user     MERS Simple Stochastic Model.Rproj        rmarkdown v3 siple stochastic model.Rmd[0K[?25l
+..         .git            not working DROM function.R               v2 simple stochastic model.R[0K
+.Rhistory  .gitattributes  rmarkdown v2 simple stochastic model.Rmd  working simple stochastic model.R[0K
+[0K[?25h[?25l
+[0;32mad3716@WPIA-DIDE223 [0;35m [0;33m~/Documents/PhD/MERS Simple Stochastic Model[0;36m (master)[0m[0K
+$[0K[3G[?25h[?25l$ g[0K[?25hi[0Kt[0Kk[0K[?25l
+[0K[?25h[?25l
+[0;32mad3716@WPIA-DIDE223 [0;35m [0;33m~/Documents/PhD/MERS Simple Stochastic Model[0;36m (master)[0m[0K
+$[0K[3G[?25h[?25l$ gitk[0K[?25h[?25l
+[0K[?25h[?25l
+[0;32mad3716@WPIA-DIDE223 [0;35m [0;33m~/Documents/PhD/MERS Simple Stochastic Model[0;36m (master)[0m[0K
+$[0K[3G[?25h[?25l$ g[0K[?25hi[0Kt[0K[7G[?25l$ git s[0K[?25ht[0Ka[0Kt[0Ku[0Ks[0K[?25l
+[0K[?25hOn branch master[0K[?25l
+Changes not staged for commit:[0K
+  (use "git add <file>..." to update what will be committed)[0K
+  (use "git checkout -- <file>..." to discard changes in working directory)[0K
+[0K
+        [0;31mmodified:   .Rproj.user/E86ACB2F/console06/FB2DDFB3[0m[0K
+        [0;31mmodified:   .Rproj.user/E86ACB2F/sources/prop/A14F008D[0m[0K
+        [0;31mmodified:   .Rproj.user/E86ACB2F/sources/s-79496A25/371CD15D[0m[0K
+        [0;31mmodified:   .Rproj.user/E86ACB2F/sources/s-79496A25/371CD15D-contents[0m[0K
+        [0;31mmodified:   .Rproj.user/shared/notebooks/4CA052CC-adapting to function not yet working/1/s/chunks.json[0m[0K
+[0K
+Untracked files:[0K
+  (use "git add <file>..." to include in what will be committed)[0K
+[0K
+        [0;31m.Rproj.user/shared/notebooks/4CA052CC-adapting to function not yet working/1/E86ACB2F79496A25/[0m[0K
+[0K
+no changes added to commit (use "git add" and/or "git commit -a")[0K
+[0K[?25h[?25l
+[0;32mad3716@WPIA-DIDE223 [0;35m [0;33m~/Documents/PhD/MERS Simple Stochastic Model[0;36m (master)[0m[0K
+$[0K[3G[?25h[?25l$ g[0K[?25hi[0Kt[0K[7G[?25l$ git s[0K[?25ht[0K[?25l
+[0K[?25hgit: 'st' is not a git command. See 'git --help'.[0K[?25l
+[0K
+The most similar commands are[0K
+        status[0K
+        reset[0K
+        stage[0K
+        stash[0K
+        svn[0K
+[0K[?25h[?25l
+[0;32mad3716@WPIA-DIDE223 [0;35m [0;33m~/Documents/PhD/MERS Simple Stochastic Model[0;36m (master)[0m[0K
+$[0K[3G[?25h[?25l$ git st[0K[?25h[?25l$ git s[0K[?25h[?25l$ git[0K[7G[?25h[6G[?25l$ gi[0K[?25ht[0Kk[0K[?25l
+[0K[?25h[?25l
+[0;32mad3716@WPIA-DIDE223 [0;35m [0;33m~/Documents/PhD/MERS Simple Stochastic Model[0;36m (master)[0m[0K
+$[0K[3G[?25h[?25l$ g[0K[3G[?25h[4G[?25l$ gi[0K[?25ht[0K[7G[?25l$ gitk[0K[?25h[?25l$ git st[0K[?25hatus[0K[?25l
+[0K[?25hOn branch master[0K[?25l
+Changes not staged for commit:[0K
+  (use "git add <file>..." to update what will be committed)[0K
+  (use "git checkout -- <file>..." to discard changes in working directory)[0K
+[0K
+        [0;31mmodified:   .Rproj.user/E86ACB2F/console06/FB2DDFB3[0m[0K
+        [0;31mmodified:   .Rproj.user/E86ACB2F/sources/prop/A14F008D[0m[0K
+        [0;31mmodified:   .Rproj.user/E86ACB2F/sources/prop/C9CB9B1F[0m[0K
+        [0;31mmodified:   .Rproj.user/E86ACB2F/sources/s-79496A25/371CD15D[0m[0K
+        [0;31mmodified:   .Rproj.user/E86ACB2F/sources/s-79496A25/371CD15D-contents[0m[0K
+        [0;31mmodified:   .Rproj.user/E86ACB2F/sources/s-79496A25/6F93BC8B[0m[0K[9G[?25h[?25l
+        [0;31mmodified:   .Rproj.user/E86ACB2F/sources/s-79496A25/6F93BC8B-contents[0m[0K
+        [0;31mmodified:   .Rproj.user/shared/notebooks/4CA052CC-adapting to function not yet working/1/s/chunks.json[0m[0K
+        [0;31mmodified:   rmarkdown v2 simple stochastic model.Rmd[0m[0K
+[0K
+Untracked files:[0K
+  (use "git add <file>..." to include in what will be committed)[0K
+[0K
+        [0;31m.Rproj.user/shared/notebooks/4CA052CC-adapting to function not yet working/1/E86ACB2F79496A25/[0m[0K
+        [0;31m.Rproj.user/shared/notebooks/5F5B959C-rmarkdown v2 simple stochastic model/[0m[0K
+[0K
+no changes added to commit (use "git add" and/or "git commit -a")[0K
+[0K[?25h[?25l
+[0;32mad3716@WPIA-DIDE223 [0;35m [0;33m~/Documents/PhD/MERS Simple Stochastic Model[0;36m (master)[0m[0K
+$[0K[3G[?25h[?25l$ g[0K[?25hi[0Kt[0K[7G[6G[?25l$ gi[0K[?25h[?25l$ g[0K[?25h[?25l$[0K[3G[?25h[?25l$ e[0K[?25hc[0Kh[0Ko[0K[8G[?25l$ echo "[0K[?25h"[0K[9G[?25l$ echo "."[0K[10G[?25h[?25l$ echo ".R"[0K[11G[?25h[?25l$ echo ".Rp"[0K[12G[?25h[?25l$ echo ".Rpr"[0K[13G[?25h[?25l$ echo ".Rpro"[0K[14G[?25h[?25l$ echo ".Rproj"[0K[15G[?25h[?25l$ echo ".Rproj*"[0K[16G[?25h[17G[18G[?25l$ echo ".Rproj*" >[0K[?25h[20G[?25l$ echo ".Rproj*" > .[0K[?25hg[0Ki[0Kt[0Ki[0Kg[0Kn[0Ko[0Kr[0Ke[0K[?25l
+[0K[?25h[?25l
+[0;32mad3716@WPIA-DIDE223 [0;35m [0;33m~/Documents/PhD/MERS Simple Stochastic Model[0;36m (master)[0m[0K
+$[0K[3G[?25h[?25l$ echo ".Rproj*" > .gitignore[0K[?25h[?25l$ git status[0K[?25h[?25l
+[0K[?25hOn branch master[0K[?25l
+Changes not staged for commit:[0K
+  (use "git add <file>..." to update what will be committed)[0K
+  (use "git checkout -- <file>..." to discard changes in working directory)[0K
+[0K
+        [0;31mmodified:   .Rproj.user/E86ACB2F/console06/FB2DDFB3[0m[0K
+        [0;31mmodified:   .Rproj.user/E86ACB2F/sources/prop/A14F008D[0m[0K
+        [0;31mmodified:   .Rproj.user/E86ACB2F/sources/prop/C9CB9B1F[0m[0K
+        [0;31mmodified:   .Rproj.user/E86ACB2F/sources/s-79496A25/371CD15D[0m[0K
+        [0;31mmodified:   .Rproj.user/E86ACB2F/sources/s-79496A25/371CD15D-contents[0m[0K
+        [0;31mmodified:   .Rproj.user/E86ACB2F/sources/s-79496A25/6F93BC8B[0m[0K
+        [0;31mmodified:   .Rproj.user/E86ACB2F/sources/s-79496A25/6F93BC8B-contents[0m[0K
+        [0;31mmodified:   .Rproj.user/shared/notebooks/4CA052CC-adapting to function not yet working/1/s/chunks.json[0m[0K
+        [0;31mmodified:   rmarkdown v2 simple stochastic model.Rmd[0m[0K
+[0K
+Untracked files:[0K
+  (use "git add <file>..." to include in what will be committed)[0K
+[0K
+        [0;31m.gitignore[0m[0K
+[0K
+no changes added to commit (use "git add" and/or "git commit -a")[0K
+[0K[?25h[?25l
+[0;32mad3716@WPIA-DIDE223 [0;35m [0;33m~/Documents/PhD/MERS Simple Stochastic Model[0;36m (master)[0m[0K
+$[0K[3G[?25h[?25l$ g[0K[?25hi[0Kt[0K[7G[6G[?25l$ gitk[0K[?25h[?25l
+[0K[?25h[?25l
+[0;32mad3716@WPIA-DIDE223 [0;35m [0;33m~/Documents/PhD/MERS Simple Stochastic Model[0;36m (master)[0m[0K
+$[0K[3G[?25h[?25l$ g[0K[?25hi[0Kt[0K[7G[?25l$ git a[0K[?25hd[0Kd[0K[11G[10G[?25l$ git ad[0K[?25h[?25l$ git a[0K[?25h[?25l$ git[0K[7G[?25h[?25l$ git c[0K[?25ho[0Km[0Km[0Ki[0Kt[0K[14G[?25l$ git commit -[0K[?25ha[0K[17G[?25l$ git commit -a -[0K[?25hm[0K[20G[?25l$ git commit -a -m "[0K[?25h"[0K[21G[?25l$ git commit -a -m "c"[0K[22G[?25h[?25l$ git commit -a -m "ch"[0K[23G[?25h[?25l$ git commit -a -m "cha"[0K[24G[?25h[?25l$ git commit -a -m "chan"[0K[25G[?25h[?25l$ git commit -a -m "chang"[0K[26G[?25h[?25l$ git commit -a -m "change"[0K[27G[?25h[?25l$ git commit -a -m "change "[0K[28G[?25h[?25l$ git commit -a -m "change t"[0K[29G[?25h[?25l$ git commit -a -m "change th"[0K[30G[?25h[?25l$ git commit -a -m "change the"[0K[31G[?25h[?25l$ git commit -a -m "change the "[0K[32G[?25h[?25l$ git commit -a -m "change the d"[0K[33G[?25h[?25l$ git commit -a -m "change the da"[0K[34G[?25h[?25l$ git commit -a -m "change the dat"[0K[35G[?25h[?25l$ git commit -a -m "change the date"[0K[36G[?25h[?25l
+[0K[?25h

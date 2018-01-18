@@ -1,5 +1,6 @@
 ---
 title: "adating current model as a function"
+author: "Amy Dighe"
 output: html_document
 ---
 # writing the function 
