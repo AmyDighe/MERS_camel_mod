@@ -1,0 +1,4 @@
+"0","DROM(S = 90, I = 9, R = 1, b = 0.002, mu = 0.002, lamda = 0.01, sigm = 0.001, omega = 0.0002, time = 3*365)"
+"2","Error in rmultinom(n = 1, size = R[i], prob = c(omega_prob, mu_prob, stay_S_prob)) : 
+  invalid second argument 'size'
+"

@@ -1,0 +1,22 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1516275141487.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "143276617",
+    "id" : "761F9A84",
+    "lastKnownWriteTime" : 1516289693,
+    "last_content_update" : 1516289693402,
+    "path" : "~/PhD/MERS Simple Stochastic Model/rmarkdown v3 siple stochastic model.Rmd",
+    "project_path" : "rmarkdown v3 siple stochastic model.Rmd",
+    "properties" : {
+        "cursorPosition" : "15,40",
+        "scrollLine" : "0"
+    },
+    "relative_order" : 4,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_markdown"
+}
