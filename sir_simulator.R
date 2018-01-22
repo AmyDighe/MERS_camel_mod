@@ -60,44 +60,61 @@ sir_sim <- function(beta, omega, sigma = 1 / 20, alpha = 0, mu = 0,
     time <- seq_len(duration)
 
     
+    ## For clarity we structure the code in terms of what leaves compartments,
+    ## whenever this applies. When individuals can leave a compartment through
+    ## different competing processes, the strategy is:
+
+    ## i) draw number of individuals leaving using a binomial distribution
+
+    ## ii) decide where they go using a multinomial distribution
+
+    ## iii) update the respective compartments accordingly
+
+        
     for (i in time[-1]) {
         
-        ## cat("iteration:", i)
-        ## browser()
+        ## birth process: any new individual will enter 'S'
         
-        ## transitions into and out of susceptible state (S) in a time step
         new_births <- rpois(1, S[i - 1] * alpha)
         
-        #new_waned <- (rmultinom(1, outflow_R, prob = c(omega_prob, mu))[1])
-        new_susceptibles <- new_births #+ new_waned
         
-        ## transitions into and out of infectious state (I) in a time step
+        ## individuals leaving 'S', either by becoming 'I' (new infections) or
+        ## dying
+        
         rate_infection <- beta * I[i - 1] / N[i - 1]
-
         outflow_S <- rbinom(1, S[i - 1],
-                            prob = r2p(rate_infection + mu))
-                
-        S[i] <- S[i - 1] + new_susceptibles - outflow_S
-        
+                            prob = r2p(rate_infection + mu))            
+        S[i] <- S[i - 1] + new_births - outflow_S
         new_infectious <- rmultinom(1, size = outflow_S,
                                     prob = c(rate_infection, mu))[1]
+
         
-        outflow_I <- rbinom(1, I[i - 1], prob = r2p(sigma + mu))
+        ## individuals leaving 'I', either by becoming 'R' (new recovered) or
+        ## dying
         
+        outflow_I <- rbinom(1, I[i - 1], prob = r2p(sigma + mu)) 
         I[i] <- I[i - 1] + new_infectious - outflow_I
-        
-        ## transitions into and out of recovered state (R) in a time step
         new_recovered <- rmultinom(1, outflow_I, prob = c(sigma, mu))[1]
+
+
+        ## individuals leaving 'R', either by becoming 'S' (waning immunity) or
+        ## dying
         
         outflow_R <- rbinom(1, R[i-1], prob = r2p(omega + mu))
-        
+        new_waned <- rmultinom(1, outflow_R, prob = c(omega, mu)[1])
         R[i] <- R[i - 1] + new_recovered - outflow_R  
-   
+        S[i] <- S[i] + new_waned
+
+        ## update the current population size
         N[i]  <- S[i] + I[i] + R[i]
 
     }
 
+
+    ## put results into shape and return
+    
     out <- data.frame(time, S, I, R, N)
+    return(out)
     
 }
 
