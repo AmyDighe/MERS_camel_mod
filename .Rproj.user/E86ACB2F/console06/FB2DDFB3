@@ -205,4 +205,72 @@ Fast-forward[0K
 $[0K[3G[?25h[0m[0K]0;[?25l
 [0;32mad3716@WPIA-DIDE223 [0;35m [0;33m~/Documents/PhD/MERS Simple Stochastic Model[0;36m (master)[0m[0K
 [?25l$ g[0K[?25hi[0Kt[0K[7G[?25l$ git c[0K[?25ho[0Km[0Ki[0Kt[0K[13G[?25l$ git comit -[0K[?25ha[0K[16G[?25l$ git comit -a -[0K[?25hm[0K[?25l$ git comit -a -[0K[?25h[?25l$ git comit -a[0K[16G[?25h[15G[?25l$ git comit -[0K[15G[?25h[14G[?25l$ git comit[0K[13G[?25h[12G[?25l$ git comi[0K[?25h[?25l$ git com[0K[?25h[?25l$ git co[0K[?25hm[0Km[0Ki[0Kt[0K[14G[?25l$ git commit -[0K[?25ha[0K[17G[?25l$ git commit -a -[0K[?25h[19G[18G[?25l$ git commit -a -m[0K[?25h[20G[?25l$ git commit -a -m "[0K[?25hf[0Ku[0Kr[0Kt[0Kh[0Ke[0Kr[0K[29G[?25l$ git commit -a -m "further e[0K[?25hd[0Ki[0Kt[0Ki[0Kn[0K[?25lg[0K[35G[?25h[36G[?25l$ git commit -a -m "further editing"[0K[?25h[?25l
-[0K[?25h
+[0K[?25hwarning: LF will be replaced by CRLF in .Rhistory.[0K[?25l
+The file will have its original line endings in your working directory.[0K
+[0K[?25hwarning: LF will be replaced by CRLF in .Rproj.user/E86ACB2F/pcs/source-pane.pper.[0K[?25l
+The file will have its original line endings in your working directory.[0K
+warning: LF will be replaced by CRLF in .Rproj.user/E86ACB2F/pcs/windowlayoutstate.pper.[0K
+The file will have its original line endings in your working directory.[0K
+warning: LF will be replaced by CRLF in .Rproj.user/E86ACB2F/pcs/workbench-pane.pper.[0K
+The file will have its original line endings in your working directory.[0K
+[0K[?25hwarning: LF will be replaced by CRLF in .Rproj.user/E86ACB2F/sources/prop/38728189.[0K[?25l
+The file will have its original line endings in your working directory.[0K
+warning: LF will be replaced by CRLF in .Rproj.user/E86ACB2F/sources/prop/639BCFB7.[0K
+The file will have its original line endings in your working directory.[0K
+warning: LF will be replaced by CRLF in .Rproj.user/E86ACB2F/sources/prop/C9CB9B1F.[0K
+The file will have its original line endings in your working directory.[0K
+warning: LF will be replaced by CRLF in .Rproj.user/E86ACB2F/sources/prop/INDEX.[0K
+The file will have its original line endings in your working directory.[0K
+warning: LF will be replaced by CRLF in .Rproj.user/shared/notebooks/paths.[0K
+The file will have its original line endings in your working directory.[0K
+[0K[?25h[master 2ac30df] further editing[0K[?25l
+ 31 files changed, 759 insertions(+), 1035 deletions(-)[0K
+ rewrite .Rproj.user/E86ACB2F/console06/FB2DDFB3 (63%)[0K
+ delete mode 100644 .Rproj.user/E86ACB2F/sources/s-79496A25/371CD15D[0K
+ delete mode 100644 .Rproj.user/E86ACB2F/sources/s-79496A25/371CD15D-contents[0K
+ delete mode 100644 .Rproj.user/E86ACB2F/sources/s-79496A25/38CCCB8A-contents[0K
+ delete mode 100644 .Rproj.user/E86ACB2F/sources/s-79496A25/3E5386C2-contents[0K
+ delete mode 100644 .Rproj.user/E86ACB2F/sources/s-79496A25/6C2D8E25[0K
+ delete mode 100644 .Rproj.user/E86ACB2F/sources/s-79496A25/6C2D8E25-contents[0K
+ delete mode 100644 .Rproj.user/E86ACB2F/sources/s-79496A25/6F93BC8B[0K
+ delete mode 100644 .Rproj.user/E86ACB2F/sources/s-79496A25/6F93BC8B-contents[0K
+ delete mode 100644 .Rproj.user/E86ACB2F/sources/s-79496A25/761F9A84[0K
+ delete mode 100644 .Rproj.user/E86ACB2F/sources/s-79496A25/761F9A84-contents[0K
+ delete mode 100644 .Rproj.user/E86ACB2F/sources/s-79496A25/76D6DC5F-contents[0K
+ delete mode 100644 .Rproj.user/E86ACB2F/sources/s-79496A25/8FBC8A37[0K
+ delete mode 100644 .Rproj.user/E86ACB2F/sources/s-79496A25/8FBC8A37-contents[0K
+ delete mode 100644 .Rproj.user/E86ACB2F/sources/s-79496A25/A413CB0B-contents[0K
+ delete mode 100644 .Rproj.user/E86ACB2F/sources/s-79496A25/C546892A-contents[0K
+ delete mode 100644 .Rproj.user/E86ACB2F/sources/s-79496A25/DF405F40[0K
+ delete mode 100644 .Rproj.user/E86ACB2F/sources/s-79496A25/DF405F40-contents[0K
+ delete mode 100644 .Rproj.user/E86ACB2F/sources/s-79496A25/lock_file[0K
+ delete mode 100644 .Rproj.user/shared/notebooks/4CA052CC-adapting to function not yet working/1/s/c75xft7fyx49q/000004.csv[0K
+ delete mode 100644 .Rproj.user/shared/notebooks/4CA052CC-adapting to function not yet working/1/s/c75xft7fyx49q/000005.erro[0Kr
+[0K
+ delete mode 100644 .Rproj.user/shared/notebooks/4CA052CC-adapting to function not yet working/1/s/chunks.json[0K
+ delete mode 100644 .Rproj.user/shared/notebooks/4CA052CC-adapting to function not yet working/1/s/csetup_chunk/000002.csv[0K
+[0K[?25h[?25l
+[0;32mad3716@WPIA-DIDE223 [0;35m [0;33m~/Documents/PhD/MERS Simple Stochastic Model[0;36m (master)[0m[0K
+$[0K[3G[?25h[?25l$ g[0K[?25hi[0Kt[0K[7G[?25l$ git s[0K[?25ht[0Ka[0Kt[0Ku[0Ks[0K[?25l
+[0K[?25hOn branch master[0K[?25l
+Your branch is ahead of 'origin/master' by 1 commit.[0K
+  (use "git push" to publish your local commits)[0K
+[0K
+Changes not staged for commit:[0K
+  (use "git add <file>..." to update what will be committed)[0K
+  (use "git checkout -- <file>..." to discard changes in working directory)[0K
+[0K
+        [0;31mmodified:   .Rproj.user/E86ACB2F/console06/FB2DDFB3[0m[0K
+[0K
+Untracked files:[0K
+  (use "git add <file>..." to include in what will be committed)[0K
+[0K
+        [0;31missues sir sim.R[0m[0K
+[0K
+no changes added to commit (use "git add" and/or "git commit -a")[0K
+[0K[?25h[?25l
+[0;32mad3716@WPIA-DIDE223 [0;35m [0;33m~/Documents/PhD/MERS Simple Stochastic Model[0;36m (master)[0m[0K
+$[0K[3G[?25h[?25l$ g[0K[?25hi[0Kt[0K[7G[?25l$ git a[0K[?25hd[0Kd[0K[11G[?25l$ git add i[0K[?25hs[0Ks[0Ku[0Ke[0Ks[0K\ sir\ sim.R[0K[30G[?25l
+[0K[?25h[?25l
+[0;32mad3716@WPIA-DIDE223 [0;35m [0;33m~/Documents/PhD/MERS Simple Stochastic Model[0;36m (master)[0m[0K[66G[?25h[?25l
+$[0K[3G[?25h[?25l$ g[0K[?25hi[0Kt[0K[7G[?25l$ git c[0K[?25ho[0Km[0Ki[0Kt[0K[13G[?25l$ git comit -[0K[?25ha[0K[16G[?25l$ git comit -a -[0K[?25hm[0K[19G[18G[?25l$ git comit -a -[0K[?25h[?25l$ git comit -a[0K[16G[?25h[15G[?25l$ git comit -[0K[?25h[?25l$ git comit[0K[13G[?25h[12G[?25l$ git comi[0K[?25h[?25l$ git com[0K[?25hm[0Ki[0Kt[0K[14G[?25l$ git commit -[0K[?25ha[0K[17G[?25l$ git commit -a -[0K[?25hm[0K[20G[?25l$ git commit -a -m "[0K[?25hf[0Ku[0Kr[0Kt[0Kh[0K[?25l$ git commit -a -m "furt[0K[?25h[?25l$ git commit -a -m "fur[0K[?25h[?25l$ git commit -a -m "fu[0K[?25h[?25l$ git commit -a -m "f[0K[?25h[?25l$ git commit -a -m "[0K[?25he[0Kd[0Ki[0Kt[0Ks[0K[?25l$ git commit -a -m "edit[0K[?25h[?25l$ git commit -a -m "edi[0K[?25h[?25l$ git commit -a -m "ed[0K[?25h[?25l$ git commit -a -m "e[0K[?25h[?25l$ git commit -a -m "[0K[?25he[0Kd[0Ki[0Kt[0Ks[0K[27G[?25l$ git commit -a -m "edits t[0K[?25ho[0K[30G[?25l$ git commit -a -m "edits to s[0K[30G[?25h[31G[?25l$ git commit -a -m "edits to si[0K[?25hr[0K[34G[?25l$ git commit -a -m "edits to sir s[0K[?25hi[0Km[0Ku[0Kl[0Ka[0Kt[0K[?25lo[0K[41G[?25h[42G[?25l$ git commit -a -m "edits to sir simulator[0K[?25h[44G[?25l$ git commit -a -m "edits to sir simulator n[0K[?25ho[0Kt[0K[48G[?25l$ git commit -a -m "edits to sir simulator not w[0K[?25ho[0Kr[0Kk[0Ki[0K[?25lng[0K[54G[?25h[55G[?25l$ git commit -a -m "edits to sir simulator not working"[0K[?25h
