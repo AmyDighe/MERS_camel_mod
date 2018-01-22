@@ -7,7 +7,7 @@
 ## mu: death rate; defaults to 0
 
 sir_sim <- function(beta, omega, sigma = 1 / 20, alpha = 0, mu = 0, 
-                    ini_S = 100, ini_I = 1, ini_R = 0
+                    ini_S = 100, ini_I = 1, ini_R = 0,
                     duration = 365) {
 
     ## This function checks that rates have acceptable values.
@@ -24,7 +24,7 @@ sir_sim <- function(beta, omega, sigma = 1 / 20, alpha = 0, mu = 0,
     check_rate(duration)
     
     
-    ## This function changes a rate lambda into a probabilitie p, using:
+    ## This function changes a rate lambda into a probability p, using:
     ## p = 1 - exp(-lambda)
     
     r2p <- function(r) {
@@ -39,16 +39,16 @@ sir_sim <- function(beta, omega, sigma = 1 / 20, alpha = 0, mu = 0,
     sigma_prob <- r2p(sigma)
     omega_prob <- r2p(omega)
 
-    stay_S_prob <- 1 - (mu_prob + beta_prob)
-    stay_I_prob <- 1 - (mu_prob + sigma_prob)
-    stay_R_prob <- 1 - (mu_prob + omega_prob)
+    #stay_S_prob <- 1 - (mu_prob + beta_prob)
+    #stay_I_prob <- 1 - (mu_prob + sigma_prob)
+    #stay_R_prob <- 1 - (mu_prob + omega_prob)
 
 
     ## defining outflows etc.
 
-    Outflow_R <- data.frame(waned = 0, dead = 0, remain = 0)
-    Outflow_S <- data.frame(infected = 0, dead = 0, remain = 0)
-    Outflow_I <- data.frame(recovered = 0, dead = 0,remain = 0)
+    #outflow_R <- data.frame(waned = 0, dead = 0)
+    #outflow_S <- data.frame(infected = 0, dead = 0)
+    #outflow_I <- data.frame(recovered = 0, dead = 0)
 
     S <- I <- R <- N <- integer(duration)
     S[1] <- ini_S
@@ -61,22 +61,31 @@ sir_sim <- function(beta, omega, sigma = 1 / 20, alpha = 0, mu = 0,
 
     for (i in time[-1]) {
 
-        ## handle new susceptibles (S)
-        new_susceptibles <- rpois(1, S[i - 1] * alpha) # birth
-        S[i] <- S[i - 1] + new_susceptibles
-                    
-    
-        ## handle new infected (I)
+        ## transitions into and out of susceptible state (S) in a time step
+        new_births <- rpois(1, S[i - 1] * alpha)
+        #new_waned <- (rmultinom(1, outflow_R, prob = c(omega_prob, mu))[1])
+        new_susceptibles <- new_births #+ new_waned
+        
+        outflow_S <- rbinom(1, S[i - 1], prob = r2p(rate_infection + mu))
+        
+        S[i] <- S[i - 1] + new_susceptibles - outflow_S
+        
+        ## transitions into and out of infectious state (I) in a time step
         rate_infection <- beta * I[i - 1] / N[i - 1]
         
-        outflow_S <- rbinom(S[i - 1], prob = r2p(rate_infection + mu))
-        Outflow_R[i,] <-rmultinom(n = 1, size = R[i], prob = c(rate_infection, mu_prob, stay_S_prob))[,1]
+        new_infectious <- rmultinom(1, size = outflow_S, prob = c(rate_infection, mu))[1]
         
-        ## handle changes in recovered (R)
+        outflow_I <- rbinom(1, I[i-1], prob = sigma_prob + mu)
         
+        I[i] <- I[i - 1] + new_infectious - outflow_I
         
+        ## transitions into and out of recovered state (R) in a time step
+        new_recovered <- rmultinom(1, outflow_I, prob = c(sigma_prob, mu))[1]
         
-        ## 
+        outflow_R <- rbinom(1, R[i-1], prob = omega_prob + mu)
+        
+        R[i] <- R[i - 1] + new_recovered - outflow_R
+        
         ## Outflow_S[i,] <- (rmultinom(n = 1, size = S[i], prob = c(beta_prob, mu_prob, stay_I_prob)))[,1]
         ## Outflow_I[i,] <- (rmultinom(n = 1, size = I[i], prob = c(sigma_prob, mu_prob, stay_R_prob)))[,1]
         
@@ -106,8 +115,9 @@ sir_sim <- function(beta, omega, sigma = 1 / 20, alpha = 0, mu = 0,
 
 
 
+
 ## example
 
-sir_sim(S = 90, I = 9, R = 1, alpha = 0.002, mu = 0.002, beta = 0.01, sigma = 0.001, omega = 0.0002, time = 3*365)
+sir_sim(ini_S = 90, ini_I = 9, ini_R = 1, alpha = 0.002, mu = 0.002, beta = 0.01, omega = 0.0002)
 
 

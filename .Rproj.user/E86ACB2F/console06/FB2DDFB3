@@ -1,128 +1,276 @@
-[?25l$ g[0K[?25hi[0Kt[0K[7G[?25l$ git s[0K[?25ht[0Ka[0Ktu[0Ks[0K[?25l
-[0K[?25hOn branch master[0K[?25l
-Changes not staged for commit:[0K
-  (use "git add <file>..." to update what will be committed)[0K
-  (use "git checkout -- <file>..." to discard changes in working directory)[0K
-[0K
-        [0;31mmodified:   .Rproj.user/E86ACB2F/console06/FB2DDFB3[0m[0K
-[0K
-no changes added to commit (use "git add" and/or "git commit -a")[0K
+[?25l$ g[0K[?25hi[0Kt[0K[7G[?25l$ git r[0K[?25h[?25le[0K[8G[?25h[9G[?25l$ git rem[0K[?25ho[0Kt[0Ke[0K[14G[?25l$ git remote a[0K[?25hd[0Kd[0K[18G[?25l$ git remote add o[0K[?25hr[0Ki[0Kg[0Ki[0Kn[0K[25G[?25l$ git remote add origin h[0K[?25ht[0Kt[0Kp[0Ks[0K:[0K£[0K£[0K[?25l$ git remote add origin https:£[0K[?25h[?25l$ git remote add origin https:[0K[?25h/[0K/[0Ka[0Km[0Ky[0Kd[0Ki[0Kg[0Kh[0Ke[0K2[0K[?25l$ git remote add origin https://amydighe[0K[?25h@[0Kg[0Ki[0Kt[0Kh[0Ku[0Kb[0K.[0Kc[0Ko[0Km[0K£[0K[?25l$ git remote add origin https://amydighe@github.com[0K[?25h/[0Ka[0Km[0K[?25ly[0K[55G[?25h[56G[?25l$ git remote add origin https://amydighe@github.com/amyd[0K[?25hi[0Kg[0Kh[0Ke[0K[?25l/[0K[61G[?25h[62G[?25l$ git remote add origin https://amydighe@github.com/amydighe/^V[0K[?25h[?25l$ git remote add origin https://amydighe@github.com/amydighe/[0K[?25hMERS_camel_mod[0K[73G[67G[62G[53G[48G[41G[32G[28G[?25l$ git remote add origin htt£s://amydighe@github.com/amydighe/MERS_camel_mod[0K[29G[?25h[?25l$ git remote add origin htt£/://amydighe@github.com/amydighe/MERS_camel_mod[0K[30G[?25h[?25l$ git remote add origin htt£////amydighe@github.com/amydighe/MERS_camel_mod[0K[31G[?25h[?25l$ git remote add origin htt£//a/amydighe@github.com/amydighe/MERS_camel_mod[0K[32G[?25h[?25l$ git remote add origin htt£//amamydighe@github.com/amydighe/MERS_camel_mod[0K[33G[?25h[?25l$ git remote add origin htt£//amymydighe@github.com/amydighe/MERS_camel_mod[0K[34G[?25h[33G[32G[?25l$ git remote add origin htt£//mymydighe@github.com/amydighe/MERS_camel_mod[0K[31G[?25h[?25l$ git remote add origin htt£//Amymydighe@github.com/amydighe/MERS_camel_mod[0K[32G[?25h[33G[34G[?25l$ git remote add origin htt£//Amydydighe@github.com/amydighe/MERS_camel_mod[0K[35G[?25h[?25l$ git remote add origin htt£//Amydidighe@github.com/amydighe/MERS_camel_mod[0K[36G[?25h[35G[?25l$ git remote add origin htt£//Amyidighe@github.com/amydighe/MERS_camel_mod[0K[34G[?25h[?25l$ git remote add origin htt£//AmyDidighe@github.com/amydighe/MERS_camel_mod[0K[35G[?25h[36G[?25l$ git remote add origin htt£//AmyDigighe@github.com/amydighe/MERS_camel_mod[0K[37G[?25h[?25l$ git remote add origin htt£//AmyDighghe@github.com/amydighe/MERS_camel_mod[0K[38G[?25h[?25l$ git remote add origin htt£//AmyDighehe@github.com/amydighe/MERS_camel_mod[0K[39G[?25h[?25l$ git remote add origin htt£//AmyDighe@e@github.com/amydighe/MERS_camel_mod[0K[40G[?25h[?25l$ git remote add origin htt£//AmyDighe@g@github.com/amydighe/MERS_camel_mod[0K[41G[?25h[?25l$ git remote add origin htt£//AmyDighe@gigithub.com/amydighe/MERS_camel_mod[0K[42G[?25h[?25l$ git remote add origin htt£//AmyDighe@gitithub.com/amydighe/MERS_camel_mod[0K[43G[?25h[?25l$ git remote add origin htt£//AmyDighe@giththub.com/amydighe/MERS_camel_mod[0K[44G[?25h[?25l$ git remote add origin htt£//AmyDighe@githuhub.com/amydighe/MERS_camel_mod[0K[45G[?25h[?25l$ git remote add origin htt£//AmyDighe@githubub.com/amydighe/MERS_camel_mod[0K[46G[?25h[?25l$ git remote add origin htt£//AmyDighe@github.b.com/amydighe/MERS_camel_mod[0K[47G[?25h[?25l$ git remote add origin htt£//AmyDighe@github.c.com/amydighe/MERS_camel_mod[0K[48G[?25h[?25l$ git remote add origin htt£//AmyDighe@github.comom/amydighe/MERS_camel_mod[0K[50G[?25h[?25l$ git remote add origin htt£//AmyDighe@github.com▒//amydighe/MERS_camel_mod[0K[52G[?25h[?25l$ git remote add origin htt£//AmyDighe@github.com▒/ammydighe/MERS_camel_mod[0K[54G[?25h[?25l$ git remote add origin htt£//AmyDighe@github.com▒/amyydighe/MERS_camel_mod[0K[55G[?25h[?25l$ git remote add origin htt£//AmyDighe@github.com▒/amyddighe/MERS_camel_mod[0K[56G[?25h[?25l$ git remote add origin htt£//AmyDighe@github.com▒/amydiighe/MERS_camel_mod[0K[57G[?25h[?25l$ git remote add origin htt£//AmyDighe@github.com▒/amydigghe/MERS_camel_mod[0K[58G[?25h[?25l$ git remote add origin htt£//AmyDighe@github.com▒/amydighhe/MERS_camel_mod[0K[59G[?25h[?25l$ git remote add origin htt£//AmyDighe@github.com▒/amydighee/MERS_camel_mod[0K[60G[?25h[?25l$ git remote add origin htt£//AmyDighe@github.com▒/amydighe//MERS_camel_mod[0K[61G[?25h[?25l$ git remote add origin htt£//AmyDighe@github.com▒/amydighe/MMERS_camel_mod[0K[62G[?25h[?25l$ git remote add origin htt£//AmyDighe@github.com▒/amydighe/MEERS_camel_mod[0K[63G[?25h[?25l$ git remote add origin htt£//AmyDighe@github.com▒/amydighe/MERSS_camel_mod[0K[64G[?25h[65G[?25l$ git remote add origin htt£//AmyDighe@github.com▒/amydighe/MERS__camel_mod[0K[66G[?25h[?25l$ git remote add origin htt£//AmyDighe@github.com▒/amydighe/MERS_ccamel_mod[0K[67G[?25h[?25l$ git remote add origin htt£//AmyDighe@github.com▒/amydighe/MERS_caamel_mod[0K[68G[?25h[?25l$ git remote add origin htt£//AmyDighe@github.com▒/amydighe/MERS_cammel_mod[0K[69G[?25h[?25l$ git remote add origin htt£//AmyDighe@github.com▒/amydighe/MERS_cameel_mod[0K[70G[?25h[?25l$ git remote add origin htt£//AmyDighe@github.com▒/amydighe/MERS_camell_mod[0K[71G[?25h[?25l$ git remote add origin htt£//AmyDighe@github.com▒/amydighe/MERS_camel__mod[0K[72G[?25h[?25l$ git remote add origin htt£//AmyDighe@github.com▒/amydighe/MERS_camel_mmod[0K[73G[?25h[?25l$ git remote add origin htt£//AmyDighe@github.com▒/amydighe/MERS_camel_modd[0K[74G[?25h[75G[74G[73G[72G[71G[70G[69G[68G[67G[65G[64G[63G[62G[61G[60G[59G[58G[57G[56G[55G[54G[53G[52G[51G[50G[48G[47G[48G[49G[50G[52G[51G[50G[48G[47G[46G[45G[43G[41G[40G[39G[38G[37G[36G[35G[34G[33G[32G[31G[30G[28G[26G[?25l$ git remote add origin h:t£//AmyDighe@github.com▒/amydighe/MERS_camel_modd[0K[27G[?25h[?25l$ git remote add origin h:££//AmyDighe@github.com▒/amydighe/MERS_camel_modd[0K[28G[?25h[?25l$ git remote add origin h:£///AmyDighe@github.com▒/amydighe/MERS_camel_modd[0K[29G[?25h[28G[27G[26G[25G[?25l$ git remote add origin :£///AmyDighe@github.com▒/amydighe/MERS_camel_modd[0K[25G[?25h[?25l$ git remote add origin £///AmyDighe@github.com▒/amydighe/MERS_camel_modd[0K[25G[?25h[?25l$ git remote add origin ///AmyDighe@github.com▒/amydighe/MERS_camel_modd[0K[25G[?25h[?25l$ git remote add origin //AmyDighe@github.com▒/amydighe/MERS_camel_modd[0K[25G[?25h[?25l$ git remote add origin /AmyDighe@github.com▒/amydighe/MERS_camel_modd[0K[25G[?25h[?25l$ git remote add origin AmyDighe@github.com▒/amydighe/MERS_camel_modd[0K[25G[?25h[?25l$ git remote add origin myDighe@github.com▒/amydighe/MERS_camel_modd[0K[25G[?25h[?25l$ git remote add origin yDighe@github.com▒/amydighe/MERS_camel_modd[0K[25G[?25h[?25l$ git remote add origin Dighe@github.com▒/amydighe/MERS_camel_modd[0K[25G[?25h[?25l$ git remote add origin ighe@github.com▒/amydighe/MERS_camel_modd[0K[25G[?25h[?25l$ git remote add origin ghe@github.com▒/amydighe/MERS_camel_modd[0K[25G[?25h[?25l$ git remote add origin e@github.com▒/amydighe/MERS_camel_modd[0K[25G[?25h[?25l$ git remote add origin @github.com▒/amydighe/MERS_camel_modd[0K[25G[?25h[?25l$ git remote add origin github.com▒/amydighe/MERS_camel_modd[0K[25G[?25h[?25l$ git remote add origin ithub.com▒/amydighe/MERS_camel_modd[0K[25G[?25h[?25l$ git remote add origin thub.com▒/amydighe/MERS_camel_modd[0K[25G[?25h[?25l$ git remote add origin hub.com▒/amydighe/MERS_camel_modd[0K[25G[?25h[?25l$ git remote add origin ub.com▒/amydighe/MERS_camel_modd[0K[25G[?25h[?25l$ git remote add origin b.com▒/amydighe/MERS_camel_modd[0K[25G[?25h[?25l$ git remote add origin .com▒/amydighe/MERS_camel_modd[0K[25G[?25h[?25l$ git remote add origin com▒/amydighe/MERS_camel_modd[0K[25G[?25h[?25l$ git remote add origin om▒/amydighe/MERS_camel_modd[0K[25G[?25h[?25l$ git remote add origin m▒/amydighe/MERS_camel_modd[0K[25G[?25h[?25l$ git remote add origin ▒/amydighe/MERS_camel_modd[0K[25G[?25h[?25l$ git remote add origin /amydighe/MERS_camel_modd[0K[25G[?25h[?25l$ git remote add origin amydighe/MERS_camel_modd[0K[25G[?25h[?25l$ git remote add origin mydighe/MERS_camel_modd[0K[25G[?25h[?25l$ git remote add origin ydighe/MERS_camel_modd[0K[25G[?25h[?25l$ git remote add origin dighe/MERS_camel_modd[0K[25G[?25h[?25l$ git remote add origin ighe/MERS_camel_modd[0K[25G[?25h[?25l$ git remote add origin ghe/MERS_camel_modd[0K[25G[?25h[?25l$ git remote add origin he/MERS_camel_modd[0K[25G[?25h[?25l$ git remote add origin e/MERS_camel_modd[0K[25G[?25h[?25l$ git remote add origin /MERS_camel_modd[0K[25G[?25h[?25l$ git remote add origin MERS_camel_modd[0K[25G[?25h[?25l$ git remote add origin ERS_camel_modd[0K[25G[?25h[?25l$ git remote add origin RS_camel_modd[0K[25G[?25h[?25l$ git remote add origin S_camel_modd[0K[25G[?25h[?25l$ git remote add origin _camel_modd[0K[25G[?25h[?25l$ git remote add origin camel_modd[0K[25G[?25h[?25l$ git remote add origin amel_modd[0K[25G[?25h[?25l$ git remote add origin mel_modd[0K[25G[?25h[?25l$ git remote add origin el_modd[0K[25G[?25h[?25l$ git remote add origin l_modd[0K[25G[?25h[?25l$ git remote add origin _modd[0K[25G[?25h[?25l$ git remote add origin modd[0K[25G[?25h[?25l$ git remote add origin ddd[0K[25G[?25h[?25l$ git remote add origin[0K[25G[?25h[24G[?25l$ git remote add origi[0K[?25h[?25l$ git remote add orig[0K[?25h[?25l$ git remote add or[0K[?25h[?25l$ git remote add o[0K[?25h[?25l$ git remote add[0K[19G[?25h[18G[17G[?25l$ git remote ad[0K[?25h[?25l$ git remote a[0K[?25h[?25l$ git remote[0K[14G[?25h[13G[?25l$ git remot[0K[?25h[?25l$ git remo[0K[?25h[?25l$ git rem[0K[?25h[?25l$ git re[0K[?25h[?25l$ git[0K[8G[?25h[7G[?25l$ gi[0K[6G[?25h[5G[?25l$[0K[3G[?25h[2G[?25l[0K[2G[?25h[1G[?25l
 [0K[?25h[?25l
 [0;32mad3716@WPIA-DIDE223 [0;35m [0;33m~/Documents/PhD/MERS Simple Stochastic Model[0;36m (master)[0m[0K
-$[0K[3G[?25h[?25l$ g[0K[?25ho[0Kt[0K[7G[6G[?25l$ go[0K[?25h[?25l$ g[0K[?25hi[0Kt[0K[7G[?25l$ git a[0K[?25hd[0Kd[0K[11G[?25l$ git add *[0K[?25h[?25l
+$[0K[3G[?25h[?25l$ git remote add origin https://github.com/AmyDighe/MERS_camel_mod.git[0K[?25h[70G[69G[68G[67G[66G[65G[64G[63G[62G[61G[60G[59G[58G[57G[56G[55G[54G[53G[52G[51G[50G[49G[48G[47G[46G[45G[44G[43G[42G[41G[40G[39G[38G[37G[36G[35G[34G[33G[?25l$ git remote add origin https://Agithub.com/AmyDighe/MERS_camel_mod.git[0K[34G[?25h[?25l$ git remote add origin https://Amgithub.com/AmyDighe/MERS_camel_mod.git[0K[34G[?25h[35G[?25l$ git remote add origin https://Amygithub.com/AmyDighe/MERS_camel_mod.git[0K[36G[?25h[?25l$ git remote add origin https://AmyDgithub.com/AmyDighe/MERS_camel_mod.git[0K[37G[?25h[?25l$ git remote add origin https://AmyDigithub.com/AmyDighe/MERS_camel_mod.git[0K[38G[?25h[?25l$ git remote add origin https://AmyDiggithub.com/AmyDighe/MERS_camel_mod.git[0K[39G[?25h[?25l$ git remote add origin https://AmyDighgithub.com/AmyDighe/MERS_camel_mod.git[0K[40G[?25h[?25l$ git remote add origin https://AmyDighegithub.com/AmyDighe/MERS_camel_mod.git[0K[41G[?25h[?25l$ git remote add origin https://AmyDighe@github.com/AmyDighe/MERS_camel_mod.git[0K[42G[?25h[?25l
 [0K[?25h[?25l
 [0;32mad3716@WPIA-DIDE223 [0;35m [0;33m~/Documents/PhD/MERS Simple Stochastic Model[0;36m (master)[0m[0K
-$[0K[3G[?25h[?25l$ git add *[0K[?25h[?25l$ git status[0K[?25h[?25l$ git add *[0K[?25h[?25l$ git status[0K[?25h[?25l
-[0K[?25hOn branch master[0K[?25l
-Changes not staged for commit:[0K
-  (use "git add <file>..." to update what will be committed)[0K
-  (use "git checkout -- <file>..." to discard changes in working directory)[0K
-[0K
-        [0;31mmodified:   .Rproj.user/E86ACB2F/console06/FB2DDFB3[0m[0K
-[0K
-no changes added to commit (use "git add" and/or "git commit -a")[0K
+$[0K[3G[?25h[?25l$ g[0K[?25hi[0Kt[0K[7G[?25l$ git s[0K[?25h[?25lt[0K[8G[?25h[9G[?25l$ git sta[0K[?25ht[0K[?25l$ git sta[0K[?25h[?25l$ git st[0K[?25h[?25l$ git s[0K[?25h[?25l$ git[0K[7G[?25h[6G[?25l$ gitk[0K[?25h[?25l
 [0K[?25h[?25l
 [0;32mad3716@WPIA-DIDE223 [0;35m [0;33m~/Documents/PhD/MERS Simple Stochastic Model[0;36m (master)[0m[0K
-$[0K[3G[?25h[?25l$ l[0K[?25hs[0K[6G[?25l$ ls -[0K[?25ha[0K[9G[?25l
-[0K[?25h.          .Rproj.user     MERS Simple Stochastic Model.Rproj        rmarkdown v3 siple stochastic model.Rmd[0K[?25l
-..         .git            not working DROM function.R               v2 simple stochastic model.R[0K
-.Rhistory  .gitattributes  rmarkdown v2 simple stochastic model.Rmd  working simple stochastic model.R[0K
+$[0K[3G[?25h[?25l$ g[0K[?25hi[0Kt[0K[7G[?25l$ git p[0K[?25hu[0Ks[0Kh[0K[12G[?25l$ git push o[0K[?25hr[0Ki[0Kg[0Ki[0Kn[0K[19G[?25l$ git push origin m[0K[?25ha[0Ks[0Kt[0Ke[0Kr[0K[26G[?25l$ git push origin master -[0K[?25hu[0K[29G[?25l
+[0K[?25hCounting objects: 85, done.[0K[?25l
+Delta compression using up to 8 threads.[0K
+Compressing objects:  61% (43/70)[0K[2G[?25h[?25lCompressing objects: 100% (70/70), done.[0K
+Writing objects: 100% (85/85), 27.94 KiB | 3.10 MiB/s, done.[0K
+Total 85 (delta 25), reused 0 (delta 0)[0K
+[0K[?25hremote: Resolving deltas: 100% (25/25), done.[0K[?25l
+[0K[?25h[?25lTo https://github.com/AmyDighe/MERS_camel_mod.git[0K[1G[?25h[?25l
+ * [new branch]      master -> master[0K
+Branch 'master' set up to track remote branch 'master' from 'origin'.[0K
 [0K[?25h[?25l
 [0;32mad3716@WPIA-DIDE223 [0;35m [0;33m~/Documents/PhD/MERS Simple Stochastic Model[0;36m (master)[0m[0K
 $[0K[3G[?25h[?25l$ g[0K[?25hi[0Kt[0Kk[0K[?25l
 [0K[?25h[?25l
 [0;32mad3716@WPIA-DIDE223 [0;35m [0;33m~/Documents/PhD/MERS Simple Stochastic Model[0;36m (master)[0m[0K
-$[0K[3G[?25h[?25l$ gitk[0K[?25h[?25l
+$[0K[3G[?25h[?25l$ g[0K[?25hi[0Kt[0K[7G[6G[?25l$ gitk[0K[?25h[?25l
+[0K[?25h[?25l
+[0;32mad3716@WPIA-DIDE223 [0;35m [0;33m~/Documents/PhD/MERS Simple Stochastic Model[0;36m (master)[0m[0K
+$[0K[3G[?25h[?25l$ g[0K[?25hi[0Kt[0K[7G[?25l$ git p[0K[?25hu[0Kl[0Kl[0K[?25l
+[0K[?25hremote: Counting objects: 3, done.[0K[?25l
+remote: Compressing objects: 100% (3/3), done.[0K
+remote: Total 3 (delta 2), reused 0 (delta 0), pack-reused 0[0K
+[0K[?25hUnpacking objects: 100% (3/3), done.[0K[?25l
+[0K[?25hFrom https://github.com/AmyDighe/MERS_camel_mod[0K[?25l
+   b64e35a..3d996af  master     -> origin/master[0K
+[0K[?25hUpdating b64e35a..3d996af[0K[?25l
+Fast-forward[0K
+[0K[?25h rmarkdown v3 siple stochastic model.Rmd | 2 [0;32m+[0;31m-[0m[0K[?25l
+ 1 file changed, 1 insertion(+), 1 deletion(-)[0K
+[0K[?25h[?25l
+[0;32mad3716@WPIA-DIDE223 [0;35m [0;33m~/Documents/PhD/MERS Simple Stochastic Model[0;36m (master)[0m[0K
+$[0K[3G[?25h[?25l$ git pull[0K[?25h[?25l$ gitk[0K[?25h[?25l
+[0K[?25h[?25l
+[0;32mad3716@WPIA-DIDE223 [0;35m [0;33m~/Documents/PhD/MERS Simple Stochastic Model[0;36m (master)[0m[0K
+$[0K[3G[?25h[?25l$ g[0K[?25hi[0Kt[0Kk[0K[?25l
+[0K[?25h[?25l
+[0;32mad3716@WPIA-DIDE223 [0;35m [0;33m~/Documents/PhD/MERS Simple Stochastic Model[0;36m (master)[0m[0K[22G[?25h[?25l
+$[0K[3G[?25h[?25l$ g[0K[?25hi[0Kt[0K[7G[?25l$ git p[0K[?25hu[0Kl[0Kl[0K[?25l
+[0K[?25hUpdating 3d996af..7a00a47[0K[?25l
+Fast-forward[0K
+[0K[?25h sir_simulator.R | 13 [0;32m+++++++++++++[0m[0K[?25l
+ 1 file changed, 13 insertions(+)[0K
+ create mode 100644 sir_simulator.R[0K
 [0K[?25h[?25l
 [0;32mad3716@WPIA-DIDE223 [0;35m [0;33m~/Documents/PhD/MERS Simple Stochastic Model[0;36m (master)[0m[0K
 $[0K[3G[?25h[?25l$ g[0K[?25hi[0Kt[0K[7G[?25l$ git s[0K[?25ht[0Ka[0Kt[0Ku[0Ks[0K[?25l
 [0K[?25hOn branch master[0K[?25l
+Your branch is up to date with 'origin/master'.[0K
+[0K
 Changes not staged for commit:[0K
-  (use "git add <file>..." to update what will be committed)[0K
+  (use "git add/rm <file>..." to update what will be committed)[0K
   (use "git checkout -- <file>..." to discard changes in working directory)[0K
 [0K
         [0;31mmodified:   .Rproj.user/E86ACB2F/console06/FB2DDFB3[0m[0K
-        [0;31mmodified:   .Rproj.user/E86ACB2F/sources/prop/A14F008D[0m[0K
-        [0;31mmodified:   .Rproj.user/E86ACB2F/sources/s-79496A25/371CD15D[0m[0K
-        [0;31mmodified:   .Rproj.user/E86ACB2F/sources/s-79496A25/371CD15D-contents[0m[0K
-        [0;31mmodified:   .Rproj.user/shared/notebooks/4CA052CC-adapting to function not yet working/1/s/chunks.json[0m[0K
+        [0;31mmodified:   .Rproj.user/E86ACB2F/sources/prop/INDEX[0m[0K
+        [0;31mdeleted:    .Rproj.user/E86ACB2F/sources/s-79496A25/371CD15D[0m[0K
+        [0;31mdeleted:    .Rproj.user/E86ACB2F/sources/s-79496A25/8FBC8A37[0m[0K
+        [0;31mmodified:   .Rproj.user/shared/notebooks/paths[0m[0K
 [0K
 Untracked files:[0K
   (use "git add <file>..." to include in what will be committed)[0K
 [0K
-        [0;31m.Rproj.user/shared/notebooks/4CA052CC-adapting to function not yet working/1/E86ACB2F79496A25/[0m[0K
+        [0;31madapting to function not yet working.Rmd[0m[0K
 [0K
 no changes added to commit (use "git add" and/or "git commit -a")[0K
 [0K[?25h[?25l
 [0;32mad3716@WPIA-DIDE223 [0;35m [0;33m~/Documents/PhD/MERS Simple Stochastic Model[0;36m (master)[0m[0K
-$[0K[3G[?25h[?25l$ g[0K[?25hi[0Kt[0K[7G[?25l$ git s[0K[?25ht[0K[?25l
-[0K[?25hgit: 'st' is not a git command. See 'git --help'.[0K[?25l
-[0K
-The most similar commands are[0K
-        status[0K
-        reset[0K
-        stage[0K
-        stash[0K
-        svn[0K
+$[0K[3G[?25h[?25l$ g[0K[?25hi[0Kt[0K[7G[?25l$ git a[0K[?25hd[0Kd[0K[11G[?25l$ git add a[0K[?25hd[0Kapting\ to\ function\ not\ yet\ working.Rmd[0K[57G[?25l
 [0K[?25h[?25l
 [0;32mad3716@WPIA-DIDE223 [0;35m [0;33m~/Documents/PhD/MERS Simple Stochastic Model[0;36m (master)[0m[0K
-$[0K[3G[?25h[?25l$ git st[0K[?25h[?25l$ git s[0K[?25h[?25l$ git[0K[7G[?25h[6G[?25l$ gi[0K[?25ht[0Kk[0K[?25l
+$[0K[3G[?25h[?25l$ g[0K[?25hi[0Kt[0K[7G[?25l$ git c[0K[?25h[?25lo[0K[8G[?25h[9G[?25l$ git com[0K[?25hm[0Ke[0K[?25l$ git comm[0K[?25hi[0Kt[0K[14G[?25l$ git commit -[0K[?25hm[0K[17G[?25l$ git commit -m "[0K[?25ha[0Kd[0Kd[0Ke[0Kd[0K[24G[?25l$ git commit -m "added f[0K[?25hu[0Kn[0Kc[0Kt[0K[?25li[0K[29G[?25h[30G[?25l$ git commit -m "added functio[0K[?25hn[0K"[0K[32G[?25l$ git commit -m "added function "[0K[33G[?25h[?25l$ git commit -m "added function n"[0K[34G[?25h[?25l$ git commit -m "added function npt"[0K[36G[?25h[?25l$ git commit -m "added function npt "[0K[37G[?25h[?25l$ git commit -m "added function npt w"[0K[38G[?25h[?25l$ git commit -m "added function npt "[0K[?25h[37G[?25l$ git commit -m "added function npt"[0K[36G[?25h[?25l$ git commit -m "added function np"[0K[?25h[35G[?25l$ git commit -m "added function n"[0K[34G[?25h[?25l$ git commit -m "added function no"[0K[35G[?25h[?25l$ git commit -m "added function not"[0K[36G[?25h[?25l$ git commit -m "added function not "[0K[37G[?25h[?25l$ git commit -m "added function not y"[0K[38G[?25h[?25l$ git commit -m "added function not ye"[0K[39G[?25h[?25l$ git commit -m "added function not yet"[0K[40G[?25h[?25l$ git commit -m "added function not yet "[0K[41G[?25h[?25l$ git commit -m "added function not yet w"[0K[42G[?25h[?25l$ git commit -m "added function not yet wo"[0K[43G[?25h[?25l$ git commit -m "added function not yet wor"[0K[44G[?25h[?25l$ git commit -m "added function not yet work"[0K[45G[?25h[?25l$ git commit -m "added function not yet worki"[0K[46G[?25h[?25l$ git commit -m "added function not yet workin"[0K[47G[?25h[?25l$ git commit -m "added function not yet working"[0K[48G[?25h[?25l
+[0K[?25h[master 43ca236] added function not yet working[0K[?25l
+ 1 file changed, 70 insertions(+)[0K
+ create mode 100644 adapting to function not yet working.Rmd[0K
 [0K[?25h[?25l
 [0;32mad3716@WPIA-DIDE223 [0;35m [0;33m~/Documents/PhD/MERS Simple Stochastic Model[0;36m (master)[0m[0K
-$[0K[3G[?25h[?25l$ g[0K[3G[?25h[4G[?25l$ gi[0K[?25ht[0K[7G[?25l$ gitk[0K[?25h[?25l$ git st[0K[?25hatus[0K[?25l
+$[0K[3G[?25h[?25l$ g[0K[?25hi[0Kt[0Kk[0K[?25l
+[0K[?25h[?25l
+[0;32mad3716@WPIA-DIDE223 [0;35m [0;33m~/Documents/PhD/MERS Simple Stochastic Model[0;36m (master)[0m[0K
+$[0K[3G[?25h[?25l$ g[0K[?25hi[0Kt[0K[7G[?25l$ git p[0K[?25hu[0Ks[0Kh[0K[?25l
+[0K[?25hCounting objects: 2, done.[0K[?25l
+Delta compression using up to 8 threads.[0K
+Compressing objects: 100% (2/2), done.[0K
+Writing objects: 100% (2/2), 300 bytes | 300.00 KiB/s, done.[0K
+Total 2 (delta 1), reused 0 (delta 0)[0K
+[0K[?25hremote: Resolving deltas: 100% (1/1), completed with 1 local object.[0K[?25l
+[0K[?25hTo https://github.com/AmyDighe/MERS_camel_mod.git[0K[?25l
+   7a00a47..43ca236  master -> master[0K
+[0K[?25h[?25l
+[0;32mad3716@WPIA-DIDE223 [0;35m [0;33m~/Documents/PhD/MERS Simple Stochastic Model[0;36m (master)[0m[0K
+$[0K[3G[?25h[?25l$ g[0K[?25hi[0Kt[0Kk[0K[?25l
+[0K[?25h[?25l
+[0;32mad3716@WPIA-DIDE223 [0;35m [0;33m~/Documents/PhD/MERS Simple Stochastic Model[0;36m (master)[0m[0K
+$[0K[3G[?25h[0m[0K]0;[?25l
+[0;32mad3716@WPIA-DIDE223 [0;35m [0;33m~/Documents/PhD/MERS Simple Stochastic Model[0;36m (master)[0m[0K
+[?25l$ g[0K[?25hi[0Kt[0K[7G[?25l$ git s[0K[?25ht[0Ka[0Kt[0Ku[0Ks[0K[?25l
 [0K[?25hOn branch master[0K[?25l
+Your branch is up to date with 'origin/master'.[0K
+[0K
 Changes not staged for commit:[0K
-  (use "git add <file>..." to update what will be committed)[0K
+  (use "git add/rm <file>..." to update what will be committed)[0K
   (use "git checkout -- <file>..." to discard changes in working directory)[0K
 [0K
+        [0;31mmodified:   .Rhistory[0m[0K
         [0;31mmodified:   .Rproj.user/E86ACB2F/console06/FB2DDFB3[0m[0K
-        [0;31mmodified:   .Rproj.user/E86ACB2F/sources/prop/A14F008D[0m[0K
-        [0;31mmodified:   .Rproj.user/E86ACB2F/sources/prop/C9CB9B1F[0m[0K
-        [0;31mmodified:   .Rproj.user/E86ACB2F/sources/s-79496A25/371CD15D[0m[0K
-        [0;31mmodified:   .Rproj.user/E86ACB2F/sources/s-79496A25/371CD15D-contents[0m[0K
-        [0;31mmodified:   .Rproj.user/E86ACB2F/sources/s-79496A25/6F93BC8B[0m[0K[9G[?25h[?25l
-        [0;31mmodified:   .Rproj.user/E86ACB2F/sources/s-79496A25/6F93BC8B-contents[0m[0K
-        [0;31mmodified:   .Rproj.user/shared/notebooks/4CA052CC-adapting to function not yet working/1/s/chunks.json[0m[0K
-        [0;31mmodified:   rmarkdown v2 simple stochastic model.Rmd[0m[0K
-[0K
-Untracked files:[0K
-  (use "git add <file>..." to include in what will be committed)[0K
-[0K
-        [0;31m.Rproj.user/shared/notebooks/4CA052CC-adapting to function not yet working/1/E86ACB2F79496A25/[0m[0K
-        [0;31m.Rproj.user/shared/notebooks/5F5B959C-rmarkdown v2 simple stochastic model/[0m[0K
+        [0;31mmodified:   .Rproj.user/E86ACB2F/console06/INDEX001[0m[0K
+        [0;31mmodified:   .Rproj.user/E86ACB2F/pcs/source-pane.pper[0m[0K
+        [0;31mmodified:   .Rproj.user/E86ACB2F/pcs/windowlayoutstate.pper[0m[0K
+        [0;31mmodified:   .Rproj.user/E86ACB2F/sources/prop/INDEX[0m[0K
+        [0;31mdeleted:    .Rproj.user/E86ACB2F/sources/s-79496A25/371CD15D[0m[0K
+        [0;31mdeleted:    .Rproj.user/E86ACB2F/sources/s-79496A25/371CD15D-contents[0m[0K
+        [0;31mdeleted:    .Rproj.user/E86ACB2F/sources/s-79496A25/38CCCB8A-contents[0m[0K
+        [0;31mdeleted:    .Rproj.user/E86ACB2F/sources/s-79496A25/3E5386C2-contents[0m[0K
+        [0;31mdeleted:    .Rproj.user/E86ACB2F/sources/s-79496A25/6C2D8E25[0m[0K
+        [0;31mdeleted:    .Rproj.user/E86ACB2F/sources/s-79496A25/6C2D8E25-contents[0m[0K
+        [0;31mdeleted:    .Rproj.user/E86ACB2F/sources/s-79496A25/6F93BC8B[0m[0K
+        [0;31mdeleted:    .Rproj.user/E86ACB2F/sources/s-79496A25/6F93BC8B-contents[0m[0K
+        [0;31mdeleted:    .Rproj.user/E86ACB2F/sources/s-79496A25/761F9A84[0m[0K
+        [0;31mdeleted:    .Rproj.user/E86ACB2F/sources/s-79496A25/761F9A84-contents[0m[0K
+        [0;31mdeleted:    .Rproj.user/E86ACB2F/sources/s-79496A25/76D6DC5F-contents[0m[0K
+        [0;31mdeleted:    .Rproj.user/E86ACB2F/sources/s-79496A25/8FBC8A37[0m[0K
+        [0;31mdeleted:    .Rproj.user/E86ACB2F/sources/s-79496A25/8FBC8A37-contents[0m[0K
+        [0;31mdeleted:    .Rproj.user/E86ACB2F/sources/s-79496A25/A413CB0B-contents[0m[0K
+        [0;31mdeleted:    .Rproj.user/E86ACB2F/sources/s-79496A25/C546892A-contents[0m[0K
+        [0;31mdeleted:    .Rproj.user/E86ACB2F/sources/s-79496A25/DF405F40[0m[0K
+        [0;31mdeleted:    .Rproj.user/E86ACB2F/sources/s-79496A25/DF405F40-contents[0m[0K
+        [0;31mdeleted:    .Rproj.user/E86ACB2F/sources/s-79496A25/lock_file[0m[0K
+        [0;31mdeleted:    .Rproj.user/shared/notebooks/4CA052CC-adapting to function not yet working/1/s/c75xft7fyx49q/000004.csv[0m[0K
+        [0;31mdeleted:    .Rproj.user/shared/notebooks/4CA052CC-adapting to function not yet working/1/s/c75xft7fyx49q/000005.erro[0Kr
+[0m[0K
+        [0;31mdeleted:    .Rproj.user/shared/notebooks/4CA052CC-adapting to function not yet working/1/s/chunks.json[0m[0K
+        [0;31mdeleted:    .Rproj.user/shared/notebooks/4CA052CC-adapting to function not yet working/1/s/csetup_chunk/000002.csv[0m[0K
+        [0;31mmodified:   .Rproj.user/shared/notebooks/paths[0m[0K
 [0K
 no changes added to commit (use "git add" and/or "git commit -a")[0K
 [0K[?25h[?25l
 [0;32mad3716@WPIA-DIDE223 [0;35m [0;33m~/Documents/PhD/MERS Simple Stochastic Model[0;36m (master)[0m[0K
-$[0K[3G[?25h[?25l$ g[0K[?25hi[0Kt[0K[7G[6G[?25l$ gi[0K[?25h[?25l$ g[0K[?25h[?25l$[0K[3G[?25h[?25l$ e[0K[?25hc[0Kh[0Ko[0K[8G[?25l$ echo "[0K[?25h"[0K[9G[?25l$ echo "."[0K[10G[?25h[?25l$ echo ".R"[0K[11G[?25h[?25l$ echo ".Rp"[0K[12G[?25h[?25l$ echo ".Rpr"[0K[13G[?25h[?25l$ echo ".Rpro"[0K[14G[?25h[?25l$ echo ".Rproj"[0K[15G[?25h[?25l$ echo ".Rproj*"[0K[16G[?25h[17G[18G[?25l$ echo ".Rproj*" >[0K[?25h[20G[?25l$ echo ".Rproj*" > .[0K[?25hg[0Ki[0Kt[0Ki[0Kg[0Kn[0Ko[0Kr[0Ke[0K[?25l
-[0K[?25h[?25l
-[0;32mad3716@WPIA-DIDE223 [0;35m [0;33m~/Documents/PhD/MERS Simple Stochastic Model[0;36m (master)[0m[0K
-$[0K[3G[?25h[?25l$ echo ".Rproj*" > .gitignore[0K[?25h[?25l$ git status[0K[?25h[?25l
+$[0K[3G[?25h[?25l$ g[0K[?25hi[0Kt[0Kk[0K[?25l$ git[0K[?25h[?25l$ gi[0K[?25h[?25l$ g[0K[?25h[?25l$[0K[3G[?25h[?25l$ g[0K[?25hi[0Kt[0K[7G[?25l$ git s[0K[?25ht[0Ka[0Kt[0Ku[0Ks[0K[?25l
 [0K[?25hOn branch master[0K[?25l
+Your branch is up to date with 'origin/master'.[0K
+[0K
+Changes not staged for commit:[0K
+  (use "git add/rm <file>..." to update what will be committed)[0K
+  (use "git checkout -- <file>..." to discard changes in working directory)[0K
+[0K
+        [0;31mmodified:   .Rhistory[0m[0K
+        [0;31mmodified:   .Rproj.user/E86ACB2F/console06/FB2DDFB3[0m[0K
+        [0;31mmodified:   .Rproj.user/E86ACB2F/console06/INDEX001[0m[0K
+        [0;31mmodified:   .Rproj.user/E86ACB2F/pcs/source-pane.pper[0m[0K
+        [0;31mmodified:   .Rproj.user/E86ACB2F/pcs/windowlayoutstate.pper[0m[0K
+        [0;31mmodified:   .Rproj.user/E86ACB2F/sources/prop/INDEX[0m[0K
+        [0;31mdeleted:    .Rproj.user/E86ACB2F/sources/s-79496A25/371CD15D[0m[0K
+        [0;31mdeleted:    .Rproj.user/E86ACB2F/sources/s-79496A25/371CD15D-contents[0m[0K
+        [0;31mdeleted:    .Rproj.user/E86ACB2F/sources/s-79496A25/38CCCB8A-contents[0m[0K
+        [0;31mdeleted:    .Rproj.user/E86ACB2F/sources/s-79496A25/3E5386C2-contents[0m[0K
+        [0;31mdeleted:    .Rproj.user/E86ACB2F/sources/s-79496A25/6C2D8E25[0m[0K
+        [0;31mdeleted:    .Rproj.user/E86ACB2F/sources/s-79496A25/6C2D8E25-contents[0m[0K
+        [0;31mdeleted:    .Rproj.user/E86ACB2F/sources/s-79496A25/6F93BC8B[0m[0K
+        [0;31mdeleted:    .Rproj.user/E86ACB2F/sources/s-79496A25/6F93BC8B-contents[0m[0K
+        [0;31mdeleted:    .Rproj.user/E86ACB2F/sources/s-79496A25/761F9A84[0m[0K
+        [0;31mdeleted:    .Rproj.user/E86ACB2F/sources/s-79496A25/761F9A84-contents[0m[0K
+        [0;31mdeleted:    .Rproj.user/E86ACB2F/sources/s-79496A25/76D6DC5F-contents[0m[0K
+        [0;31mdeleted:    .Rproj.user/E86ACB2F/sources/s-79496A25/8FBC8A37[0m[0K
+        [0;31mdeleted:    .Rproj.user/E86ACB2F/sources/s-79496A25/8FBC8A37-contents[0m[0K
+        [0;31mdeleted:    .Rproj.user/E86ACB2F/sources/s-79496A25/A413CB0B-contents[0m[0K
+        [0;31mdeleted:    .Rproj.user/E86ACB2F/sources/s-79496A25/C546892A-contents[0m[0K
+        [0;31mdeleted:    .Rproj.user/E86ACB2F/sources/s-79496A25/DF405F40[0m[0K
+        [0;31mdeleted:    .Rproj.user/E86ACB2F/sources/s-79496A25/DF405F40-contents[0m[0K
+        [0;31mdeleted:    .Rproj.user/E86ACB2F/sources/s-79496A25/lock_file[0m[0K
+        [0;31mdeleted:    .Rproj.user/shared/notebooks/4CA052CC-adapting to function not yet working/1/s/c75xft7fyx49q/000004.csv[0m[0K
+        [0;31mdeleted:    .Rproj.user/shared/notebooks/4CA052CC-adapting to function not yet working/1/s/c75xft7fyx49q/000005.erro[0Kr
+[0m[0K
+        [0;31mdeleted:    .Rproj.user/shared/notebooks/4CA052CC-adapting to function not yet working/1/s/chunks.json[0m[0K
+        [0;31mdeleted:    .Rproj.user/shared/notebooks/4CA052CC-adapting to function not yet working/1/s/csetup_chunk/000002.csv[0m[0K
+        [0;31mmodified:   .Rproj.user/shared/notebooks/paths[0m[0K
+[0K
+no changes added to commit (use "git add" and/or "git commit -a")[0K
+[0K[?25h[?25l
+[0;32mad3716@WPIA-DIDE223 [0;35m [0;33m~/Documents/PhD/MERS Simple Stochastic Model[0;36m (master)[0m[0K
+$[0K[3G[?25h[?25l$ g[0K[?25hi[0Kt[0Kk[0K[?25l
+[0K[?25h[?25l
+[0;32mad3716@WPIA-DIDE223 [0;35m [0;33m~/Documents/PhD/MERS Simple Stochastic Model[0;36m (master)[0m[0K
+$[0K[3G[?25h[?25l$ g[0K[?25hi[0Kt[0K[7G[6G[?25l$ gi[0K[?25h[?25l$ g[0K[?25h[?25l$[0K[3G[?25h[?25l$ g[0K[?25hi[0Kt[0K[7G[?25l$ git p[0K[?25hu[0Kl[0Kl[0K[?25l
+[0K[?25hremote: Counting objects: 5, done.[0K[?25l
+remote: Compressing objects: 100% (4/4), done.[0K
+[0K[?25hremote: Total 5 (delta 1), reused 3 (delta 1), pack-reused 0[0K[?25l
+[0K[?25h[?25lUnpacking objects:  20% (1/5)[0K[1G[?25hUnpacking objects: 100% (5/5), done.[0K[?25l
+[0K[?25hFrom https://github.com/AmyDighe/MERS_camel_mod[0K[?25l
+   43ca236..26e7829  master     -> origin/master[0K
+[0K[?25hUpdating 43ca236..26e7829[0K[?25l
+Fast-forward[0K
+ sir_simulator.R | 104 [0;32m++++++++++++++++++++++++++++++++++++++++++++++++++++++[0;31m--[0m[0K
+ 1 file changed, 102 insertions(+), 2 deletions(-)[0K
+[0K[?25h[?25l
+[0;32mad3716@WPIA-DIDE223 [0;35m [0;33m~/Documents/PhD/MERS Simple Stochastic Model[0;36m (master)[0m[0K
+$[0K[3G[?25h[0m[0K]0;[?25l
+[0;32mad3716@WPIA-DIDE223 [0;35m [0;33m~/Documents/PhD/MERS Simple Stochastic Model[0;36m (master)[0m[0K
+[?25l$ g[0K[?25hi[0Kt[0K[7G[?25l$ git c[0K[?25ho[0Km[0Ki[0Kt[0K[13G[?25l$ git comit -[0K[?25ha[0K[16G[?25l$ git comit -a -[0K[?25hm[0K[?25l$ git comit -a -[0K[?25h[?25l$ git comit -a[0K[16G[?25h[15G[?25l$ git comit -[0K[15G[?25h[14G[?25l$ git comit[0K[13G[?25h[12G[?25l$ git comi[0K[?25h[?25l$ git com[0K[?25h[?25l$ git co[0K[?25hm[0Km[0Ki[0Kt[0K[14G[?25l$ git commit -[0K[?25ha[0K[17G[?25l$ git commit -a -[0K[?25h[19G[18G[?25l$ git commit -a -m[0K[?25h[20G[?25l$ git commit -a -m "[0K[?25hf[0Ku[0Kr[0Kt[0Kh[0Ke[0Kr[0K[29G[?25l$ git commit -a -m "further e[0K[?25hd[0Ki[0Kt[0Ki[0Kn[0K[?25lg[0K[35G[?25h[36G[?25l$ git commit -a -m "further editing"[0K[?25h[?25l
+[0K[?25hwarning: LF will be replaced by CRLF in .Rhistory.[0K[?25l
+The file will have its original line endings in your working directory.[0K
+[0K[?25hwarning: LF will be replaced by CRLF in .Rproj.user/E86ACB2F/pcs/source-pane.pper.[0K[?25l
+The file will have its original line endings in your working directory.[0K
+warning: LF will be replaced by CRLF in .Rproj.user/E86ACB2F/pcs/windowlayoutstate.pper.[0K
+The file will have its original line endings in your working directory.[0K
+warning: LF will be replaced by CRLF in .Rproj.user/E86ACB2F/pcs/workbench-pane.pper.[0K
+The file will have its original line endings in your working directory.[0K
+[0K[?25hwarning: LF will be replaced by CRLF in .Rproj.user/E86ACB2F/sources/prop/38728189.[0K[?25l
+The file will have its original line endings in your working directory.[0K
+warning: LF will be replaced by CRLF in .Rproj.user/E86ACB2F/sources/prop/639BCFB7.[0K
+The file will have its original line endings in your working directory.[0K
+warning: LF will be replaced by CRLF in .Rproj.user/E86ACB2F/sources/prop/C9CB9B1F.[0K
+The file will have its original line endings in your working directory.[0K
+warning: LF will be replaced by CRLF in .Rproj.user/E86ACB2F/sources/prop/INDEX.[0K
+The file will have its original line endings in your working directory.[0K
+warning: LF will be replaced by CRLF in .Rproj.user/shared/notebooks/paths.[0K
+The file will have its original line endings in your working directory.[0K
+[0K[?25h[master 2ac30df] further editing[0K[?25l
+ 31 files changed, 759 insertions(+), 1035 deletions(-)[0K
+ rewrite .Rproj.user/E86ACB2F/console06/FB2DDFB3 (63%)[0K
+ delete mode 100644 .Rproj.user/E86ACB2F/sources/s-79496A25/371CD15D[0K
+ delete mode 100644 .Rproj.user/E86ACB2F/sources/s-79496A25/371CD15D-contents[0K
+ delete mode 100644 .Rproj.user/E86ACB2F/sources/s-79496A25/38CCCB8A-contents[0K
+ delete mode 100644 .Rproj.user/E86ACB2F/sources/s-79496A25/3E5386C2-contents[0K
+ delete mode 100644 .Rproj.user/E86ACB2F/sources/s-79496A25/6C2D8E25[0K
+ delete mode 100644 .Rproj.user/E86ACB2F/sources/s-79496A25/6C2D8E25-contents[0K
+ delete mode 100644 .Rproj.user/E86ACB2F/sources/s-79496A25/6F93BC8B[0K
+ delete mode 100644 .Rproj.user/E86ACB2F/sources/s-79496A25/6F93BC8B-contents[0K
+ delete mode 100644 .Rproj.user/E86ACB2F/sources/s-79496A25/761F9A84[0K
+ delete mode 100644 .Rproj.user/E86ACB2F/sources/s-79496A25/761F9A84-contents[0K
+ delete mode 100644 .Rproj.user/E86ACB2F/sources/s-79496A25/76D6DC5F-contents[0K
+ delete mode 100644 .Rproj.user/E86ACB2F/sources/s-79496A25/8FBC8A37[0K
+ delete mode 100644 .Rproj.user/E86ACB2F/sources/s-79496A25/8FBC8A37-contents[0K
+ delete mode 100644 .Rproj.user/E86ACB2F/sources/s-79496A25/A413CB0B-contents[0K
+ delete mode 100644 .Rproj.user/E86ACB2F/sources/s-79496A25/C546892A-contents[0K
+ delete mode 100644 .Rproj.user/E86ACB2F/sources/s-79496A25/DF405F40[0K
+ delete mode 100644 .Rproj.user/E86ACB2F/sources/s-79496A25/DF405F40-contents[0K
+ delete mode 100644 .Rproj.user/E86ACB2F/sources/s-79496A25/lock_file[0K
+ delete mode 100644 .Rproj.user/shared/notebooks/4CA052CC-adapting to function not yet working/1/s/c75xft7fyx49q/000004.csv[0K
+ delete mode 100644 .Rproj.user/shared/notebooks/4CA052CC-adapting to function not yet working/1/s/c75xft7fyx49q/000005.erro[0Kr
+[0K
+ delete mode 100644 .Rproj.user/shared/notebooks/4CA052CC-adapting to function not yet working/1/s/chunks.json[0K
+ delete mode 100644 .Rproj.user/shared/notebooks/4CA052CC-adapting to function not yet working/1/s/csetup_chunk/000002.csv[0K
+[0K[?25h[?25l
+[0;32mad3716@WPIA-DIDE223 [0;35m [0;33m~/Documents/PhD/MERS Simple Stochastic Model[0;36m (master)[0m[0K
+$[0K[3G[?25h[?25l$ g[0K[?25hi[0Kt[0K[7G[?25l$ git s[0K[?25ht[0Ka[0Kt[0Ku[0Ks[0K[?25l
+[0K[?25hOn branch master[0K[?25l
+Your branch is ahead of 'origin/master' by 1 commit.[0K
+  (use "git push" to publish your local commits)[0K
+[0K
 Changes not staged for commit:[0K
   (use "git add <file>..." to update what will be committed)[0K
   (use "git checkout -- <file>..." to discard changes in working directory)[0K
 [0K
         [0;31mmodified:   .Rproj.user/E86ACB2F/console06/FB2DDFB3[0m[0K
-        [0;31mmodified:   .Rproj.user/E86ACB2F/sources/prop/A14F008D[0m[0K
-        [0;31mmodified:   .Rproj.user/E86ACB2F/sources/prop/C9CB9B1F[0m[0K
-        [0;31mmodified:   .Rproj.user/E86ACB2F/sources/s-79496A25/371CD15D[0m[0K
-        [0;31mmodified:   .Rproj.user/E86ACB2F/sources/s-79496A25/371CD15D-contents[0m[0K
-        [0;31mmodified:   .Rproj.user/E86ACB2F/sources/s-79496A25/6F93BC8B[0m[0K
-        [0;31mmodified:   .Rproj.user/E86ACB2F/sources/s-79496A25/6F93BC8B-contents[0m[0K
-        [0;31mmodified:   .Rproj.user/shared/notebooks/4CA052CC-adapting to function not yet working/1/s/chunks.json[0m[0K
-        [0;31mmodified:   rmarkdown v2 simple stochastic model.Rmd[0m[0K
 [0K
 Untracked files:[0K
   (use "git add <file>..." to include in what will be committed)[0K
 [0K
-        [0;31m.gitignore[0m[0K
+        [0;31missues sir sim.R[0m[0K
 [0K
 no changes added to commit (use "git add" and/or "git commit -a")[0K
 [0K[?25h[?25l
 [0;32mad3716@WPIA-DIDE223 [0;35m [0;33m~/Documents/PhD/MERS Simple Stochastic Model[0;36m (master)[0m[0K
-$[0K[3G[?25h[?25l$ g[0K[?25hi[0Kt[0K[7G[6G[?25l$ gitk[0K[?25h[?25l
+$[0K[3G[?25h[?25l$ g[0K[?25hi[0Kt[0K[7G[?25l$ git a[0K[?25hd[0Kd[0K[11G[?25l$ git add i[0K[?25hs[0Ks[0Ku[0Ke[0Ks[0K\ sir\ sim.R[0K[30G[?25l
 [0K[?25h[?25l
-[0;32mad3716@WPIA-DIDE223 [0;35m [0;33m~/Documents/PhD/MERS Simple Stochastic Model[0;36m (master)[0m[0K
-$[0K[3G[?25h[?25l$ g[0K[?25hi[0Kt[0K[7G[?25l$ git a[0K[?25hd[0Kd[0K[11G[10G[?25l$ git ad[0K[?25h[?25l$ git a[0K[?25h[?25l$ git[0K[7G[?25h[?25l$ git c[0K[?25ho[0Km[0Km[0Ki[0Kt[0K[14G[?25l$ git commit -[0K[?25ha[0K[17G[?25l$ git commit -a -[0K[?25hm[0K[20G[?25l$ git commit -a -m "[0K[?25h"[0K[21G[?25l$ git commit -a -m "c"[0K[22G[?25h[?25l$ git commit -a -m "ch"[0K[23G[?25h[?25l$ git commit -a -m "cha"[0K[24G[?25h[?25l$ git commit -a -m "chan"[0K[25G[?25h[?25l$ git commit -a -m "chang"[0K[26G[?25h[?25l$ git commit -a -m "change"[0K[27G[?25h[?25l$ git commit -a -m "change "[0K[28G[?25h[?25l$ git commit -a -m "change t"[0K[29G[?25h[?25l$ git commit -a -m "change th"[0K[30G[?25h[?25l$ git commit -a -m "change the"[0K[31G[?25h[?25l$ git commit -a -m "change the "[0K[32G[?25h[?25l$ git commit -a -m "change the d"[0K[33G[?25h[?25l$ git commit -a -m "change the da"[0K[34G[?25h[?25l$ git commit -a -m "change the dat"[0K[35G[?25h[?25l$ git commit -a -m "change the date"[0K[36G[?25h[?25l
-[0K[?25h
+[0;32mad3716@WPIA-DIDE223 [0;35m [0;33m~/Documents/PhD/MERS Simple Stochastic Model[0;36m (master)[0m[0K[66G[?25h[?25l
+$[0K[3G[?25h[?25l$ g[0K[?25hi[0Kt[0K[7G[?25l$ git c[0K[?25ho[0Km[0Ki[0Kt[0K[13G[?25l$ git comit -[0K[?25ha[0K[16G[?25l$ git comit -a -[0K[?25hm[0K[19G[18G[?25l$ git comit -a -[0K[?25h[?25l$ git comit -a[0K[16G[?25h[15G[?25l$ git comit -[0K[?25h[?25l$ git comit[0K[13G[?25h[12G[?25l$ git comi[0K[?25h[?25l$ git com[0K[?25hm[0Ki[0Kt[0K[14G[?25l$ git commit -[0K[?25ha[0K[17G[?25l$ git commit -a -[0K[?25hm[0K[20G[?25l$ git commit -a -m "[0K[?25hf[0Ku[0Kr[0Kt[0Kh[0K[?25l$ git commit -a -m "furt[0K[?25h[?25l$ git commit -a -m "fur[0K[?25h[?25l$ git commit -a -m "fu[0K[?25h[?25l$ git commit -a -m "f[0K[?25h[?25l$ git commit -a -m "[0K[?25he[0Kd[0Ki[0Kt[0Ks[0K[?25l$ git commit -a -m "edit[0K[?25h[?25l$ git commit -a -m "edi[0K[?25h[?25l$ git commit -a -m "ed[0K[?25h[?25l$ git commit -a -m "e[0K[?25h[?25l$ git commit -a -m "[0K[?25he[0Kd[0Ki[0Kt[0Ks[0K[27G[?25l$ git commit -a -m "edits t[0K[?25ho[0K[30G[?25l$ git commit -a -m "edits to s[0K[30G[?25h[31G[?25l$ git commit -a -m "edits to si[0K[?25hr[0K[34G[?25l$ git commit -a -m "edits to sir s[0K[?25hi[0Km[0Ku[0Kl[0Ka[0Kt[0K[?25lo[0K[41G[?25h[42G[?25l$ git commit -a -m "edits to sir simulator[0K[?25h[44G[?25l$ git commit -a -m "edits to sir simulator n[0K[?25ho[0Kt[0K[48G[?25l$ git commit -a -m "edits to sir simulator not w[0K[?25ho[0Kr[0Kk[0Ki[0K[?25lng[0K[54G[?25h[55G[?25l$ git commit -a -m "edits to sir simulator not working"[0K[?25h
