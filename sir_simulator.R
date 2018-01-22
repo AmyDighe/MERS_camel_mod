@@ -57,8 +57,6 @@ sir_sim <- function(beta, omega, sigma = 1 / 20, alpha = 0, mu = 0,
     R[1] <- ini_R 
     N[1]  <- S[1] + I[1] + R[1]
 
-    time <- seq_len(duration)
-
     
     ## For clarity we structure the code in terms of what leaves compartments,
     ## whenever this applies. When individuals can leave a compartment through
@@ -70,17 +68,22 @@ sir_sim <- function(beta, omega, sigma = 1 / 20, alpha = 0, mu = 0,
 
     ## iii) update the respective compartments accordingly
 
-        
-    for (i in time[-1]) {
+    i <- 1
+    while ((N[i] > 0) && (i < duration)) {
+        ## increment time step
+        i <- i + 1
         
         ## birth process: any new individual will enter 'S'
         
-        new_births <- rpois(1, S[i - 1] * alpha)
+        new_births <- rpois(1, N[i - 1] * alpha)
         
         
         ## individuals leaving 'S', either by becoming 'I' (new infections) or
         ## dying
-        
+
+        if (N[i - 1] == 0) {
+            message("N is zero at iteration ", i-1)
+        }
         rate_infection <- beta * I[i - 1] / N[i - 1]
         outflow_S <- rbinom(1, S[i - 1],
                             prob = r2p(rate_infection + mu))            
@@ -107,16 +110,41 @@ sir_sim <- function(beta, omega, sigma = 1 / 20, alpha = 0, mu = 0,
 
         ## update the current population size
         N[i]  <- S[i] + I[i] + R[i]
-
-    }
+        
+    } # end of the while loop
+    
 
 
     ## put results into shape and return
-    
-    out <- data.frame(time, S, I, R, N)
+    time <- seq_len(i)
+
+    out <- data.frame(time,
+                      S[time],
+                      I[time],
+                      R[time],
+                      N[time])
+
+    class(out) <- c("sir_sim", "data.frame")
     return(out)
     
 }
+
+
+
+## plot method for sir_sim objects
+
+plot.sir_sim <- function(x, ...) {
+    sirn_colors <- c("#7575a3", "#b3003b", "#669999", "#8a8a5c")
+    
+    matplot(x = x$time, y = x[, -1], type = "l", lty = 1, lwd = 3,
+            xlab = "Time", ylab = "number of individuals", col = sirn_colors)
+
+    legend("topright", lwd = 3, lty = 1,
+           col = sirn_colors, bg = "white",
+           legend = c("S", "I", "R", "N"))
+
+}
+
 
 
 
@@ -127,11 +155,7 @@ sir_sim <- function(beta, omega, sigma = 1 / 20, alpha = 0, mu = 0,
 out <- sir_sim(ini_S = 90, ini_I = 9, ini_R = 1, alpha = 0.002, mu = 0.002,
                beta = 0.01, omega = 0.0002)
 
+plot(out)
 
 
-matplot(x = out$time, y = out[c(2,3,4,5)], type = "l", lty = 1, lwd = 3,
-        xlab = "Time", ylab = "number of individuals")
 
-legend("topright", lwd = 3, lty = 1,
-       col = c("black", "red", "green", "blue"),
-       legend = c("S", "I", "R", "N"))
