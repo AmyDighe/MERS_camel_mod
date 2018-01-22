@@ -12,8 +12,9 @@ sir_sim <- function(beta, omega, sigma = 1 / 20, alpha = 0, mu = 0,
 
     ## This function checks that rates have acceptable values.
     check_rate <- function(r) {
-        if (!is.finite(r)) stop("rate is not a finite number")
-        if (r < 0) stop("rate is negative")
+        if (is.null(r)) stop("rate is NULL")
+        if (!is.finite(r)) stop("rate is not a finite number:", r)
+        if (r < 0) stop("rate is negative:", r)
     }
 
     
@@ -53,63 +54,51 @@ sir_sim <- function(beta, omega, sigma = 1 / 20, alpha = 0, mu = 0,
     S <- I <- R <- N <- integer(duration)
     S[1] <- ini_S
     I[1] <- ini_I
-    R[1] <- ini_R
-    
+    R[1] <- ini_R 
     N[1]  <- S[1] + I[1] + R[1]
 
     time <- seq_len(duration)
 
+    
     for (i in time[-1]) {
-
+        
+        ## cat("iteration:", i)
+        ## browser()
+        
         ## transitions into and out of susceptible state (S) in a time step
         new_births <- rpois(1, S[i - 1] * alpha)
+        
         #new_waned <- (rmultinom(1, outflow_R, prob = c(omega_prob, mu))[1])
         new_susceptibles <- new_births #+ new_waned
         
-        outflow_S <- rbinom(1, S[i - 1], prob = r2p(rate_infection + mu))
-        
-        S[i] <- S[i - 1] + new_susceptibles - outflow_S
-        
         ## transitions into and out of infectious state (I) in a time step
         rate_infection <- beta * I[i - 1] / N[i - 1]
+
+        outflow_S <- rbinom(1, S[i - 1],
+                            prob = r2p(rate_infection + mu))
+                
+        S[i] <- S[i - 1] + new_susceptibles - outflow_S
         
-        new_infectious <- rmultinom(1, size = outflow_S, prob = c(rate_infection, mu))[1]
+        new_infectious <- rmultinom(1, size = outflow_S,
+                                    prob = c(rate_infection, mu))[1]
         
-        outflow_I <- rbinom(1, I[i-1], prob = sigma_prob + mu)
+        outflow_I <- rbinom(1, I[i - 1], prob = r2p(sigma + mu))
         
         I[i] <- I[i - 1] + new_infectious - outflow_I
         
         ## transitions into and out of recovered state (R) in a time step
-        new_recovered <- rmultinom(1, outflow_I, prob = c(sigma_prob, mu))[1]
+        new_recovered <- rmultinom(1, outflow_I, prob = c(sigma, mu))[1]
         
-        outflow_R <- rbinom(1, R[i-1], prob = omega_prob + mu)
+        outflow_R <- rbinom(1, R[i-1], prob = r2p(omega + mu))
         
-        R[i] <- R[i - 1] + new_recovered - outflow_R
-        
-        ## Outflow_S[i,] <- (rmultinom(n = 1, size = S[i], prob = c(beta_prob, mu_prob, stay_I_prob)))[,1]
-        ## Outflow_I[i,] <- (rmultinom(n = 1, size = I[i], prob = c(sigma_prob, mu_prob, stay_R_prob)))[,1]
-        
-        ## new_birth <- sum(rpois(n = (S[i]+I[i]+R[i]), lambda = alpha_prob)) 
-        ## new_waned <- Outflow_R$waned[i]  
-        ## new_S <- new_birth + new_waned
-        ## dead_S <- Outflow_S$dead[i]
-        ## new_infectious <- Outflow_S$infected[i]
-        ## dead_I <- Outflow_I$dead[i]
-        ## new_recovered <- Outflow_I$recovered[i]
-        ## dead_R <- Outflow_R$dead[i]
-        
-        ## S[i+1] = S[i] + new_birth + new_waned - new_infectious - dead_S
-        ## I[i+1] = I[i] + new_infectious - new_recovered - dead_I
-        ## R[i+1] = R[i] + new_recovered - new_waned - dead_R
-        ## N[i+1] = S[i+1] + I[i+1] + R[i +1]
-        
+        R[i] <- R[i - 1] + new_recovered - outflow_R  
+   
+        N[i]  <- S[i] + I[i] + R[i]
+
     }
 
-    out <- data.frame(duration, S, I, R, N)
-    matplot(x = out$duration, y = out[c(2,3,4,5)], type = "l", lty = 1, lwd = 3, xlab = "duration", ylab = "number of individuals")
-    legend("topright", lwd = 3, lty = 1, col = c("black", "red", "green", "blue"), legend = c("S", "I", "R", "N"))
-
-
+    out <- data.frame(time, S, I, R, N)
+    
 }
 
 
@@ -118,6 +107,14 @@ sir_sim <- function(beta, omega, sigma = 1 / 20, alpha = 0, mu = 0,
 
 ## example
 
-sir_sim(ini_S = 90, ini_I = 9, ini_R = 1, alpha = 0.002, mu = 0.002, beta = 0.01, omega = 0.0002)
+out <- sir_sim(ini_S = 90, ini_I = 9, ini_R = 1, alpha = 0.002, mu = 0.002,
+               beta = 0.01, omega = 0.0002)
 
 
+
+matplot(x = out$time, y = out[c(2,3,4,5)], type = "l", lty = 1, lwd = 3,
+        xlab = "Time", ylab = "number of individuals")
+
+legend("topright", lwd = 3, lty = 1,
+       col = c("black", "red", "green", "blue"),
+       legend = c("S", "I", "R", "N"))
