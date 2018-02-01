@@ -363,4 +363,102 @@ $[0K[3G[?25h[?25l$ g[0K[?25hi[0Kt[0Kk[0K[?25l
 [0K[?25h[?25l
 [0;32mad3716@WPIA-DIDE223 [0;35m [0;33m~/Documents/PhD/MERS Simple Stochastic Model[0;36m (master)[0m[0K
 $[0K[3G[?25h[?25l$ g[0K[?25hi[0Kt[0K[7G[?25l$ git a[0K[?25hd[0K[?25ld[0K[9G[?25h[10G[11G[?25l$ git add -[0K[?25hu[0K[?25l
+[0K[?25hwarning: LF will be replaced by CRLF in .Rhistory.[0K[?25l
+The file will have its original line endings in your working directory.[0K
+[0K[?25hwarning: LF will be replaced by CRLF in .Rproj.user/E86ACB2F/pcs/source-pane.pper.[0K[?25l
+The file will have its original line endings in your working directory.[0K
+warning: LF will be replaced by CRLF in .Rproj.user/E86ACB2F/pcs/workbench-pane.pper.[0K
+The file will have its original line endings in your working directory.[0K
+warning: LF will be replaced by CRLF in .Rproj.user/E86ACB2F/rmd-outputs.[0K
+The file will have its original line endings in your working directory.[0K
+[0K[?25hwarning: LF will be replaced by CRLF in .Rproj.user/E86ACB2F/sources/prop/INDEX.[0K[?25l
+The file will have its original line endings in your working directory.[0K
+warning: LF will be replaced by CRLF in .Rproj.user/shared/notebooks/paths.[0K
+The file will have its original line endings in your working directory.[0K
+[0K[?25h[?25l
+[0;32mad3716@WPIA-DIDE223 [0;35m [0;33m~/Documents/PhD/MERS Simple Stochastic Model[0;36m (master)[0m[0K
+$[0K[3G[?25h[?25l
+[0K[?25h[?25l
+[0;32mad3716@WPIA-DIDE223 [0;35m [0;33m~/Documents/PhD/MERS Simple Stochastic Model[0;36m (master)[0m[0K
+$[0K[3G[?25h[0m[0K]0;[?25l
+[0;32mad3716@WPIA-DIDE223 [0;35m [0;33m~/Documents/PhD/MERS Simple Stochastic Model[0;36m (master)[0m[0K
+[?25l$ g[0K[?25hi[0Kt[0Kk[0K[?25l
+[0K[?25h[?25l
+[0;32mad3716@WPIA-DIDE223 [0;35m [0;33m~/Documents/PhD/MERS Simple Stochastic Model[0;36m (master)[0m[0K
+$[0K[3G[?25h[?25l$ g[0K[?25hi[0Kt[0Kk[0K[?25l
+[0K[?25h[?25l
+[0;32mad3716@WPIA-DIDE223 [0;35m [0;33m~/Documents/PhD/MERS Simple Stochastic Model[0;36m (master)[0m[0K
+$[0K[3G[?25h[?25l$ g[0K[?25hi[0K[?25lt[0K[5G[?25h[6G[7G[?25l$ git s[0K[?25ht[0Ka[0Kt[0Ku[0Ks[0K[?25l
+[0K[?25hOn branch master[0K[?25l
+Your branch is up to date with 'origin/master'.[0K
+[0K
+Changes to be committed:[0K
+  (use "git reset HEAD <file>..." to unstage)[0K
+[0K
+        [0;32mmodified:   .Rhistory[0m[0K
+        [0;32mmodified:   .Rproj.user/E86ACB2F/console06/FB2DDFB3[0m[0K
+        [0;32mmodified:   .Rproj.user/E86ACB2F/console06/INDEX001[0m[0K
+        [0;32mmodified:   .Rproj.user/E86ACB2F/pcs/source-pane.pper[0m[0K
+        [0;32mmodified:   .Rproj.user/E86ACB2F/pcs/workbench-pane.pper[0m[0K
+        [0;32mmodified:   .Rproj.user/E86ACB2F/rmd-outputs[0m[0K
+        [0;32mmodified:   .Rproj.user/E86ACB2F/sources/prop/INDEX[0m[0K
+        [0;32mmodified:   .Rproj.user/shared/notebooks/paths[0m[0K
+        [0;32mmodified:   .gitignore[0m[0K
+        [0;32mmodified:   sir_simulator.R[0m[0K
+[0K
+Changes not staged for commit:[0K
+  (use "git add <file>..." to update what will be committed)[0K
+  (use "git checkout -- <file>..." to discard changes in working directory)[0K
+[0K
+        [0;31mmodified:   .Rproj.user/E86ACB2F/console06/FB2DDFB3[0m[0K
+        [0;31mmodified:   .Rproj.user/E86ACB2F/console06/INDEX001[0m[0K
+        [0;31mmodified:   .Rproj.user/E86ACB2F/rmd-outputs[0m[0K
+[0K
+Untracked files:[0K
+  (use "git add <file>..." to include in what will be committed)[0K
+[0K
+        [0;31m.RData[0m[0K
+        [0;31msimple model up and running.Rmd[0m[0K
+        [0;31msimple_model_up_and_running.html[0m[0K
+[0K
+[0K[?25h[?25l
+[0;32mad3716@WPIA-DIDE223 [0;35m [0;33m~/Documents/PhD/MERS Simple Stochastic Model[0;36m (master)[0m[0K
+$[0K[3G[?25h[?25l$ c[0K[?25ha[0Kt[0K[7G[?25l$ cat .[0K[?25hg[0Ki[0Kt[0Ki[0Kgnore[0K[18G[?25l
+[0K[?25h.Rproj.user/*[0K[?25l
+*~[0K
+[0K
+.Rproj.user[0K
+[0K[?25h[?25l
+[0;32mad3716@WPIA-DIDE223 [0;35m [0;33m~/Documents/PhD/MERS Simple Stochastic Model[0;36m (master)[0m[0K
+$[0K[3G[?25h[?25l$ g[0K[?25hi[0Kt[0K[7G[?25l$ git c[0K[?25h[?25lo[0K[8G[?25h[9G[?25l$ git com[0K[?25hm[0Ki[0Kt[0K[14G[?25l$ git commit -[0K[?25ha[0K[?25l$ git commit -[0K[?25hm[0K[17G[?25l$ git commit -m "[0K[?25hf[0Ki[0Kx[0Ke[0Kd[0K[24G[?25l$ git commit -m "fixed g[0K[?25ho[0Kr[0Kw[0Ki[0Kn[0Kg[0K[32G[?25l$ git commit -m "fixed gorwing p[0K[?25ho[0Kp[0Ku[0Kl[0Kt[0Ka[0Ki[0Ko[0K[?25l$ git commit -m "fixed gorwing popultai[0K[?25h[?25l$ git commit -m "fixed gorwing populta[0K[40G[?25h[39G[?25l$ git commit -m "fixed gorwing popult[0K[?25h[?25l$ git commit -m "fixed gorwing popul[0K[?25ha[0Kt[0Ki[0Ko[0Kn[0K"[0K[?25l
+[0K[?25h[master 8ca6a5a] fixed gorwing population[0K[?25l
+ 10 files changed, 627 insertions(+), 536 deletions(-)[0K
+ rewrite .Rhistory (76%)[0K
+ rewrite .Rproj.user/E86ACB2F/console06/INDEX001 (83%)[0K
+[0K[?25h[?25l
+[0;32mad3716@WPIA-DIDE223 [0;35m [0;33m~/Documents/PhD/MERS Simple Stochastic Model[0;36m (master)[0m[0K
+$[0K[3G[?25h[?25l$ g[0K[?25hi[0Kt[0K[7G[?25l$ git s[0K[?25ht[0K[?25la[0K[9G[?25h[10G[?25l$ git stat[0K[?25hu[0K[?25ls[0K[12G[?25h[13G[?25l
+[0K[?25hOn branch master[0K[?25l
+Your branch is ahead of 'origin/master' by 1 commit.[0K
+  (use "git push" to publish your local commits)[0K
+[0K
+Changes not staged for commit:[0K
+  (use "git add <file>..." to update what will be committed)[0K
+  (use "git checkout -- <file>..." to discard changes in working directory)[0K
+[0K
+        [0;31mmodified:   .Rproj.user/E86ACB2F/console06/FB2DDFB3[0m[0K
+        [0;31mmodified:   .Rproj.user/E86ACB2F/console06/INDEX001[0m[0K
+        [0;31mmodified:   .Rproj.user/E86ACB2F/rmd-outputs[0m[0K
+[0K
+Untracked files:[0K
+  (use "git add <file>..." to include in what will be committed)[0K
+[0K
+        [0;31m.RData[0m[0K
+        [0;31msimple model up and running.Rmd[0m[0K
+        [0;31msimple_model_up_and_running.html[0m[0K
+[0K
+no changes added to commit (use "git add" and/or "git commit -a")[0K
+[0K[?25h[?25l
+[0;32mad3716@WPIA-DIDE223 [0;35m [0;33m~/Documents/PhD/MERS Simple Stochastic Model[0;36m (master)[0m[0K
+$[0K[3G[?25h[?25l$ g[0K[?25hi[0Kt[0K[7G[?25l$ git c[0K[?25ho[0Km[0Km[0Ki[0Kt[0K[14G[?25l$ git commit -[0K[?25ha[0K[17G[?25l$ git commit -a -[0K[?25hm[0K[20G[?25l$ git commit -a -m "[0K[?25ha[0Kd[0Kd[0Ki[0Kt[0Ki[0Ko[0Kn[0Ka[0Kl[0K[32G[?25l$ git commit -a -m "additional f[0K[?25hi[0Kl[0Ke[0Ks[0K[38G[37G[?25l$ git commit -a -m "additional files"[0K[?25h[?25l
 [0K[?25h
