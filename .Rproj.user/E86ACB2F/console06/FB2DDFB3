@@ -273,4 +273,94 @@ no changes added to commit (use "git add" and/or "git commit -a")[0K
 $[0K[3G[?25h[?25l$ g[0K[?25hi[0Kt[0K[7G[?25l$ git a[0K[?25hd[0Kd[0K[11G[?25l$ git add i[0K[?25hs[0Ks[0Ku[0Ke[0Ks[0K\ sir\ sim.R[0K[30G[?25l
 [0K[?25h[?25l
 [0;32mad3716@WPIA-DIDE223 [0;35m [0;33m~/Documents/PhD/MERS Simple Stochastic Model[0;36m (master)[0m[0K[66G[?25h[?25l
-$[0K[3G[?25h[?25l$ g[0K[?25hi[0Kt[0K[7G[?25l$ git c[0K[?25ho[0Km[0Ki[0Kt[0K[13G[?25l$ git comit -[0K[?25ha[0K[16G[?25l$ git comit -a -[0K[?25hm[0K[19G[18G[?25l$ git comit -a -[0K[?25h[?25l$ git comit -a[0K[16G[?25h[15G[?25l$ git comit -[0K[?25h[?25l$ git comit[0K[13G[?25h[12G[?25l$ git comi[0K[?25h[?25l$ git com[0K[?25hm[0Ki[0Kt[0K[14G[?25l$ git commit -[0K[?25ha[0K[17G[?25l$ git commit -a -[0K[?25hm[0K[20G[?25l$ git commit -a -m "[0K[?25hf[0Ku[0Kr[0Kt[0Kh[0K[?25l$ git commit -a -m "furt[0K[?25h[?25l$ git commit -a -m "fur[0K[?25h[?25l$ git commit -a -m "fu[0K[?25h[?25l$ git commit -a -m "f[0K[?25h[?25l$ git commit -a -m "[0K[?25he[0Kd[0Ki[0Kt[0Ks[0K[?25l$ git commit -a -m "edit[0K[?25h[?25l$ git commit -a -m "edi[0K[?25h[?25l$ git commit -a -m "ed[0K[?25h[?25l$ git commit -a -m "e[0K[?25h[?25l$ git commit -a -m "[0K[?25he[0Kd[0Ki[0Kt[0Ks[0K[27G[?25l$ git commit -a -m "edits t[0K[?25ho[0K[30G[?25l$ git commit -a -m "edits to s[0K[30G[?25h[31G[?25l$ git commit -a -m "edits to si[0K[?25hr[0K[34G[?25l$ git commit -a -m "edits to sir s[0K[?25hi[0Km[0Ku[0Kl[0Ka[0Kt[0K[?25lo[0K[41G[?25h[42G[?25l$ git commit -a -m "edits to sir simulator[0K[?25h[44G[?25l$ git commit -a -m "edits to sir simulator n[0K[?25ho[0Kt[0K[48G[?25l$ git commit -a -m "edits to sir simulator not w[0K[?25ho[0Kr[0Kk[0Ki[0K[?25lng[0K[54G[?25h[55G[?25l$ git commit -a -m "edits to sir simulator not working"[0K[?25h
+$[0K[3G[?25h[?25l$ g[0K[?25hi[0Kt[0K[7G[?25l$ git c[0K[?25ho[0Km[0Ki[0Kt[0K[13G[?25l$ git comit -[0K[?25ha[0K[16G[?25l$ git comit -a -[0K[?25hm[0K[19G[18G[?25l$ git comit -a -[0K[?25h[?25l$ git comit -a[0K[16G[?25h[15G[?25l$ git comit -[0K[?25h[?25l$ git comit[0K[13G[?25h[12G[?25l$ git comi[0K[?25h[?25l$ git com[0K[?25hm[0Ki[0Kt[0K[14G[?25l$ git commit -[0K[?25ha[0K[17G[?25l$ git commit -a -[0K[?25hm[0K[20G[?25l$ git commit -a -m "[0K[?25hf[0Ku[0Kr[0Kt[0Kh[0K[?25l$ git commit -a -m "furt[0K[?25h[?25l$ git commit -a -m "fur[0K[?25h[?25l$ git commit -a -m "fu[0K[?25h[?25l$ git commit -a -m "f[0K[?25h[?25l$ git commit -a -m "[0K[?25he[0Kd[0Ki[0Kt[0Ks[0K[?25l$ git commit -a -m "edit[0K[?25h[?25l$ git commit -a -m "edi[0K[?25h[?25l$ git commit -a -m "ed[0K[?25h[?25l$ git commit -a -m "e[0K[?25h[?25l$ git commit -a -m "[0K[?25he[0Kd[0Ki[0Kt[0Ks[0K[27G[?25l$ git commit -a -m "edits t[0K[?25ho[0K[30G[?25l$ git commit -a -m "edits to s[0K[30G[?25h[31G[?25l$ git commit -a -m "edits to si[0K[?25hr[0K[34G[?25l$ git commit -a -m "edits to sir s[0K[?25hi[0Km[0Ku[0Kl[0Ka[0Kt[0K[?25lo[0K[41G[?25h[42G[?25l$ git commit -a -m "edits to sir simulator[0K[?25h[44G[?25l$ git commit -a -m "edits to sir simulator n[0K[?25ho[0Kt[0K[48G[?25l$ git commit -a -m "edits to sir simulator not w[0K[?25ho[0Kr[0Kk[0Ki[0K[?25lng[0K[54G[?25h[55G[?25l$ git commit -a -m "edits to sir simulator not working"[0K[?25h[master 03dc70c] edits to sir simulator not working[0K[?25l
+ 2 files changed, 157 insertions(+), 1 deletion(-)[0K
+ create mode 100644 issues sir sim.R[0K
+[0K[?25h[?25l
+[0;32mad3716@WPIA-DIDE223 [0;35m [0;33m~/Documents/PhD/MERS Simple Stochastic Model[0;36m (master)[0m[0K
+$[0K[3G[?25h[?25l$ g[0K[?25hi[0Kt[0K[7G[?25l$ git k[0K[?25h[?25l
+[0K[?25hgit: 'k' is not a git command. See 'git --help'.[0K[?25l
+[0K
+The most similar commands are[0K
+        am[0K
+        fsck[0K
+        gc[0K
+        mv[0K
+        p4[0K
+        rm[0K
+[0K[?25h[?25l
+[0;32mad3716@WPIA-DIDE223 [0;35m [0;33m~/Documents/PhD/MERS Simple Stochastic Model[0;36m (master)[0m[0K
+$[0K[3G[?25h[?25l$ g[0K[?25hi[0Kt[0Kk[0K[?25l
+[0K[?25h[?25l
+[0;32mad3716@WPIA-DIDE223 [0;35m [0;33m~/Documents/PhD/MERS Simple Stochastic Model[0;36m (master)[0m[0K
+$[0K[3G[?25h[?25l$ g[0K[?25hi[0Kt[0K[7G[?25l$ git p[0K[7G[?25h[8G[?25l$ git pu[0K[?25hs[0Kh[0K[?25l
+[0K[?25hCounting objects: 26, done.[0K[?25l
+Delta compression using up to 8 threads.[0K
+Compressing objects: 100% (23/23), done.[0K
+Writing objects: 100% (26/26), 7.74 KiB | 2.58 MiB/s, done.[0K
+Total 26 (delta 12), reused 0 (delta 0)[0K
+[0K[?25hremote: Resolving deltas: 100% (12/12), completed with 8 local objects.[0K[?25l
+[0K[?25hTo https://github.com/AmyDighe/MERS_camel_mod.git[0K[?25l
+   26e7829..03dc70c  master -> master[0K
+[0K[?25h[?25l
+[0;32mad3716@WPIA-DIDE223 [0;35m [0;33m~/Documents/PhD/MERS Simple Stochastic Model[0;36m (master)[0m[0K
+$[0K[3G[?25h[?25l$ g[0K[?25hi[0Kt[0Kk[0K[?25l
+[0K[?25h[?25l
+[0;32mad3716@WPIA-DIDE223 [0;35m [0;33m~/Documents/PhD/MERS Simple Stochastic Model[0;36m (master)[0m[0K
+$[0K[3G[?25h[0m[0K]0;[?25l
+[0;32mad3716@WPIA-DIDE223 [0;35m [0;33m~/Documents/PhD/MERS Simple Stochastic Model[0;36m (master)[0m[0K
+[?25l$ g[0K[?25hi[0Kt[0Kk[0K[?25l
+[0K[?25h[?25l
+[0;32mad3716@WPIA-DIDE223 [0;35m [0;33m~/Documents/PhD/MERS Simple Stochastic Model[0;36m (master)[0m[0K
+$[0K[3G[?25h[?25l$ g[0K[?25hi[0Kt[0K[7G[?25l$ git p[0K[?25hu[0Kl[0Kl[0K[?25l
+[0K[?25hremote: Counting objects: 14, done.[0K[?25l
+remote: Compressing objects: 100% (6/6), done.[0K
+remote: Total 14 (delta 7), reused 12 (delta 7), pack-reused 0[0K
+[0K[?25h[?25lUnpacking objects:   7% (1/14)[0K[1G[?25h[?25lUnpacking objects:  57% (8/14)[0K[1G[?25h[?25lUnpacking objects:  92% (13/14)[0K[1G[?25hUnpacking objects: 100% (14/14), done.[0K[?25l
+[0K[?25hFrom https://github.com/AmyDighe/MERS_camel_mod[0K[?25l
+   03dc70c..9215c16  master     -> origin/master[0K
+[0K[?25hUpdating 03dc70c..9215c16[0K[?25l
+Fast-forward[0K
+[0K[?25h .gitignore      |   5 [0;32m++[0;31m-[0m[0K[?25l
+ sir_simulator.R | 126 [0;32m++++++++++++++++++++++++++++++++++++[0;31m--------------------[0m[0K
+ 2 files changed, 85 insertions(+), 46 deletions(-)[0K
+[0K[?25h[?25l
+[0;32mad3716@WPIA-DIDE223 [0;35m [0;33m~/Documents/PhD/MERS Simple Stochastic Model[0;36m (master)[0m[0K
+$[0K[3G[?25h[0m[0K]0;[?25l
+[0;32mad3716@WPIA-DIDE223 [0;35m [0;33m~/Documents/PhD/MERS Simple Stochastic Model[0;36m (master)[0m[0K
+[?25l$ g[0K[?25hi[0Kt[0K[7G[?25l$ git p[0K[?25hu[0Ks[0Kh[0K[?25l
+[0K[?25hEverything up-to-date[0K[?25l
+[0K[?25h[?25l
+[0;32mad3716@WPIA-DIDE223 [0;35m [0;33m~/Documents/PhD/MERS Simple Stochastic Model[0;36m (master)[0m[0K
+$[0K[3G[?25h[?25l$ g[0K[?25hi[0Kt[0K[7G[?25l$ git c[0K[?25ho[0Km[0Km[0Ki[0Kt[0K[14G[?25l$ git commit -[0K[?25hm[0K[17G[?25l$ git commit -m "[0K[?25hF[0Ki[0K[?25l$ git commit -m "F[0K[?25h[?25l$ git commit -m "[0K[?25hF[0Ki[0Kx[0Ke[0Kd[0K[24G[?25l$ git commit -m "Fixed N[0K[?25h_[0K0[0K[28G[?25l$ git commit -m "Fixed N_0 a[0K[?25h[?25ln[0K[29G[?25h[30G[?25l$ git commit -m "Fixed N_0 and[0K[?25h[32G[31G[32G[?25l$ git commit -m "Fixed N_0 and b[0K[?25hr[0Ka[0Kc[0Kk[0Ke[0Kt[0Ks[0K[?25l$ git commit -m "Fixed N_0 and bracket[0K[40G[?25h[39G[?25l$ git commit -m "Fixed N_0 and bracke[0K[39G[?25h[38G[?25l$ git commit -m "Fixed N_0 and brack[0K[?25h[?25l$ git commit -m "Fixed N_0 and brac[0K[?25h[?25l$ git commit -m "Fixed N_0 and bra[0K[?25h[?25l$ git commit -m "Fixed N_0 and br[0K[?25h[?25l$ git commit -m "Fixed N_0 and b[0K[?25h[?25l$ git commit -m "Fixed N_0 and[0K[32G[?25h[31G[?25l$ git commit -m "Fixed N_0 an[0K[?25h[?25l$ git commit -m "Fixed N_0 a[0K[?25h[?25l$ git commit -m "Fixed N_0[0K[28G[?25h[27G[?25l$ git commit -m "Fixed N_[0K[?25h[?25l$ git commit -m "Fixed N[0K[?25h[?25l$ git commit -m "Fixed[0K[24G[?25h[?25l$ git commit -m "Fixe[0K[23G[?25h[?25l$ git commit -m "Fix[0K[22G[?25h[?25l$ git commit -m "Fi[0K[21G[?25h[20G[?25l$ git commit -m "F[0K[?25h[?25l$ git commit -m "[0K[19G[?25h[18G[?25l$ git commit -m "N[0K[?25ho[0Kw[0K[22G[?25l$ git commit -m "Now w[0K[?25hr[0K[?25l$ git commit -m "Now w[0K[?25ho[0Kw[0Kr[0K[?25l$ git commit -m "Now wow[0K[?25h[?25l$ git commit -m "Now wo[0K[?25hr[0Kk[0Ki[0Kn[0Kg[0K[30G[?25l$ git commit -m "Now working w[0K[?25hi[0Kt[0Kh[0Ko[0Ku[0Kt[0K[38G[?25l$ git commit -m "Now working without p[0K[?25ho[0Kp[0K[42G[?25l$ git commit -m "Now working without pop i[0K[?25hn[0Kc[0Kr[0Ke[0Ka[0Ks[0Ki[0Kn[0Kg[0K[53G[?25l$ git commit -m "Now working without pop increasing o[0K[?25hv[0Ke[0Kr[0K[58G[?25l$ git commit -m "Now working without pop increasing over it[0K[?25hm[0K[?25l$ git commit -m "Now working without pop increasing over it[0K[?25h[?25l$ git commit -m "Now working without pop increasing over i[0K[?25h[?25l$ git commit -m "Now working without pop increasing over[0K[58G[?25h[?25l$ git commit -m "Now working without pop increasing over t[0K[?25hi[0Km[0Ke[0K"[0K[?25l
+[0K[?25hOn branch master[0K[?25l
+Your branch is up to date with 'origin/master'.[0K
+[0K
+Changes not staged for commit:[0K
+        [0;31mmodified:   .Rhistory[0m[0K
+        [0;31mmodified:   .Rproj.user/E86ACB2F/console06/FB2DDFB3[0m[0K
+        [0;31mmodified:   .Rproj.user/E86ACB2F/console06/INDEX001[0m[0K
+        [0;31mmodified:   .Rproj.user/E86ACB2F/pcs/source-pane.pper[0m[0K
+        [0;31mmodified:   .Rproj.user/E86ACB2F/pcs/workbench-pane.pper[0m[0K
+        [0;31mmodified:   .Rproj.user/E86ACB2F/rmd-outputs[0m[0K
+        [0;31mmodified:   .Rproj.user/E86ACB2F/sources/prop/INDEX[0m[0K
+        [0;31mmodified:   .Rproj.user/shared/notebooks/paths[0m[0K
+        [0;31mmodified:   .gitignore[0m[0K
+        [0;31mmodified:   sir_simulator.R[0m[0K
+[0K
+Untracked files:[0K
+        [0;31m.RData[0m[0K
+        [0;31msimple model up and running.Rmd[0m[0K
+        [0;31msimple_model_up_and_running.html[0m[0K
+[0K
+no changes added to commit[0K
+[0K[?25h[?25l
+[0;32mad3716@WPIA-DIDE223 [0;35m [0;33m~/Documents/PhD/MERS Simple Stochastic Model[0;36m (master)[0m[0K
+$[0K[3G[?25h[?25l
+[0K[?25h[?25l
+[0;32mad3716@WPIA-DIDE223 [0;35m [0;33m~/Documents/PhD/MERS Simple Stochastic Model[0;36m (master)[0m[0K
+$[0K[3G[?25h[?25l$ g[0K[?25hi[0Kt[0Kk[0K[?25l
+[0K[?25h[?25l
+[0;32mad3716@WPIA-DIDE223 [0;35m [0;33m~/Documents/PhD/MERS Simple Stochastic Model[0;36m (master)[0m[0K
+$[0K[3G[?25h[?25l$ g[0K[?25hi[0Kt[0K[7G[?25l$ git a[0K[?25hd[0K[?25ld[0K[9G[?25h[10G[11G[?25l$ git add -[0K[?25hu[0K[?25l
+[0K[?25h

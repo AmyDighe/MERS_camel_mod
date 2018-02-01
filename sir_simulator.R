@@ -40,23 +40,15 @@ sir_sim <- function(beta, omega, sigma = 1 / 20, alpha = 0, mu = 0,
     sigma_prob <- r2p(sigma)
     omega_prob <- r2p(omega)
 
-    #stay_S_prob <- 1 - (mu_prob + beta_prob)
-    #stay_I_prob <- 1 - (mu_prob + sigma_prob)
-    #stay_R_prob <- 1 - (mu_prob + omega_prob)
-
-
-    ## defining outflows etc.
-
-    #outflow_R <- data.frame(waned = 0, dead = 0)
-    #outflow_S <- data.frame(infected = 0, dead = 0)
-    #outflow_I <- data.frame(recovered = 0, dead = 0)
-
+    # initialising 
+    # N_0 is used to set the birth rate
+    
     S <- I <- R <- N <- integer(duration)
     S[1] <- ini_S
     I[1] <- ini_I
     R[1] <- ini_R 
-    N[1]  <- S[1] + I[1] + R[1]
-
+    N[1]<- S[1] + I[1] + R[1]
+    N_0  <- ini_S + ini_I + ini_R
     
     ## For clarity we structure the code in terms of what leaves compartments,
     ## whenever this applies. When individuals can leave a compartment through
@@ -68,14 +60,18 @@ sir_sim <- function(beta, omega, sigma = 1 / 20, alpha = 0, mu = 0,
 
     ## iii) update the respective compartments accordingly
 
+
     i <- 1
     while ((N[i] > 0) && (i < duration)) {
+      
+
+  
         ## increment time step
         i <- i + 1
         
         ## birth process: any new individual will enter 'S'
         
-        new_births <- rpois(1, N[i - 1] * alpha)
+        new_births <- rpois(1, N_0 * alpha) # changed from N[i -1] to N_0
         
         
         ## individuals leaving 'S', either by becoming 'I' (new infections) or
@@ -91,7 +87,6 @@ sir_sim <- function(beta, omega, sigma = 1 / 20, alpha = 0, mu = 0,
         new_infectious <- rmultinom(1, size = outflow_S,
                                     prob = c(rate_infection, mu))[1]
 
-        
         ## individuals leaving 'I', either by becoming 'R' (new recovered) or
         ## dying
         
@@ -104,7 +99,7 @@ sir_sim <- function(beta, omega, sigma = 1 / 20, alpha = 0, mu = 0,
         ## dying
         
         outflow_R <- rbinom(1, R[i-1], prob = r2p(omega + mu))
-        new_waned <- rmultinom(1, outflow_R, prob = c(omega, mu)[1])
+        new_waned <- rmultinom(1, outflow_R, prob = c(omega, mu))[1]
         R[i] <- R[i - 1] + new_recovered - outflow_R  
         S[i] <- S[i] + new_waned
 
@@ -122,7 +117,8 @@ sir_sim <- function(beta, omega, sigma = 1 / 20, alpha = 0, mu = 0,
                       S[time],
                       I[time],
                       R[time],
-                      N[time])
+                      N[time],
+                      new_B[time])
 
     class(out) <- c("sir_sim", "data.frame")
     return(out)
@@ -152,8 +148,8 @@ plot.sir_sim <- function(x, ...) {
 
 ## example
 
-out <- sir_sim(ini_S = 90, ini_I = 9, ini_R = 1, alpha = 0.002, mu = 0.002,
-               beta = 0.01, omega = 0.0002)
+out <- sir_sim(ini_S = 900, ini_I = 10, ini_R = 0, alpha = 0.002, mu = 0.002,
+               beta = 0.1, omega = 0.002)
 
 plot(out)
 
