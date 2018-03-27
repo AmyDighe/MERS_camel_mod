@@ -12,7 +12,7 @@ den_age2[N_age2] <- 0.4
 
 alpha <- user(0) # birth rate, user-defined, default = 0
 beta <- user(0.3) # infection rate, user-defined, default =  0.3
-rate_infection <- beta * sum(I[1:N_age2]) / N
+rate_infection <- beta * (sum(I[1:N_age2]) / N)
 mu <- user(0) # death rate, user-defined, default = 0
 gamma <- user(0.05) # recovery rate, user-defined, default = 0.1
 
@@ -40,10 +40,18 @@ outflow_I[1:(N_age2)] <- rbinom(I[i], prob = p_I)
 outflow_R[1:(N_age2)] <- rbinom(R[i], prob = p_mu)
 
 # number of individuals leaving S through infection and I through recovery
-# new_infections[1:(N_age2)] <- rmultinom(1, outflow_S[i], prob = c(rate_infection, mu))[1]
-# new_recoveries[1:(N_age2)] <- rmultinom(1, outflow_I[i], prob = c(gamma, mu))[1]
+
+norm_p_infection <- p_infection/(p_infection + p_mu)
+norm_p_gamma <- p_gamma/(p_gamma + p_mu)
+
+new_infections[1:N_age2] <- rbinom(outflow_S[i], prob = norm_p_infection)
+new_recoveries[1:N_age2] <- rbinom(outflow_I[i], prob = norm_p_gamma)
+
+# new_infections[1:N_age2] <- rmultinom(1, outflow_S[i], prob = c(rate_infection, mu))[1]
+# new_recoveries[1:N_age2] <- rmultinom(1, outflow_I[i], prob = c(gamma, mu))[1]
 
 # # reassingning arrays for use in stochastic functions compatible with odin
+
 # p__S[1] <- p_infection
 # p__S[2] <- p_mu
 # dim(p__S) <- 2
@@ -59,19 +67,19 @@ outflow_R[1:(N_age2)] <- rbinom(R[i], prob = p_mu)
 # new_recoveries[1:N_age2] <- rmn_I[i,1]
 
 # messing without arrays to check if it works
-foo <- 10
-moo[1] <- mu #*(1/(mu + gamma))
-moo[2] <- gamma #*(1/(mu + gamma))
-dim(moo) <- 2
-
-rmn_S[] <- rmultinom(foo, moo)
-new_infections[1] <- rmn_S[1]
-
-rmn_I[] <- rmultinom(foo, moo)
-new_recoveries[1] <- rmn_I[1]
-
-dim(rmn_S) <- 2
-dim(rmn_I) <- 2
+# foo <- 10
+# moo[1] <- mu #*(1/(mu + gamma))
+# moo[2] <- gamma #*(1/(mu + gamma))
+# dim(moo) <- 2
+# 
+# rmn_S[] <- rmultinom(foo, moo)
+# new_infections[1] <- rmn_S[1]
+# 
+# rmn_I[] <- rmultinom(foo, moo)
+# new_recoveries[1] <- rmn_I[1]
+# 
+# dim(rmn_S) <- 2
+# dim(rmn_I) <- 2
 
 # number of individuals leaving each compartment through ageing
 
