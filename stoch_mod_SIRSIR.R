@@ -18,7 +18,9 @@ beta_2 <- Ab_protec * beta # reinfection rate (infection rate in the presence of
 rate_infection <- beta * (sum(I[1:N_age]) / N)
 rate_reinfection <- beta_2 * (sum(I[1:N_age]) / N)
 
-mu <- user(0) # death rate, user-defined, default = 0
+mu[1] <- 0.005 # death rate, user-defined, default = 0
+mu[2:(N_age - 1)] <- 0.001
+mu[N_age] <- 0.001
 gamma <- user(0.05) # recovery rate, user-defined, default = 0.1
 
 ## converting rates to probabilities
@@ -26,13 +28,13 @@ gamma <- user(0.05) # recovery rate, user-defined, default = 0.1
 #p_alpha <- 1 - exp(-alpha)
 p_infection <- 1 - exp(-rate_infection)
 p_reinfection <- 1 - exp(-rate_reinfection)
-p_mu <- 1 - exp(-mu)
+p_mu[1:N_age] <- 1 - exp(-mu[i])
 p_gamma <- 1 - exp(-gamma)
 
 
-p_S <- p_infection + p_mu # probability of leaving S (with the exception of through ageing)
-p_I <- p_gamma + p_mu # probability of leaving I (with the exception of through ageing)
-p_R <- p_reinfection + p_mu # probability of leaving R (or S for those protected by maternal Abs)
+p_S[1:N_age] <- p_infection + p_mu[i] # probability of leaving S (with the exception of through ageing)
+p_I[1:N_age] <- p_gamma + p_mu[i] # probability of leaving I (with the exception of through ageing)
+p_R[1:N_age] <- p_reinfection + p_mu[i] # probability of leaving R (or S for those protected by maternal Abs)
 
 ## birth process: any new individual will enter 'M[1]'
 pi <- 3.14159
@@ -40,21 +42,21 @@ birth_rate <- N_0 * alpha * (1 + cos(3 * cos(2 * pi * tt / 365)))
 new_births <- rpois(birth_rate) 
 
 # outflows (due to infection, recovery or death - ageing is dealt with seperately)
-outflow_S[1:6] <- rbinom(S[i], prob = p_R) #same as R because protected by mAbs
-outflow_I[1:6] <- rbinom(I[i], prob = p_I)
-outflow_R[1:6] <- rbinom(R[i], prob = p_mu)
-outflow_S[7:N_age] <- rbinom(S[i], prob = p_S)
-outflow_I[7:N_age] <- rbinom(I[i], prob = p_I)
-outflow_R[7:N_age] <- rbinom(R[i], prob = p_mu)
+outflow_S[1:6] <- rbinom(S[i], prob = p_R[i]) #same as R because protected by mAbs
+outflow_I[1:6] <- rbinom(I[i], prob = p_I[i])
+outflow_R[1:6] <- rbinom(R[i], prob = p_mu[i])
+outflow_S[7:N_age] <- rbinom(S[i], prob = p_S[i])
+outflow_I[7:N_age] <- rbinom(I[i], prob = p_I[i])
+outflow_R[7:N_age] <- rbinom(R[i], prob = p_mu[i])
 
 # number of individuals leaving S through infection and I through recovery
-norm_p_infection <- p_infection/(p_infection + p_mu)
-norm_p_reinfection <- p_reinfection/(p_reinfection + p_mu)
-norm_p_gamma <- p_gamma/(p_gamma + p_mu)
+norm_p_infection[1:N_age] <- p_infection/(p_infection + p_mu[i])
+norm_p_reinfection[1:N_age] <- p_reinfection/(p_reinfection + p_mu[i])
+norm_p_gamma[1:N_age] <- p_gamma/(p_gamma + p_mu[i])
 
-new_infections[1:6] <- rbinom(outflow_S[i], prob = norm_p_reinfection)
-new_infections[7:N_age] <- rbinom(outflow_S[i], prob = norm_p_infection)
-new_recoveries[1:N_age] <- rbinom(outflow_I[i], prob = norm_p_gamma)
+new_infections[1:6] <- rbinom(outflow_S[i], prob = norm_p_reinfection[i])
+new_infections[7:N_age] <- rbinom(outflow_S[i], prob = norm_p_infection[i])
+new_recoveries[1:N_age] <- rbinom(outflow_I[i], prob = norm_p_gamma[i])
 #new_reinfections[] <- rbinom(outflow_R[i], prob = norm_p_reinfection)
 
 # number of individuals leaving each compartment through ageing
@@ -112,7 +114,7 @@ N_0 <- sum(S_ini[N_age]) + I_ini * N_age # the adult population size (>2 yrs)
 ttt <- user(500) # time of importation, user-defined, default day 500
 imported_cases <- user(0) # imported cases, user-defined, default = 0
 S_ini[1:N_age] <- 2000 * den_age[i]
-I_ini <- 1
+I_ini <- 0
 
 
 ## useful outputs
@@ -139,6 +141,10 @@ output(reinf) <- rate_reinfection
 output(inf) <- rate_infection
 output(births) <- new_births
 
+output(deaths_S) <- sum(outflow_S[1:N_age]) - sum(new_infections[1:N_age])
+output(death_per) <- (sum(outflow_S[1:N_age]) - sum(new_infections[1:N_age])) / sum(S[1:(N_age)])
+output(death_S1) <- (outflow_S[1] - new_infections[1])
+
 ## dim calls needed for arrays
 dim(S) <- N_age
 dim(I) <- N_age
@@ -154,3 +160,13 @@ dim(aged_R) <- 13
 dim(outflow_S) <- N_age
 dim(outflow_I) <- N_age
 dim(outflow_R) <- N_age
+
+# because mu varies with age
+dim(mu) <- N_age
+dim(p_mu) <- N_age
+dim(p_S) <- N_age
+dim(p_I) <- N_age
+dim(p_R) <- N_age
+dim(norm_p_infection) <- N_age
+dim(norm_p_reinfection) <- N_age
+dim(norm_p_gamma) <- N_age
