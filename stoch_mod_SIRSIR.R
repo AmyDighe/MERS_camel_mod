@@ -1,29 +1,26 @@
 ## A simple stochastic discrete-time model with ageing
+## In this model 1 year is approximated as 360 days
 
 N_age <- 14 ## number of age categories
 
 
-## the proportion of individuals in each age category
-## first year of life broken into age categories width 1 month, 
-## then 2nd year of life width 1 yr, then 2yr+
-
-# den_age[1:13]<- 0.05 # COME BACK TO
-# den_age[14] <- 0.65
-
 ## rates of transition
 
-#alpha <- user(0) # birth rate, user-defined, default = 0
+#alpha <- user(0) 
 #alpha_array[1:N_age] <- mu[i] * (S_ini[i]/sum(S_ini[1:N_age]))
 #alpha = sum(alpha_array[1:N_age])
-alpha <- user(0.0005) #(v rough estimate as use of above was a circular definition with S_ini)
+alpha <- user(0.0005) # birth rate, user-defined, default = 0.0005 v rough estimate as use of above was a circular definition with S_ini
 beta <- user(0.3) # infection rate, user-defined, default =  0.3
 Ab_protec <- user(0) # proportion of susceptibility experienced if Abs present. default = 0
 beta_2 <- Ab_protec * beta # reinfection rate (infection rate in the presence of Ab protection)
 rate_infection <- beta * (sum(I[1:N_age]) / N)
 rate_infection_mAb <- beta_2 * (sum(I[1:N_age]) / N)
-mu[1] <- 0.005 # death rate for 1st month of life
-mu[2:(N_age - 1)] <- 0.001 # death rate for the rest of the first 2 yrs of life
-mu[N_age] <- 0.0005 # death rate in adulthood (2 yrs +)
+mu_1m <- user(0.005) # death rate for 1st month of life, user-defined, default = 0.005
+mu_2y <- user(0.001) # death rate for the rest of the 1st 2 yrs of life
+mu_adult <- user(0.0005) # death rate in adulthood (2 yrs +)
+mu[1] <- mu_1m
+mu[2:(N_age - 1)] <- mu_2y
+mu[N_age] <- mu_adult
 gamma <- user(0.05) # recovery rate, user-defined, default = 0.1
 sigma <- 4/(8*365) ## waning immunity, 1/mean age of mothers.. shady data... # user-defined, default = 0
 
@@ -41,10 +38,10 @@ p_S[7:N_age] <- 1 - exp(- (rate_infection + mu[i])) # probability of leaving S (
 p_I[1:N_age] <- 1 - exp(- (gamma + mu[i])) # probability of leaving I (with the exception of through ageing)
 p_R[1:N_age] <- 1 - exp(- (sigma + mu[i])) # probability of leaving R (with the exception of through ageing)
 
-## birth process: any new individual will enter 'M[1]'
+## birth process: any new individual will enter 'S[1]'
 pi <- 3.14159
-birth_rate <- N_0 * p_alpha * (1 + cos(3 * cos(2 * pi * tt / 360)))
-new_births <- rpois(birth_rate) 
+birth_rate <- p_alpha * (1 + cos(3 * cos(pi * tt / 360)))
+new_births <- rbinom(N_0, birth_rate) 
 
 # outflows (due to infection, recovery or death - ageing is dealt with seperately)
 outflow_S[1:6] <- rbinom(S[i], prob = p_S[i])
@@ -66,7 +63,7 @@ new_infections[1:N_age] <- rbinom(outflow_S[i], prob = norm_p_infection[i])
 new_recoveries[1:N_age] <- rbinom(outflow_I[i], prob = norm_p_gamma[i])
 new_waned[1:N_age] <- rbinom(outflow_R[i], prob = norm_p_sigma[i])
 
-# number of individuals leaving each compartment through ageing
+# number of individuals leaving each compartment through ageing alone (but remaining in S or I or R)
 # individuals which have entered age compartment 14 remain there until they die
 
 aged_S[1:12] <- if(tt %% 30 == 0) S[i] - outflow_S[i] else 0
@@ -89,16 +86,16 @@ aged_R[13] <- if(tt %% 360 == 0) R[13] - outflow_R[13] else 0 #13th comp has wid
 ## R = recovered individuals
 
 update(S[1]) <- S[1] - outflow_S[1] - aged_S[1] + new_births + new_waned[1]
-update(S[2:(N_age - 1)]) <- S[i] - outflow_S[i] - aged_S[i] + aged_S[i-1] + new_waned[i]
-update(S[N_age]) <- S[N_age] - outflow_S[N_age] + aged_S[(N_age - 1)] + new_waned[i]
+update(S[2:(N_age - 1)]) <- if(tt %% 30 == 0) S[i] - outflow_S[i] - aged_S[i] + aged_S[i-1] + new_waned[i - 1] else S[i] - outflow_S[i] - aged_S[i] + aged_S[i-1] + new_waned[i]
+update(S[N_age]) <- if(tt %% 360 == 0) S[N_age] - outflow_S[N_age] + aged_S[(N_age - 1)] + sum(new_waned[13:N_age]) else S[N_age] - outflow_S[N_age] + aged_S[(N_age - 1)] + new_waned[N_age]
 
-update(I[1]) <- I[1] - outflow_I[1] - aged_I[1] + new_infections[1]
-update(I[2:(N_age - 1)]) <- I[i] - outflow_I[i] - aged_I[i] + new_infections[i] + aged_I[i - 1]
-update(I[N_age]) <-  if(tt == ttt) I[N_age] - outflow_I[N_age] + new_infections[N_age] + aged_I[(N_age - 1)] + imported_cases else I[N_age] - outflow_I[N_age] + new_infections[N_age] + aged_I[(N_age - 1)]
+update(I[1]) <- if(tt == ttt) I[1] - outflow_I[1] - aged_I[1] + new_infections[1] + imported_cases else I[1] - outflow_I[1] - aged_I[1] + new_infections[1]
+update(I[2:(N_age - 1)]) <- if(tt %% 30 == 0) I[i] - outflow_I[i] - aged_I[i] + new_infections[i - 1] + aged_I[i - 1] else I[i] - outflow_I[i] - aged_I[i] + new_infections[i] + aged_I[i - 1]
+update(I[N_age]) <- if(tt %% 360 == 0) I[N_age] - outflow_I[N_age] + sum(new_infections[13:N_age]) + aged_I[(N_age - 1)] else I[N_age] - outflow_I[N_age] + new_infections[N_age] + aged_I[(N_age - 1)]
 
 update(R[1]) <- R[1] - outflow_R[1] - aged_R[1] + new_recoveries[1]
-update(R[2:(N_age - 1)]) <- R[i] - outflow_R[i] - aged_R[i] + new_recoveries[i] + aged_R[i - 1]
-update(R[N_age]) <- R[N_age] - outflow_R[N_age] + new_recoveries[N_age] + aged_R[(N_age - 1)]
+update(R[2:(N_age - 1)]) <- if(tt %% 30 == 0) R[i] - outflow_R[i] - aged_R[i] + new_recoveries[i - 1] + aged_R[i - 1] else R[i] - outflow_R[i] - aged_R[i] + new_recoveries[i] + aged_R[i - 1]
+update(R[N_age]) <- if(tt %% 360 == 0) R[N_age] - outflow_R[N_age] + sum(new_recoveries[13:N_age]) + aged_R[(N_age - 1)] else R[N_age] - outflow_R[N_age] + new_recoveries[N_age] + aged_R[(N_age - 1)]
 
 update(tt) <- tt + 1 # used to count time, must start at one for %% conditioning to work
 
@@ -115,22 +112,22 @@ initial(tt) <- 1
 
 ## initial population size for use in birthrate
 
-#N_0 <- sum(S_ini[N_age]) + I_ini * N_age # the adult population size (>2 yrs)
-N_0 <- 1000
+N_0 <- user(1000) # user-defined, default 1000
 ## importation of cases
 
 ttt <- user(500) # time of importation, user-defined, default day 500
 imported_cases <- user(0) # imported cases, user-defined, default = 0
 
 ## setting initial conditions using the equilibrium solution for age distribution
-births_det[1:360] <- N_0 * p_alpha * (1 + cos(3 * cos(2 * pi * i / 360)))
+births_detr[1:360] <- p_alpha * (1 + cos(3 * cos(pi * i / 360)))
+births_det[1:360] <- rbinom(N_0, births_detr[i]) 
 
 ## if we start the model with the equilibrium amount in each of the first month-wide compartments,
 ## and no camels in the 2nd year of life (they would have just moved into the adult compartment),
 ## then from here camels will start filling the yr 2 compartment every month and then eveyr year this will
 ## empty into the adult compartment. Birthrate will be set to balance summed death rate of this age distribution.
 
-a_max <- 10 ## estimated max age of camels in years (as death rate of adults +2yrs is 1/5.5 years #7.5 years on av)
+a_max <- 8 ## estimated max age of camels in years (as death rate of adults +2yrs is 1/5.5 years #7.5 years on av)
 S_ini[1] <- 0
 #S_ini[2:12] <- (sum(births_det[1:(360 - ((i - 2) * 30))]) - 
 #               sum(births_det[1:(360 - ((i - 1) * 30))])) * exp(- (30 * sum(mu[1:(i - 1)])))
@@ -172,6 +169,7 @@ output(IA) <- I[N_age] # total number of infectious adults
 output(RA) <- R[N_age] # total number of recovered adults (modelled to be immune)
 
 output(inf) <- rate_infection
+output(birthrate) <- birth_rate
 output(births) <- new_births
 
 output(deaths_S) <- sum(outflow_S[1:N_age]) - sum(new_infections[1:N_age])
@@ -196,6 +194,7 @@ dim(outflow_I) <- N_age
 dim(outflow_R) <- N_age
 #dim(alpha_array) <- N_age
 dim(births_det) <- 360
+dim(births_detr) <- 360
 
 # because mu varies with age
 dim(mu) <- N_age
