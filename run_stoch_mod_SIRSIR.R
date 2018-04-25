@@ -3,8 +3,9 @@ sir_model <- odin::odin("stoch_mod_SIRSIR.R", verbose = FALSE, skip_cache = TRUE
 ## input a value for average daily birth rate (default = 0.0005)
 alpha <- 0.00076 
 
-## input a value for infectivity (default = 0.3)
-beta <- 0.003
+## input a value for transmission rate (aka effective contact rate - 
+## rate of contact between S and I and rate of transmission upon contact) (default = 0.3)
+beta <- 0.3
 
 ## input a value between 0 and 1 for susceptibility experienced by individuals with maternal antibodies 
 ## 0 would mean mAbs afford complete protection from MERS (default)
@@ -25,14 +26,13 @@ N_0 <- 10000
 time_period <- 10000 
 t <- seq(0:time_period)
 
-## introduce infectious individuals
-ttt <- 1171 # time of introduction 
-imported_cases <- 11 ## number of imported cases at time, ttt, (default = 0)
+## set importation rate for introducing infectious individuals
+importation_rate <- 0.01
 
 ## include any user-defined parameters as arguments here
 x <- sir_model(alpha = alpha, beta = beta, Ab_susc = Ab_susc, 
                mu_1m = mu_1m, mu_2y = mu_2y, mu_adult = mu_adult,
-               imported_cases = imported_cases, ttt = ttt)
+               importation_rate = importation_rate)
 
 ## run the model
 mod_run <- x$run(t)

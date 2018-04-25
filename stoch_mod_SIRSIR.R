@@ -57,6 +57,10 @@ pi <- 3.14159
 birth_rate <- N_0 * alpha * (1 + cos(3 * cos(pi * tt / 360)))
 new_births <- rpois(birth_rate) 
 
+## importation process
+importation_rate <- user(0.01)
+imported_cases <- rpois(importation_rate)
+
 # outflows (due to infection, recovery or death - ageing is dealt with seperately)
 outflow_S[1:N_age] <- rbinom(S[i], prob = p_S[i])
 outflow_I[1:N_age] <- rbinom(I[i], prob = p_I[i])
@@ -118,8 +122,9 @@ update(S[1]) <- S[1] - outflow_S[1] - aged_S[1] + new_births
 update(S[2:(N_age - 1)]) <- S[i] - outflow_S[i] - aged_S[i] + aged_S[i-1]
 update(S[N_age]) <- S[N_age] - outflow_S[N_age] + aged_S[(N_age - 1)]
 
-update(I[1]) <- if(tt == ttt) I[1] - outflow_I[1] - aged_I[1] + new_infections[1] + imported_cases else if (tt %% 30 ==0) I[1] - outflow_I[1] - aged_I[1] else I[1] - outflow_I[1] - aged_I[1] + new_infections[1]
-update(I[2:(N_age - 1)]) <- if(tt %% 30 == 0) I[i] - outflow_I[i] - aged_I[i] + new_infections[i - 1] + aged_I[i - 1] else I[i] - outflow_I[i] - aged_I[i] + new_infections[i] + aged_I[i - 1]
+update(I[1]) <-  if (tt %% 30 ==0) I[1] - outflow_I[1] - aged_I[1] else I[1] - outflow_I[1] - aged_I[1] + new_infections[1]
+update(I[2:12]) <- if(tt %% 30 == 0) I[i] - outflow_I[i] - aged_I[i] + new_infections[i - 1] + aged_I[i - 1] else I[i] - outflow_I[i] - aged_I[i] + new_infections[i] + aged_I[i - 1]
+update(I[13]) <- if(tt %% 30 == 0) I[13] - outflow_I[13] - aged_I[13] + new_infections[12] + aged_I[12] + imported_cases else I[13] - outflow_I[13] - aged_I[13] + new_infections[13] + aged_I[12] + imported_cases
 update(I[N_age]) <- if(tt %% 360 == 0) I[N_age] - outflow_I[N_age] + sum(new_infections[13:N_age]) + aged_I[(N_age - 1)] else I[N_age] - outflow_I[N_age] + new_infections[N_age] + aged_I[(N_age - 1)]
 
 update(R[1]) <- if(tt %% 30 == 0) R[1] - outflow_R[1] - aged_R[1] else R[1] - outflow_R[1] - aged_R[1] + new_recoveries[1]
@@ -159,10 +164,6 @@ initial(tt) <- 1
 ## initial population size for use in birthrate
 
 N_0 <- user(1000) # user-defined, default 1000
-## importation of cases
-
-ttt <- user(501) # time of importation, user-defined, default day 501 - this cannot be a multiple of 30 
-imported_cases <- user(0) # imported cases, user-defined, default = 0
 
 ## setting initial conditions using the equilibrium solution for age distribution
 births_detr[1:360] <- N_0 * p_alpha * (1 + cos(3 * cos(pi * i / 360)))
@@ -219,6 +220,12 @@ output(SA) <- S[N_age] + S2[N_age] # total number of susceptible adults
 output(IA) <- I[N_age] + I2[N_age] # total number of infectious adults
 output(RA) <- R[N_age] + R2[N_age] # total number of recovered adults (modelled to be immune)
 
+output(outflowS5) <- outflow_S[5]
+output(outflowS6) <- outflow_S[6]
+output(outflowS7) <- outflow_S[7]
+output(outflowS8) <- outflow_S[8]
+output(outflowS9) <- outflow_S[9]
+
 ####################
 ## seroprevalence ##
 ####################
@@ -258,7 +265,7 @@ output(reinf_2) <- new_reinfections[2]
 output(inf) <- rate_infection
 output(birthrate) <- birth_rate
 output(births) <- new_births
-
+output(importations) <- imported_cases
 ## dim calls needed for arrays
 dim(S) <- N_age
 dim(I) <- N_age
