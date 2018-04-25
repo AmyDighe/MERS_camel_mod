@@ -26,8 +26,8 @@ time_period <- 10000
 t <- seq(0:time_period)
 
 ## introduce infectious individuals
-ttt <- 1170 # time of introduction 
-imported_cases <- 1 ## number of imported cases at time, ttt, (default = 0)
+ttt <- 1171 # time of introduction 
+imported_cases <- 11 ## number of imported cases at time, ttt, (default = 0)
 
 ## include any user-defined parameters as arguments here
 x <- sir_model(alpha = alpha, beta = beta, Ab_susc = Ab_susc, 
@@ -46,7 +46,7 @@ out <- as.data.frame(mod_run)
 ## PLOT OF BASIC DYNAMICS ##
 sir_col <- c("aquamarine2", "#cc0044", "#8c8cd9", "black", "pink", "gold", "dimgrey")
 
-matplot(x = out[, 1], y = out[, 46:49], xlab = "Time (days)", ylab = "Number of individuals",
+matplot(x = out[, 1], y = out[, 94:97], xlab = "Time (days)", ylab = "Number of individuals",
         main = "Discrete SIR model - stochastic", type = "l", col = sir_col,
         lwd = 3, lty = 1, xlim = c(0, 10000))
 legend("topright", lwd = 3, col = sir_col, legend = c("S", "I", "R", "N"))
@@ -118,7 +118,7 @@ imported_cases <- 1 ## number of imported cases at time, ttt, (default = 0)
 x <- sir_model(alpha = alpha, imported_cases = imported_cases, ttt = ttt)
 
 ## run for multiple stochastic realisations and plot here:
-x_res <- as.data.frame(replicate(100, x$run(0:3600)[, 46:49]))
+x_res <- as.data.frame(replicate(100, x$run(0:3600)[, 94:97]))
 matplot(0:3600, x_res, xlab = "Time (years)", ylab = "Number of individuals",
         main = "Discrete SIR model - stochastic - 100 realisations", type = "l", col = rep(alpha(sir_col[1:4], 0.1), 100),
         lwd = 3, lty = 1, xaxt = "n")
