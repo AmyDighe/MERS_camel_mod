@@ -27,8 +27,8 @@ p_S <- p_infection + p_mu # probability of leaving S (with the exception of thro
 p_I <- p_gamma + p_mu # probability of leaving I (with the exception of through ageing)
 
 ## birth process: any new individual will enter 'M[1]'
-
-birth_rate <- N_0 * alpha # took '*' function out of rpois 
+pi <- 3.14159
+birth_rate <- N_0 * alpha * (1 + cos(2 * pi * tt / 365))
 new_births <- rpois(birth_rate) 
 
 # outflows (due to infection, recovery or death - ageing is dealt with seperately)
@@ -46,40 +46,6 @@ norm_p_gamma <- p_gamma/(p_gamma + p_mu)
 
 new_infections[1:N_age2] <- rbinom(outflow_S[i], prob = norm_p_infection)
 new_recoveries[1:N_age2] <- rbinom(outflow_I[i], prob = norm_p_gamma)
-
-# new_infections[1:N_age2] <- rmultinom(1, outflow_S[i], prob = c(rate_infection, mu))[1]
-# new_recoveries[1:N_age2] <- rmultinom(1, outflow_I[i], prob = c(gamma, mu))[1]
-
-# # reassingning arrays for use in stochastic functions compatible with odin
-
-# p__S[1] <- p_infection
-# p__S[2] <- p_mu
-# dim(p__S) <- 2
-# 
-# p__I[1] <- p_gamma
-# p__I[2] <- p_mu
-# dim(p__I) <- 2
-# 
-# rmn_S[1:N_age2, ] <- rmultinom(outflow_S[i], p__S)
-# new_infections[1:N_age2] <- rmn_S[i,1]
-# 
-# rmn_I[1:N_age2, ] <- rmultinom(outflow_I[i], p__I)
-# new_recoveries[1:N_age2] <- rmn_I[i,1]
-
-# messing without arrays to check if it works
-# foo <- 10
-# moo[1] <- mu #*(1/(mu + gamma))
-# moo[2] <- gamma #*(1/(mu + gamma))
-# dim(moo) <- 2
-# 
-# rmn_S[] <- rmultinom(foo, moo)
-# new_infections[1] <- rmn_S[1]
-# 
-# rmn_I[] <- rmultinom(foo, moo)
-# new_recoveries[1] <- rmn_I[1]
-# 
-# dim(rmn_S) <- 2
-# dim(rmn_I) <- 2
 
 # number of individuals leaving each compartment through ageing
 
@@ -132,7 +98,8 @@ initial(tt) <- 1
 N_0 <- sum(S_ini[1:7]) + I_ini*(N_age2)
 
 ## importation of cases
-ttt <- user(1500) # time of importation, user-defined, default day 1500
+
+ttt <- user(500) # time of importation, user-defined, default day 500
 imported_cases <- user(0) # imported cases, user-defined, default = 0
 
 M_ini <- user(0) # user-defined, default = 0
@@ -173,5 +140,3 @@ dim(outflow_M) <- N_age
 dim(outflow_S) <- N_age2
 dim(outflow_I) <- N_age2
 dim(outflow_R) <- N_age2
-#dim(rmn_S)<- c(N_age2,2)
-#dim(rmn_I)<- c(N_age2,2)

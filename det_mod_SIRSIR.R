@@ -33,15 +33,6 @@ mu[N_age] <- mu_adult
 gamma <- user(0.05) # recovery rate, user-defined, default = 0.1
 sigma <- 4/(8*365) ## waning immunity, 1/mean age of mothers.. shady data... # user-defined, default = 0
 
-## converting rates to probabilities
-
-p_alpha <- 1 - exp(-alpha)
-p_infection <- 1 - exp(-rate_infection)
-p_infection_mAb <- 1 - exp(-rate_infection_mAb)
-p_reinfection <- 1 - exp(-rate_reinfection)
-p_mu[1:N_age] <- 1 - exp(-mu[i])
-p_gamma <- 1 - exp(-gamma)
-p_sigma <- 1 - exp(-sigma)
 
 p_S[1:6] <- 1 - exp(- (rate_infection_mAb + mu[i])) # probability of leaving S for those <6m protected by maternal Abs
 p_S[7:N_age] <- 1 - exp(- (rate_infection + mu[i])) # probability of leaving S (with the exception of through ageing)
@@ -55,7 +46,7 @@ p_R2[1:N_age] <- 1 - exp(- (sigma + mu[i]))
 ## birth process: any new individual will enter 'S[1]'
 pi <- 3.14159
 birth_rate <- N_0 * alpha * (1 + cos(3 * cos(pi * tt / 360)))
-new_births <- rpois(birth_rate) 
+
 
 ## importation process
 importation_rate <- user(0.01)
@@ -78,7 +69,7 @@ norm_p_reinfection[1:N_age] <- p_reinfection/(p_reinfection + p_mu[i])
 norm_p_gamma[1:N_age] <- p_gamma/(p_gamma + p_mu[i])
 norm_p_sigma[1:N_age] <- p_sigma/(p_sigma + p_mu[i])
 
-update(new_infections[1:N_age]) <- rbinom(outflow_S[i], prob = norm_p_infection[i])
+new_infections[1:N_age] <- rbinom(outflow_S[i], prob = norm_p_infection[i])
 new_recoveries[1:N_age] <- rbinom(outflow_I[i], prob = norm_p_gamma[i])
 new_waned[1:N_age] <- rbinom(outflow_R[i], prob = norm_p_sigma[i])
 new_reinfections[1:N_age] <- rbinom(outflow_S2[i], prob = norm_p_reinfection[i])
@@ -160,7 +151,7 @@ initial(I2[1:N_age]) <- 0
 initial(R2[1:N_age]) <- 0
 
 initial(tt) <- 1
-initial(new_infections[1:N_age]) <- 0
+
 ## initial population size for use in birthrate
 
 N_0 <- user(1000) # user-defined, default 1000
@@ -215,55 +206,55 @@ output(Itot) <- sum(I[1:N_age]) + sum(I2[1:N_age]) # total number of infectious 
 output(Rtot) <- sum(R[1:N_age]) + sum(R2[1:N_age]) # total number of recovered individuals 
 
 output(N) <- N # total number of individuals
-output(N_J) <- sum(S[1:13]) + sum(S2[1:13]) + sum(I[1:13]) + sum(I2[1:13]) + sum(R[1:13]) + sum(R2[1:13])
-output(N_A) <- S[N_age] + S2[N_age] + I[N_age] + I2[N_age] + R[N_age] + R2[N_age]
 
 output(SA) <- S[N_age] + S2[N_age] # total number of susceptible adults
 output(IA) <- I[N_age] + I2[N_age] # total number of infectious adults
 output(RA) <- R[N_age] + R2[N_age] # total number of recovered adults (modelled to be immune)
 
+output(outflowS2) <- outflow_S[2]
+output(outflowS3) <- outflow_S[3]
+output(outflowS4) <- outflow_S[4]
+output(outflowS5) <- outflow_S[5]
+output(outflowS6) <- outflow_S[6]
+output(outflowS7) <- outflow_S[7]
+output(outflowS8) <- outflow_S[8]
+output(outflowS9) <- outflow_S[9]
+output(outflowS10) <- outflow_S[10]
+output(outflowS11) <- outflow_S[11]
+output(outflowS12) <- outflow_S[12]
+output(outflowS13) <- outflow_S[13]
+
 ####################
 ## seroprevalence ##
 ####################
-
-output(seropoz_A) <- 100 * (I[N_age] + R[N_age] + S2[N_age] + I2[N_age] + R2[N_age])/(S[N_age] + I[N_age] + R[N_age] + S2[N_age] + I2[N_age] + R2[N_age])
-
-output(seropoz_J) <- 100 * (sum(I[1:13]) + sum(R[1:13]) + sum(S2[1:13]) + sum(I2[1:13]) + sum(R2[1:13])) / (sum(S[1:13]) + sum(I[1:13]) + sum(R[1:13]) + sum(S2[1:13]) + sum(I2[1:13]) + sum(R2[1:13]))
-
-output(seropz_tot) <- 100 * (sum(I[1:N_age]) + sum(R[1:N_age]) + sum(S2[1:N_age]) + sum(I2[1:N_age]) + sum(R2[1:N_age]))/(sum(S[1:N_age]) + sum(I[1:N_age]) + sum(R[1:N_age]) + sum(S2[1:N_age]) + sum(I2[1:N_age]) + sum(R2[1:N_age]))
-
-
-# output(outflowS2) <- outflow_S[2]
-# output(outflowS3) <- outflow_S[3]
-# output(outflowS4) <- outflow_S[4]
-# output(outflowS5) <- outflow_S[5]
-# output(outflowS6) <- outflow_S[6]
-# output(outflowS7) <- outflow_S[7]
-# output(outflowS8) <- outflow_S[8]
-# output(outflowS9) <- outflow_S[9]
-# output(outflowS10) <- outflow_S[10]
-# output(outflowS11) <- outflow_S[11]
-# output(outflowS12) <- outflow_S[12]
-# output(outflowS13) <- outflow_S[13]
-
+#output(seroprevalence) <- 100 * ((sum(I[1:N_age]) + sum(I2[1:N_age]) + sum(R[1:N_age]) + sum(R2[1:N_age]))/(sum(S[1:N_age]) + sum(S2[1:N_age]) + sum(I[1:N_age]) + sum(I2[1:N_age]) + (R[1:N_age]) + sum(R2[1:N_age])))
+# output(y2_seroprevalence) <- 100 * ((sum(I[1:13]) + sum(I2[1:13]) + sum(R[1:13]) + sum(R2[1:13])) 
+#                                        / (sum(S[1:13]) + sum(S2[1:13]) + sum(I[1:13]) + sum(I2[1:13]) +
+#                                             (R[1:13]) + sum(R2[1:13])))
+# output(y1_seroprevalence) <- 100 * ((sum(I[1:12]) + sum(I2[1:12]) + sum(R[1:12]) + sum(R2[1:12])) 
+#                                           / (sum(S[1:12]) + sum(S2[1:12]) + sum(I[1:12]) + sum(I2[1:12]) +
+#                                                (R[1:12]) + sum(R2[1:12])))
+# output(m6_seroprevalence) <- 100 * ((sum(I[1:6]) + sum(I2[1:6]) + sum(R[1:6]) + sum(R2[1:6])) 
+#                                     / (sum(S[1:6]) + sum(S2[1:6]) + sum(I[1:6]) + sum(I2[1:6]) +
+#                                          (R[1:6]) + sum(R2[1:6])))
 ############################
 ## age at first infection ##
 ############################
- #INSTEAD OF BELOW I JUST UPDATED new_infections
-# output(inf_1m) <- new_infections[1]
-# output(inf_2m) <- new_infections[2]
-# output(inf_3m) <- new_infections[3]
-# output(inf_4m) <- new_infections[4]
-# output(inf_5m) <- new_infections[5]
-# output(inf_6m) <- new_infections[6]
-# output(inf_7m) <- new_infections[7]
-# output(inf_8m) <- new_infections[8]
-# output(inf_9m) <- new_infections[9]
-# output(inf_10m) <- new_infections[10]
-# output(inf_11m) <- new_infections[11]
-# output(inf_12m) <- new_infections[12]
-# output(inf_1to2y) <- new_infections[13]
-# output(inf_adult) <- new_infections[14]
+
+output(inf_1m) <- new_infections[1]
+output(inf_2m) <- new_infections[2]
+output(inf_3m) <- new_infections[3]
+output(inf_4m) <- new_infections[4]
+output(inf_5m) <- new_infections[5]
+output(inf_6m) <- new_infections[6]
+output(inf_7m) <- new_infections[7]
+output(inf_8m) <- new_infections[8]
+output(inf_9m) <- new_infections[9]
+output(inf_10m) <- new_infections[10]
+output(inf_11m) <- new_infections[11]
+output(inf_12m) <- new_infections[12]
+output(inf_1to2y) <- new_infections[13]
+output(inf_adult) <- new_infections[14]
 output(reinf_1) <- new_reinfections[1]
 output(reinf_2) <- new_reinfections[2]
 output(incidence_new_inf) <- sum(new_infections[1:N_age])

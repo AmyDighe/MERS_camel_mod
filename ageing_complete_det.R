@@ -1,4 +1,4 @@
-## A simple deterministic discrete time model with ageing
+## A simple deterministic discrete-time model with ageing
 
 N_age <- 6 ## number of age categories between 0 and 6 months
 N_age2 <- 6 ## number of age categories between 6 months and 2 years

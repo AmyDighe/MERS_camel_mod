@@ -1,0 +1,47 @@
+---
+title: "Getting odin up and running on your computer"
+author: "Amy Dighe"
+date: "27 February 2018"
+output: html_document
+---
+## how to install *odin*
+
+1. Make sure you have a [compiler](https://cran.r-project.org/bin/windows/Rtools/)
+    + If you don't, install the one listed for your operating system and make sure you tick to  "add Rtools to 
+the PATH"
+    + (ask Rich how you could check if you have a compiler without waiting for the error message?)
+
+2. Install the *odin* package as follows in the code chunk below:
+
+```{r, eval = FALSE}
+# install.packages("drat") # if the next line fails
+drat:::add("mrc-ide")
+install.packages("odin")
+
+```
+
+NOTE! if you don't have a compiler you may get the following error message and you will need to return to step 1:
+```r
+Package which is only available in source form, and may need compilation of C/C++/Fortran: ‘cinterpolate’
+  These will not be installed
+trying URL 'https://cran.rstudio.com/bin/windows/contrib/3.4/deSolve_1.20.zip'
+Content type 'application/zip' length 2667305 bytes (2.5 MB)
+downloaded 2.5 MB
+
+```
+...
+
+```r
+ERROR: dependency 'cinterpolate' is not available for package 'odin'
+* removing 'C:/Users/ad3716/Documents/R/win-library/3.4/odin'
+Warning in install.packages :
+  running command '"C:/PROGRA~1/R/R-34~1.2/bin/x64/R" CMD INSTALL -l "C:\Users\ad3716\Documents\R\win-library\3.4" C:\Users\ad3716\AppData\Local\Temp\RtmpEPC21k/downloaded_packages/odin_0.0.2.tar.gz' had status 1
+Warning in install.packages :
+  installation of package ‘odin’ had non-zero exit status
+```
+
+3. In order to have full use of *odin* you will also need to install the package *dde*
+
+```{r, eval = FALSE}
+devtools::install_github("richfitz/dde")
+```

@@ -23,10 +23,10 @@ sir_col <- c("aquamarine2", "#8c8cd9", "#cc0044", "black", "pink", "gold", "dimg
 
 matplot(x = mod_run[, 1], y = mod_run[, 30:34], xlab = "Time (days)", ylab = "Number of individuals",
         main = "Discrete MSIR model - deterministic", type = "l", col = sir_col,
-        lwd = 3, lty = 1, xlim = c(0, 1000))
+        lwd = 3, lty = 1, xlim = c(0, 2000))
 legend("topright", lwd = 3, col = sir_col, legend = c("M", "S", "I", "R", "N"))
 
-matplot(x = mod_run[, 1], y = mod_run[, c(3,4,9)], xlab = "Time (days)", ylab = "Number of individuals",
+matplot(x = mod_run[, 1], y = mod_run[, c(3,4,5,6,9)], xlab = "Time (days)", ylab = "Number of individuals",
         main = "Discrete MSIR model - deterministic", type = "l", col = sir_col,
-        lwd = 3, lty = 1, ylim = c(0,600), xlim = c(365,730))
-legend("topright", lwd = 3, col = sir_col, legend = c("S1", "S2", "S7"))
+        lwd = 3, lty = 1, ylim = c(0,100), xlim = c(365, 2000))
+legend("topright", lwd = 3, col = sir_col, legend = c("S1", "S2", "S3", "S4", "S7"))

@@ -37,7 +37,12 @@ outflow_R[N_age2 + 1] <- mu * R[N_age2 + 1]
 ## I = infectious individuals
 ## R = recovered individuals
 
-update(M[1]) <- M[1] - outflow_M[1] + alpha * N_0
+# seasonal births
+pi <- 3.14159
+  
+births <- N_0 * alpha * (1 + cos(3 * cos(pi * tt / 360)))
+
+update(M[1]) <- M[1] - outflow_M[1] + births
 update(M[2:N_age]) <- M[i] - outflow_M[i] + aged_M[i-1]
 
 update(S[1]) <- S[1] - outflow_S[1] + aged_M[N_age]
@@ -46,11 +51,11 @@ update(S[N_age2 + 1]) <- S[N_age2 + 1] - outflow_S[N_age2 + 1] + aged_S[N_age2]
 
 update(I[1]) <- if(tt == ttt) I[1] - outflow_I[1] + new_infections[1] + imported_cases else I[1] - outflow_I[1] + new_infections[1] 
 update(I[2:N_age2]) <- I[i] - outflow_I[i] + new_infections[i] + aged_I[i - 1]
-update(I[N_age2 + 1]) <-  I[N_age2 + 1] - outflow_I[N_age2 + 1] + new_infections[N_age2 + 1]
+update(I[N_age2 + 1]) <-  I[N_age2 + 1] - outflow_I[N_age2 + 1] + new_infections[N_age2 + 1]+ aged_I[N_age2]
 
 update(R[1]) <- R[1] - outflow_R[1] + new_recoveries[1]
 update(R[2:N_age2]) <- R[i] - outflow_R[i] + new_recoveries[i] + aged_R[i - 1]
-update(R[N_age2 + 1]) <- R[N_age2 + 1] - outflow_R[N_age2 + 1] + new_recoveries[N_age2 + 1]
+update(R[N_age2 + 1]) <- R[N_age2 + 1] - outflow_R[N_age2 + 1] + new_recoveries[N_age2 + 1] + aged_R[N_age2]
 
 update(tt) <- tt + 1 # used to count time, must start at one for %% conditioning to work
 
@@ -99,7 +104,7 @@ output(RJ) <- sum(R[1:N_age2]) # total number of recovered juveniles (modelled t
 output(SA) <- S[N_age2 + 1] # total number of susceptible adults
 output(IA) <- I[N_age2 + 1] # total number of infectious adults
 output(RA) <- R[N_age2 + 1] # total number of recovered adults (modelled to be immune)
-
+output(births) <- births
 ## dim calls needed for arrays
 
 dim(M) <- N_age

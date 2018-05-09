@@ -1,0 +1,213 @@
+---
+title: "restructured model"
+author: "Amy Dighe"
+date: "26 April 2018"
+output: html_document
+---
+
+```{r}
+
+sir_model <- odin::odin("stoch_mod_SIRSIR.R", verbose = FALSE, skip_cache = TRUE)
+
+## input a value for average daily birth rate (default = 0.0005)
+alpha <- 0.00076 
+
+## input a value for transmission rate (aka effective contact rate - 
+## rate of contact between S and I and rate of transmission upon contact) (default = 0.3)
+beta <- 0.3
+
+## input a value between 0 and 1 for susceptibility experienced by individuals with maternal antibodies 
+## 0 would mean mAbs afford complete protection from MERS (default)
+## 1 would mean mAbs afford no protection at all
+Ab_susc <- 0
+
+## input values for the age dependent death rate
+
+mu_1m <- 0.001 # death rate for 1st month of life
+mu_2y <- 0.001 # death rate for the rest of the 1st 2 yrs of life
+mu_adult <- 0.0005 # death rate in adulthood (2 yrs +)
+
+## input an initial population size
+
+N_0 <- 10000
+
+## input the time period that you wish to run the model for
+time_period <- 10000 
+t <- seq(0:time_period)
+
+## set importation rate for introducing infectious individuals
+importation_rate <- 0.01
+
+## include any user-defined parameters as arguments here
+x <- sir_model(alpha = alpha, beta = beta, Ab_susc = Ab_susc, 
+               mu_1m = mu_1m, mu_2y = mu_2y, mu_adult = mu_adult,
+               importation_rate = importation_rate)
+
+## run the model
+mod_run <- x$run(t)
+out <- as.data.frame(mod_run)
+```
+
+
+Histogram of the number of individuals in each juvenile age class summed across one year, divided by class width.
+
+There are less camels in the <1m class, and in the 1-2 yr age class, than 'expected' because of the way the ageing is modelled, and the way we are summing frequencies across the year:
+
+For the <1m class: Births occur daily, wherease ageing in the first year of life occurs monthly. So the first compartment empties to zero and then gradually fills over the month, which halves the average number of camels in it over the year. Other 30 day wide compartments never empty, they lose and replace camels every month in the same time step. If we modelled births as occuring monthly, the first compartment would also follow this pattern.
+
+For the 1-2 yr compartment: camels enter this every month, but then leave in one big block every year resetting the 1-2 yr population size to zero before it gradually fills again. If we broke the second year of life into 12 month-wide compartments this would change this and all would be as expected. 
+
+Should we make these changes?
+
+```{r, echo = FALSE}
+
+sir_model <- odin::odin("stoch_mod_SIRSIR.R", verbose = FALSE, skip_cache = TRUE)
+
+## input a value for average daily birth rate (default = 0.0005)
+alpha <- 0.00076 
+
+## input a value for transmission rate (aka effective contact rate - 
+## rate of contact between S and I and rate of transmission upon contact) (default = 0.3)
+beta <- 0.3
+
+## input a value between 0 and 1 for susceptibility experienced by individuals with maternal antibodies 
+## 0 would mean mAbs afford complete protection from MERS (default)
+## 1 would mean mAbs afford no protection at all
+Ab_susc <- 0
+
+## input values for the age dependent death rate
+
+mu_1m <- 0.001 # death rate for 1st month of life
+mu_2y <- 0.001 # death rate for the rest of the 1st 2 yrs of life
+mu_adult <- 0.0005 # death rate in adulthood (2 yrs +)
+
+## input an initial population size
+
+N_0 <- 10000
+
+## input the time period that you wish to run the model for
+time_period <- 10000 
+t <- seq(0:time_period)
+
+## set importation rate for introducing infectious individuals
+importation_rate <- 0.01
+
+## include any user-defined parameters as arguments here
+x <- sir_model(alpha = alpha, beta = beta, Ab_susc = Ab_susc, 
+               mu_1m = mu_1m, mu_2y = mu_2y, mu_adult = mu_adult,
+               importation_rate = importation_rate)
+
+## run the model
+mod_run <- x$run(t)
+out <- as.data.frame(mod_run)
+
+## HISTOGRAM OF AGE DISTRIBUTION ##
+age_dist <- vector(length = 13)
+width <- c(rep(30, 12), 360)
+for(i in 1:13){
+  age_dist[i] <- sum(out[720:1079, (i + 2)])/width[i]
+}  
+age_dist <- round(age_dist, 0)
+namess <- c("<1m","1<x>2m", "2<x>3m","3<x>4m","4<x>5m","5<x>6m","6<x>7m","7<x>8m","8<x>9m","9<x>10m","10<x>11m","11<x>12m", "1<x>2yrs")
+par(las = 2)
+library(scales)
+barplot(height = age_dist, width = c(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 12), ylim = c(0, 200), ylab = "frequency density", axes = FALSE,
+        cex.names = 1, space = 0)
+#lines(x = c(0,24), y = c(age_dist[2], 800), lty = 2, lwd = 2, col = "darkgrey")
+#lines(x = c(12, 24), y = c(age_dist[12], age_dist[12]), lty = 2, lwd = 2, col = "darkgrey")
+#lines(x = c(12, 24), y = c(age_dist[12] - 0.5*(age_dist[12] - age_dist[13]), age_dist[12] - 0.5*(age_dist_12 - age_dist[13])), lty = 2, lwd = 2, col = "darkgrey")
+#polygon(x = c(12, 12, 24, 24), y = c(0, age_dist[12] - 0.5*(age_dist[12] - age_dist[13]), age_dist[12] - 0.5*(age_dist[12] - age_dist[13]), 0), border = NA, col = alpha("lightpink", 0.3))
+axis(side = 2, at = seq(from = 0, to = 2000, by = 200))
+end_point = 0.5 + 11
+text(c(seq(0.5,end_point,by=1), 18), par("usr")[3]-0.25, 
+     srt = 60, adj= 1, xpd = TRUE,
+     labels = namess, cex=1)
+```
+
+plot of dynamics of the disease states with importation rate of 0.001, no reinfection and complete protection by mAbs in individuals <6m.
+```{r}
+sir_col <- c("aquamarine2", "#cc0044", "#8c8cd9", "black", "pink", "gold", "dimgrey")
+
+matplot(x = out[, 1], y = out[, 94:97], xlab = "Time (days)", ylab = "Number of individuals",
+        main = "Discrete SIR model - stochastic", type = "l", col = sir_col,
+        lwd = 3, lty = 1, xlim = c(0, 10000))
+legend("topright", lwd = 3, col = sir_col, legend = c("S", "I", "R", "N"))
+
+```
+
+Plot of seroprevalence for one iteration of the model with importation rate of 0.001, no reinfection and complete protection by mAbs in individuals <6m.
+```{r}
+
+## PLOT OF SEROPREVALENCE ##
+out$importations[out$importations == 0] <- NA
+
+seroprevalence <- 100 * (out$Itot + out$Rtot) / (out$N)
+plot(seroprevalence[0:3600], type = 'l', lwd = 3, col = "cadetblue", xaxt = 'n', xlab = "time (years)",
+     ylab = "seroprevalence (%)")
+axis(side = 1, at = c(seq(from = 0, to = 3600, by = 360)), labels = c("0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10"))
+points(out$importations, pch = 8, col = "firebrick")
+legend("topright", legend = c("seroprevalence", "importations"), col = c("cadetblue", "firebrick"), lty = c(1, NA), pch = c(NA, 8), lwd = c(3, 1), bty= "n")
+
+```
+
+100 iterations of the dynamics of the disease states with importation rate of 0.001, no reinfection and complete protection by mAbs in individuals <6m.
+```{r}
+
+## input a value for average daily birth rate (default = 0.0005)
+alpha <- 0.00076 
+
+## input a value for transmission rate (aka effective contact rate - 
+## rate of contact between S and I and rate of transmission upon contact) (default = 0.3)
+beta <- 0.3
+
+## input a value between 0 and 1 for susceptibility experienced by individuals with maternal antibodies 
+## 0 would mean mAbs afford complete protection from MERS (default)
+## 1 would mean mAbs afford no protection at all
+Ab_susc <- 0
+
+## input values for the age dependent death rate
+
+mu_1m <- 0.001 # death rate for 1st month of life
+mu_2y <- 0.001 # death rate for the rest of the 1st 2 yrs of life
+mu_adult <- 0.0005 # death rate in adulthood (2 yrs +)
+
+## input an initial population size
+
+N_0 <- 10000
+
+## input the time period that you wish to run the model for
+time_period <- 10000 
+t <- seq(0:time_period)
+
+## set importation rate for introducing infectious individuals
+importation_rate <- 0.01
+
+## include any user-defined parameters as arguments here
+x <- sir_model(alpha = alpha, beta = beta, Ab_susc = Ab_susc, 
+               mu_1m = mu_1m, mu_2y = mu_2y, mu_adult = mu_adult,
+               importation_rate = importation_rate)
+
+## run for multiple stochastic realisations and plot here:
+x_res <- as.data.frame(replicate(100, x$run(0:3600)[, 94:97]))
+matplot(0:3600, x_res, xlab = "Time (years)", ylab = "Number of individuals",
+        main = "Discrete SIR model - stochastic - 100 realisations", type = "l", col = rep(alpha(sir_col[1:4], 0.1), 100),
+        lwd = 3, lty = 1, xaxt = "n")
+axis(side = 1, at = seq(from = 0, to = 3600, by = 360), labels = seq(from = 0, to = 10, by = 1))
+legend("topright", lwd = 3, col = sir_col, legend = c("S", "I", "R", "N"))
+text("T", x = 250, y = 4000, cex = 1.2)
+
+
+
+
+
+```
+
+
+
+The problem: NOW FIXED!!
+As the model is currently, the initial conditions set population sizes to start as non-integers because of the exponential decay model of death. Rounding would solve this easily but round() and as.integer are not supported by ODIN. Rich says this will be easy to fix. 
+
+I think that these non-integers are what causes the greater problem - negative population values occasionally leading to NaN --> curtailing model runs.
+At first I was worried that my equations didn't balance and more camels were being allowed to flow out of compartments than were in them. However, the numbers are always > -1 and I now reckon this happens because of the non-integer population sizes and the way rbinom works in ODIN. rbinom may be rounding populations sizes that are <1 but >0 to 1, alowing an outflow of 1, leading to a minus 0.something. These happily exist within the model with equivalent behaviour to 0s until an ageing day, when the omdel 'adds' a negative population to an already negative population and this then gets more negative and the next time step leads to NaN in this compartment
+
+SEE PPT!

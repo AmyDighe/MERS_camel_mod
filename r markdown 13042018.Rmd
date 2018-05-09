@@ -1,0 +1,551 @@
+---
+title: "Stochastic SIR model - single patch"
+author: "Amy Dighe"
+date: "12 April 2018"
+output: html_document
+---
+
+This is a simple stochastic SIR model with ageing.
+Parameters are not yet strongly rooted in the literature, so only to be used as a toy example.
+
+### Structure of the model
+
+1. the model can be run from a short script allowing a number of parameters to be inputted by the user (chunk 1 below)
+
+2. the model itself is written in ODIN, within a seperate script. Further parameter and structural changes can be made by editing this file (chunks 2:n below)
+
+
+### 1. Running the model:
+
+Eventually it would be optimal to include a way the user can set the desired age densities here, which could then be used to calculate the equilibrium birth rate (or death rate, whichever is harder to be sure of) but it seems arrays cannot be user defined currently.
+```{r}
+sir_model <- odin::odin("stoch_mod_SIRSIR.R", verbose = FALSE, skip_cache = TRUE)
+
+## input a value for average daily birth rate (default = 0.0005)
+alpha <- 0.00076 
+
+## input a value for infectivity (default = 0.3)
+beta <- 0.003
+
+## input a value between 0 and 1 for susceptibility experienced by individuals with maternal antibodies 
+## 0 would mean mAbs afford complete protection from MERS (default)
+## 1 would mean mAbs afford no protection at all
+Ab_susc <- 0
+
+## input values for the age dependent death rate
+
+mu_1m <- 0.001 # death rate for 1st month of life
+mu_2y <- 0.001 # death rate for the rest of the 1st 2 yrs of life
+mu_adult <- 0.0005 # death rate in adulthood (2 yrs +)
+
+## input an initial population size
+
+N_0 <- 10000
+
+## input the time period that you wish to run the model for
+time_period <- 10000 
+t <- seq(0:time_period)
+
+## introduce infectious individuals
+ttt <- 1170 # time of introduction 
+imported_cases <- 1 ## number of imported cases at time, ttt, (default = 0)
+
+## include any user-set parameters as arguments here
+x <- sir_model(alpha = alpha, beta = beta, Ab_susc, mu_1m = mu_1m, mu_2y = mu_2y, mu_adult = mu_adult, N_0 = N_0, imported_cases = imported_cases, ttt = ttt)
+
+## run the model once
+mod_run <- x$run(t)
+out <- as.data.frame(mod_run)
+
+## run the model for multiple stochastic realistaions
+
+## set number of stochastic realisations you want to run here (default = 100):
+no_runs <- 100
+
+## run model for that multiple stochastic realisations and store desired columns as a subset [, :]
+x_res <- as.data.frame(replicate(no_runs, x$run(0:3600)[, 46:49]))
+
+```
+
+### 2. The contents of 'stoch_mod_SIRSIR.R':
+
+NOTE: in this year 360 days is used as year length to simplify ageing
+
+As well as being compartmentalised as susceptible, S, infectious, I and recovered, R, individuals within each of these overall compartments are stratified into 14 age categories. The first 12 are each a month wide (30 days), the next is one year wide, and once individuals reach the final stratum ('adults' = >2yrs - a division used in seroprevalence studies), they remain there until death.
+```{r eval = FALSE}
+
+N_age <- 14 ## number of age categories
+
+```
+
+#### Rates of transition
+
+Individuals are born susceptible, *__S__*, at a rate proportional to *alpha*. Upon infection, at a rate proportional to *beta*, individuals transition from *__S --> I__* . *beta* can be reduced for individuals with maternal antibody protection (those in age strata 1:6) by setting *Ab_susc* < 1 (default = 0). Individuals recover at rate *gamma*, moving from *__I --> R__* in which they are considered immune. This immunity is modelled to wane at rate *sigma* with individuals returning from *__R --> S__*. 
+```{r eval = FALSE}
+## rates of transition
+
+alpha <- user(0.0005) # birth rate, user-defined, default = 0.0005
+beta <- user(0.3) # infection rate, user-defined, default =  0.3
+Ab_susc <- user(0) # proportion of susceptibility experienced if Abs present, user-defined, default = 0
+beta_2 <- Ab_susc * beta # infection rate in the presence of Ab protection
+rate_infection <- beta * (sum(I[1:N_age]) / N)
+rate_infection_mAb <- beta_2 * (sum(I[1:N_age]) / N)
+mu[1] <- 0.005 # death rate for 1st month of life
+mu[2:(N_age - 1)] <- 0.001 # death rate for the rest of the first 2 yrs of life
+mu[N_age] <- 0.0005 # death rate in adulthood (2 yrs +)
+gamma <- user(0.05) # recovery rate, user-defined, default = 0.1
+sigma <- 4/(8*365) ## waning immunity, 1/mean age of mothers.. shady data... # user-defined, default = 0
+```
+
+#### These rates must be converted to probabilities.
+```{r eval = FALSE}
+## converting rates to probabilities
+
+p_alpha <- 1 - exp(-alpha)
+p_infection <- 1 - exp(-rate_infection)
+p_infection_mAb <- 1 - exp(-rate_infection_mAb)
+p_mu[1:N_age] <- 1 - exp(-mu[i])
+p_gamma <- 1 - exp(-gamma)
+p_sigma <- 1 - exp(-sigma)
+
+p_S[1:6] <- 1 - exp(- (rate_infection_mAb + mu[i])) # probability of leaving S for those <6m protected by maternal Abs
+p_S[7:N_age] <- 1 - exp(- (rate_infection + mu[i])) # probability of leaving S (with the exception of through ageing)
+p_I[1:N_age] <- 1 - exp(- (gamma + mu[i])) # probability of leaving I (with the exception of through ageing)
+p_R[1:N_age] <- 1 - exp(- (sigma + mu[i])) # probability of leaving R (with the exception of through ageing)
+```
+
+#### Seasonal births
+
+The daily number of births is calculated. Births are seasonal as modelled using cosine.
+```{r eval = FALSE}
+## birth process: any new individual will enter 'S[1]'
+pi <- 3.14159
+birth_rate <- N_0 * p_alpha * (1 + cos(3 * cos(pi * tt / 360)))
+new_births <- rpois(birth_rate) 
+```
+
+this is what the seasonality looks like: (population size = 10,000 camels)
+
+```{r echo = FALSE, warning = FALSE}
+par(las = 1, oma = c(0, 0, 0, 2))
+library(scales)
+tttt <- seq(1:360)
+birthratezz <- alpha * (1 + cos(3 * cos(pi * tttt / 360)))
+plot(x = out$tt, y = out$births, xlim = c(0, 360), xlab = "time of year", ylab = "births", 
+     pch = 19, col = alpha("lightsteelblue3",0.4), xaxt = "n")
+lines(10000 * birthratezz, col = "cornflowerblue", lwd = 3)
+axis(side = 1, at = c(30, 60, 90, 120, 150, 180, 210, 240, 270, 300, 330, 360), tick = FALSE,
+     labels = c("July", "Aug", "Sept", "Oct", "Nov", "Dec", "Jan", "Feb", "Mar", "Apr", "May", "June"))
+axis(side = 1, at = c(15, 45, 75, 105, 135, 165, 195, 225, 255, 285, 315, 345, 375), tick = TRUE, labels = FALSE)
+axis(side = 4, at = pretty(10000*birthratezz), labels = c(0, 0.0005, 0.0010, 0.0015, 0.0020), 
+     col = "cornflowerblue", lwd = 3)
+polygon(x = c(105, 105, 255, 255), y = c(-2, 32, 32, -2), col = alpha("lightpink", 0.3), border = NA)     
+legend("topright", bty = "n", pch = c(NA, 19), lty = c(1, NA), lwd = c(3, 1), 
+       col = c("cornflowerblue", "lightsteelblue3"), legend = c("birth rate", "births (stochastic)"))
+
+```
+
+the pink denotes Oct-Feb - the camel calving season cited in the literature (so ideally the peak should be a little narrower, perhaps use a step function if not possible to transform this)
+
+#### Leaving a compartment
+
+Outflows from compartments are calculated first, followed by tracking whether these individuals have died or moved to a different compartment. This avoids duplication of individuals (or mutually exclusive events happening to the same individual).
+These outflows happen daily and are due to infection, recovery, waned immunity and death ie. they involve movement between SIR rather than age strata. Outlfows due to ageing are dealt with seperately.
+```{r eval = FALSE}
+# outflows (due to infection, recovery or death - ageing is dealt with seperately)
+outflow_S[1:6] <- rbinom(S[i], prob = p_S[i])
+outflow_I[1:6] <- rbinom(I[i], prob = p_I[i])
+outflow_R[1:6] <- rbinom(R[i], prob = p_R[i])
+outflow_S[7:N_age] <- rbinom(S[i], prob = p_S[i])
+outflow_I[7:N_age] <- rbinom(I[i], prob = p_I[i])
+outflow_R[7:N_age] <- rbinom(R[i], prob = p_R[i])
+
+```
+
+#### After leaving, Which individuals go where?
+
+```{r eval = FALSE}
+
+
+#normalising the probabilities, since we know the individual has left the compartment 
+norm_p_infection[1:6] <- p_infection_mAb/(p_infection_mAb + p_mu[i])
+norm_p_infection[7:N_age] <- p_infection/(p_infection + p_mu[i])
+norm_p_gamma[1:N_age] <- p_gamma/(p_gamma + p_mu[i])
+norm_p_sigma[1:N_age] <- p_sigma/(p_sigma + p_mu[i])
+
+# number of new infections, recoveries and cases of waned immunity
+new_infections[1:N_age] <- rbinom(outflow_S[i], prob = norm_p_infection[i])
+new_recoveries[1:N_age] <- rbinom(outflow_I[i], prob = norm_p_gamma[i])
+new_waned[1:N_age] <- rbinom(outflow_R[i], prob = norm_p_sigma[i])
+```
+
+#### Ageing
+
+Ageing is modelled to be discrete and occur every 30 days in the first year of life, and then after a year in the second year of life individuals move into the adult stratum where they remain until they die. The number of individuals leaving each compartment through ageing (but remaining in the same disease compartment - S or I or R) is calculated below. For individuals that change disease compartment (eg get infected) on days where the population is also going to jump to the next age strata, these individuals change age compartment AND disease compartment in a single timestep (computed in the next code chunk).
+
+```{r eval = FALSE}
+aged_S[1:12] <- if(tt %% 30 == 0) S[i] - outflow_S[i] else 0
+
+aged_S[13] <- if(tt %% 360 == 0) S[13] - outflow_S[13] else 0 #13th comp has width 1 yr
+
+aged_I[1:12] <- if(tt %% 30 == 0) I[i] - outflow_I[i] else 0
+
+aged_I[13] <- if(tt %% 360 == 0) I[13] - outflow_I[13] else 0 #13th comp has width 1 yr
+
+aged_R[1:12] <- if(tt %% 30 == 0) R[i] - outflow_R[i] else 0
+
+aged_R[13] <- if(tt %% 360 == 0) R[13] - outflow_R[13] else 0 #13th comp has width 1 yr
+
+```
+
+#### Equations for transitions between compartments
+
+S[1:6] = individuals protected by maternal antibodies (<6 months of age)
+S[7:N_age] = fully susceptible individuals
+I = infectious individuals
+R = recovered individuals
+```{r eval = FALSE}
+update(S[1]) <- S[1] - outflow_S[1] - aged_S[1] + new_births + new_waned[1]
+update(S[2:(N_age - 1)]) <- if(tt %% 30 == 0) S[i] - outflow_S[i] - aged_S[i] + aged_S[i-1] + new_waned[i - 1] else S[i] - outflow_S[i] - aged_S[i] + aged_S[i-1] + new_waned[i]
+update(S[N_age]) <- if(tt %% 360 == 0) S[N_age] - outflow_S[N_age] + aged_S[(N_age - 1)] + sum(new_waned[13:N_age]) else S[N_age] - outflow_S[N_age] + aged_S[(N_age - 1)] + new_waned[N_age]
+
+update(I[1]) <- if(tt == ttt) I[1] - outflow_I[1] - aged_I[1] + new_infections[1] + imported_cases else I[1] - outflow_I[1] - aged_I[1] + new_infections[1]
+update(I[2:(N_age - 1)]) <- if(tt %% 30 == 0) I[i] - outflow_I[i] - aged_I[i] + new_infections[i - 1] + aged_I[i - 1] else I[i] - outflow_I[i] - aged_I[i] + new_infections[i] + aged_I[i - 1]
+update(I[N_age]) <- if(tt %% 360 == 0) I[N_age] - outflow_I[N_age] + sum(new_infections[13:N_age]) + aged_I[(N_age - 1)] else I[N_age] - outflow_I[N_age] + new_infections[N_age] + aged_I[(N_age - 1)]
+
+update(R[1]) <- R[1] - outflow_R[1] - aged_R[1] + new_recoveries[1]
+update(R[2:(N_age - 1)]) <- if(tt %% 30 == 0) R[i] - outflow_R[i] - aged_R[i] + new_recoveries[i - 1] + aged_R[i - 1] else R[i] - outflow_R[i] - aged_R[i] + new_recoveries[i] + aged_R[i - 1]
+update(R[N_age]) <- if(tt %% 360 == 0) R[N_age] - outflow_R[N_age] + sum(new_recoveries[13:N_age]) + aged_R[(N_age - 1)] else R[N_age] - outflow_R[N_age] + new_recoveries[N_age] + aged_R[(N_age - 1)]
+
+update(tt) <- tt + 1 # used to count time, must start at one for %% conditioning to work
+
+## record total population size
+
+N <- (sum(S[1:N_age]) + sum(I[1:N_age]) + sum(R[1:N_age]))
+```
+
+#### Initial conditions
+
+Currently, all individuals start off susceptible, so that the dynamics of the introduction of a single infectious individual can be assessed. The number of individuals in each age category is set to approximate that at equilibrium to save time waiting for demographic equilibrium. This is done using the seasonal birthrate, the age dependent death rate, and the ageing process.
+
+This could not be generalised as: 
+```{r eval = FALSE} 
+S_ini[2:12] <- (sum(births_det[1:(360 - ((i - 2) * 30))]) - sum(births_det[1:(360 - ((i - 1) * 30))])) * exp(- (30 * sum(mu[1:(i - 1)])))
+```
+as arrays cannot be used in this way in ODIN (or at least I was formatting it wrong) so it is written for each part of the array below. (Talking to Rich about this - I need to send him the error message)
+
+The equilibrium solutions estimated are not exactly what is seen at equilibrium because:
+
+1. This is a stochastic model
+
+2. *a_max* is an estimation of maximum age - not a hard maximum
+
+3. There is circular dependency between birth and death rate so one cannot be set to balance the other - since death rate is age dependent, overall death rate depends on the proportion of individuals in each age class, which depends on birth rate. I have just picked a birth rate and manually changed it to get a relatively balanced total population by eye.
+
+4. The exponential decay due to death creates non integer numbers of camels (later replaced by whole numbers during the model run of course). (These could be rounded to the nearest integer or put into a poisson random number generator to remove this if necessary?)
+
+**However**, it does the job well enough I think (see graph below). Here is the code:
+
+```{r eval = FALSE}
+## initial population size for use in birthrate
+N_0 <- 10000
+
+## births array for use in finding equilibrium solution
+births_detr[1:360] <- N_0 * p_alpha * (1 + cos(3 * cos(pi * i / 360)))
+births_det[1:360] <- rpois(births_detr[i]) 
+a_max <- 8 ## estimated max age of camels in years (as death rate of adults +2yrs is 1/5.5 years #7.5 years on av)
+
+# inital number of individuals in each age stratum
+### if we start the model with the equilibrium amount in each of the first month-wide compartments,
+### and no camels in the 2nd year of life (they would have just moved into the adult compartment),
+### then from here camels will start filling the yr 2 compartment every month and then every year this will
+### empty into the adult compartment. Birthrate will be set to balance summed death rate of this age distribution.
+S_ini[1] <- 0
+S_ini[2] <- (sum(births_det[1:360]) - sum(births_det[1:(360 - 30)])) * exp(- (30 * mu[1]))
+S_ini[3] <- (sum(births_det[1:(360 - 30)]) - sum(births_det[1:(360 - 60)])) * exp(- (30 * sum(mu[1:2])))
+S_ini[4] <- (sum(births_det[1:(360 - 60)]) - sum(births_det[1:(360 - 90)])) * exp(- (30 * sum(mu[1:3])))
+S_ini[5] <- (sum(births_det[1:(360 - 90)]) - sum(births_det[1:(360 - 120)])) * exp(- (30 * sum(mu[1:4])))
+S_ini[6] <- (sum(births_det[1:(360 - 120)]) - sum(births_det[1:(360 - 150)])) * exp(- (30 * sum(mu[1:5])))
+S_ini[7] <- (sum(births_det[1:(360 - 150)]) - sum(births_det[1:(360 - 180)])) * exp(- (30 * sum(mu[1:6])))
+S_ini[8] <- (sum(births_det[1:(360 - 180)]) - sum(births_det[1:(360 - 210)])) * exp(- (30 * sum(mu[1:7])))
+S_ini[9] <- (sum(births_det[1:(360 - 210)]) - sum(births_det[1:(360 - 240)])) * exp(- (30 * sum(mu[1:8])))
+S_ini[10] <- (sum(births_det[1:(360 - 240)]) - sum(births_det[1:(360 - 270)])) * exp(- (30 * sum(mu[1:9])))
+S_ini[11] <- (sum(births_det[1:(360 - 270)]) - sum(births_det[1:(360 - 300)])) * exp(- (30 * sum(mu[1:10])))
+S_ini[12] <- (sum(births_det[1:(360 - 300)]) - sum(births_det[1:(360 - 330)])) * exp(- (30 * sum(mu[1:11])))
+S_ini[13] <- 0
+S_ini[N_age] <- a_max * (sum(births_det[1:360]) * exp(- ((30 * sum(mu[1:12])) + 360 * mu[13])))
+
+I_ini <- 0
+
+## initial states
+initial(S[1:N_age]) <- S_ini[i] # will be user-defined
+initial(I[1:N_age]) <- I_ini
+initial(R[1:N_age]) <- 0
+initial(tt) <- 1
+```
+ 
+This graph shows the number of individuals in each age compartment from the start of the run:
+```{r, echo = FALSE}
+sir_model <- odin::odin("stoch_mod_SIRSIR.R", verbose = FALSE, skip_cache = TRUE)
+
+## input a value for average daily birth rate (default = 0.0005)
+alpha <- 0.00076 
+
+## input value for initial population size
+N_0 <- 10000
+
+## input the time period that you wish to run the model for
+time_period <- 10000 
+t <- seq(0:time_period)
+## introduce infectious individuals
+ttt <- 1170 # time of introduction 
+imported_cases <- 0 ## number of imported cases at time, ttt, (default = 0)
+
+## include any user-set parameters as arguments here
+x <- sir_model(alpha = alpha, N_0 = N_0, imported_cases = imported_cases, ttt = ttt)
+
+## run the model
+mod_run <- x$run(t)
+out <- as.data.frame(mod_run)
+
+## PLOT OF AGE DISTRIBUTIONS ##
+par(las = 1)
+matplot(x = out[, 1], y = out[,3:16], col = (rainbow(n = 20))[1:14], type = 'l', lty = 1,
+        xlim = c(0, 3600), xlab = "years", ylab = "number of camels", xaxt = "n")
+axis(side = 1, at = seq(from = 0, to = 3600, by = 360), labels = seq(from = 0, to = 10, by = 1))
+legend(title = "Age", "right", col = (rainbow(n = 20))[1:14], lty = 1, cex = 0.5, bty= "n",
+       legend = c("1m", "2m", "3m", "4m", "5m", "6m", "7m", "8m", "9m", "10m", "11m", "12m", "1-2yrs", "adults"))
+arrows(x0 = 720, y0 = 4000, x1= 1080, y1 = 5600, lwd = 3, col = "darkgray")
+text(x = 700, y = 3700, "adults")
+```
+
+Here is a histogram of the annual age distribution (frequency density). 
+```{r echo = FALSE}
+## HISTOGRAM OF AGE DISTRIBUTION ##
+age_dist <- vector(length = 13)
+width <- c(rep(30, 12), 360)
+for(i in 1:13){
+  age_dist[i] <- sum(out[720:1079, (i + 2)])/width[i]
+}  
+age_dist <- round(age_dist, 0)
+namess <- c("<1m","1<x>2m", "2<x>3m","3<x>4m","4<x>5m","5<x>6m","6<x>7m","7<x>8m","8<x>9m","9<x>10m","10<x>11m","11<x>12m", "1<x>2yrs")
+par(las = 2)
+library(scales)
+barplot(height = age_dist, width = c(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 12), ylim = c(0, 1800), ylab = "frequency density", axes = FALSE,
+        cex.names = 1, space = 0)
+#lines(x = c(0,24), y = c(1990, 675), lty = 2, lwd = 2, col = "darkgrey")
+#lines(x = c(12, 24), y = c(1345, 1345), lty = 2, lwd = 2, col = "darkgrey")
+#lines(x = c(12, 24), y = c(1010, 1010), lty = 2, lwd = 2, col = "darkgrey")
+#polygon(x = c(12, 12, 24, 24), y = c(0, 1010, 1010, 0), border = NA, col = alpha("lightpink", 0.3))
+axis(side = 2, at = seq(from = 0, to = 2000, by = 200))
+end_point = 0.5 + 11
+text(c(seq(0.5,end_point,by=1), 18), par("usr")[3]-0.25, 
+     srt = 60, adj= 1, xpd = TRUE,
+     labels = namess, cex=1)
+```
+
+There are less camels in the <1m class, and in the 1-2 yr age class, than 'expected' because of the way the ageing is modelled, and the way we are summing frequencies across the year:
+
+For the <1m class: Births occur daily, wherease ageing in the first year of life occurs monthly. So the first compartment empties to zero and then gradually fills over the month, which halves the average number of camels in it over the year. Other 30 day wide compartments never empty, they lose and replace camels every month in the same time step. If we modelled births as occuring monthly, the first compartment would also follow this pattern.
+
+For the 1-2 yr compartment: camels enter this every month, but then leave in one big block every year resetting the 1-2 yr population size to zero before it gradually fills again. If we broke the second year of life into 12 month-wide compartments this would change this and all would be as expected. 
+
+If we overlay the number of camels in the 1-2yr compartment at the end of the year - ie. when there are maximum number ofindividuals in this compartment before the annual emptying into the adult compartment, we can see that the age distribution is in fact as expected.The bisection of the compartment meets the general trend of density decrease roughly at the height of the compartment.
+
+```{r, echo = FALSE}
+
+
+age_dist_end <- out[1079, 15]
+
+age_dist <- vector(length = 13)
+width <- c(rep(30, 12), 360)
+for(i in 1:13){
+  age_dist[i] <- sum(out[720:1079, (i + 2)])/width[i]
+}  
+age_dist <- round(age_dist, 0)
+namess <- c("<1m","1<x>2m", "2<x>3m","3<x>4m","4<x>5m","5<x>6m","6<x>7m","7<x>8m","8<x>9m","9<x>10m","10<x>11m","11<x>12m", "1<x>2yrs")
+par(las = 2)
+library(scales)
+barplot(height = age_dist, width = c(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 12), ylim = c(0, 2000), ylab = "frequency density", axes = FALSE,
+        cex.names = 1, space = 0)
+#lines(x = c(0,24), y = c(1990, 675), lty = 2, lwd = 2, col = "darkgrey")
+#lines(x = c(12, 24), y = c(1345, 1345), lty = 2, lwd = 2, col = "darkgrey")
+#lines(x = c(12, 24), y = c(1010, 1010), lty = 2, lwd = 2, col = "darkgrey")
+polygon(x = c(12, 12, 24, 24), y = c(0, age_dist_end, age_dist_end, 0), border = NA, col = alpha("lightpink", 0.3))
+lines(x = c(1.5, 24), y = c(age_dist[2], age_dist_end - ((age_dist[12] - age_dist_end))), lwd = 3, lty = 2, col = "firebrick")
+abline(v = 18, lwd = 3, lty = 2, col = "firebrick")
+axis(side = 2, at = seq(from = 0, to = 2000, by = 200))
+end_point = 0.5 + 11
+text(c(seq(0.5,end_point,by=1), 18), par("usr")[3]-0.25, 
+     srt = 60, adj= 1, xpd = TRUE,
+     labels = namess, cex=1)
+```
+
+
+#### Finally we have the mechanism for introducing imported cases which is updated by the user on the run script
+```{r eval = FALSE}
+## importation of cases
+
+ttt <- user(500) # time of importation, user-defined, default day 500
+imported_cases <- user(0) # imported cases, user-defined, default = 0
+```
+
+#### Useful outputs
+These are output at every timestep in the model and added to the dataframe produced by the model run.
+```{r eval = FALSE}
+output(MM) <- sum(S[1:6]) + sum(I[1:6]) + sum(R[1:6]) # total number of individuals still protected by maternal immunity
+output(SS) <- sum(S[1:N_age]) # total number of susceptible individuals
+output(II) <- sum(I[1:N_age]) # total number of infectious individuals
+output(RR) <- sum(R[1:N_age]) # total number of recovered individuals (modelled to be immune)
+output(N) <- N # total number of individuals
+
+output(SC) <- sum(S[7:13]) # total number of susceptible juveniles
+output(IC) <- sum(I[7:13]) # total number of infectious juveniles
+output(RC) <- sum(R[7:13]) # total number of recovered juveniles
+
+output(SJ) <- sum(S[7:13]) # total number of susceptible juveniles w/0 mAbs
+output(IJ) <- sum(I[7:13]) # total number of infectious juveniles w/0 mAbs
+output(RJ) <- sum(R[7:13]) # total number of recovered juveniles w/0 mAbs (modelled to be immune)
+
+output(SA) <- S[N_age] # total number of susceptible adults
+output(IA) <- I[N_age] # total number of infectious adults
+output(RA) <- R[N_age] # total number of recovered adults (modelled to be immune)
+
+output(inf) <- rate_infection
+output(births) <- new_births
+
+output(deaths_S) <- sum(outflow_S[1:N_age]) - sum(new_infections[1:N_age])
+output(death_per) <- (sum(outflow_S[1:N_age]) - sum(new_infections[1:N_age])) / sum(S[1:(N_age)])
+output(death_S1) <- (outflow_S[1] - new_infections[1])
+```
+
+#### Every array must have its dimensions assigned below
+```{r eval = FALSE}
+dim(S) <- N_age
+dim(I) <- N_age
+dim(R) <- N_age
+dim(S_ini) <- N_age
+dim(new_infections) <- N_age
+dim(new_recoveries) <- N_age
+dim(new_waned) <- N_age
+dim(aged_S) <- 13
+dim(aged_I) <- 13
+dim(aged_R) <- 13
+dim(outflow_S) <- N_age
+dim(outflow_I) <- N_age
+dim(outflow_R) <- N_age
+dim(births_det) <- 360
+dim(births_detr) <- 360
+
+# because mu varies with age
+dim(mu) <- N_age
+dim(p_mu) <- N_age
+dim(p_S) <- N_age
+dim(p_I) <- N_age
+dim(p_R) <- N_age
+dim(norm_p_infection) <- N_age
+dim(norm_p_gamma) <- N_age
+dim(norm_p_sigma) <- N_age
+```
+
+
+### Some outputs
+
+A single infectious case inported at time = T leads to an epidemic most of the time with the current paramters, usually this remains endemic within the population for at least the next 20 years. I am just starting a sensitivity analysis for how *sigma* (rate of waning immunity), affects the proportion of epidemics that become endemic. The graph below shows the results of 100 model realisations and uses a relatively high sigma. The oscilation is driven by the seaosnality of births (has period 1 year). This then drives annual epidemics.
+
+It is hard to follow due to the necessary transparency but sometimes the importation does not cause an epidemic, and sometimes the epidemic burns out. I will find a clearer way to display the incidence of these outcomes
+
+We also need to consider the discovery that reinfected animals (and calves protected by maternal antibodies) shed much less virus if infected, than previoulsy susceptible animals.
+
+```{r echo = FALSE}
+sir_model <- odin::odin("stoch_mod_SIRSIR.R", verbose = FALSE, skip_cache = TRUE)
+
+## input a value for average daily birth rate (default = 0.0005)
+alpha <- 0.00076 
+
+## input the time period that you wish to run the model for
+time_period <- 10000 
+t <- seq(0:time_period)
+
+## introduce infectious individuals
+ttt <- 250 # time of introduction 
+
+imported_cases <- 1 ## number of imported cases at time, ttt, (default = 0)
+
+## include any user-set parameters as arguments here:
+x <- sir_model(alpha = alpha, imported_cases = imported_cases, ttt = ttt)
+
+## set number of stochastic realisations you want to run here (default = 100):
+no_runs <- 100
+
+## run model for that multiple stochastic realisations below
+x_res <- as.data.frame(replicate(no_runs, x$run(0:3600)[, 46:49]))
+
+##PLOT##
+sir_col <- c("aquamarine2", "#cc0044", "#8c8cd9", "black", "pink", "gold", "dimgrey")
+par(las = 1)
+
+matplot(0:3600, x_res, xlab = "Time (years)", ylab = "Number of individuals",
+        main = "Discrete SIR model - stochastic - 100 realisations", type = "l", col = rep(alpha(sir_col[1:4], 0.1), 100),
+        lwd = 3, lty = 1, xaxt = "n")
+axis(side = 1, at = seq(from = 0, to = 3600, by = 360), labels = seq(from = 0, to = 10, by = 1))
+legend("topright", lwd = 3, col = sir_col, legend = c("S", "I", "R", "N"))
+text("T", x = 250, y = 4000, cex = 1.2)
+
+```
+
+Here as a sanity check the model is run for 100 realisations without any importation of infectious cases.
+```{r echo = FALSE}
+sir_model <- odin::odin("stoch_mod_SIRSIR.R", verbose = FALSE, skip_cache = TRUE)
+
+## input a value for average daily birth rate (default = 0.0005)
+alpha <- 0.00076 
+
+## input the time period that you wish to run the model for
+time_period <- 10000 
+t <- seq(0:time_period)
+
+## introduce infectious individuals
+ttt <- 250 # time of introduction 
+
+imported_cases <- 0 ## number of imported cases at time, ttt, (default = 0)
+
+## include any user-set parameters as arguments here:
+x <- sir_model(alpha = alpha, imported_cases = imported_cases, ttt = ttt)
+
+## set number of stochastic realisations you want to run here (default = 100):
+no_runs <- 100
+
+## run model for that multiple stochastic realisations below
+x_res <- as.data.frame(replicate(no_runs, x$run(0:3600)[, 46:49]))
+
+##PLOT##
+sir_col <- c("aquamarine2", "#cc0044", "#8c8cd9", "black", "pink", "gold", "dimgrey")
+
+par(las = 1)
+matplot(0:3600, x_res, xlab = "Time (years)", ylab = "Number of individuals",
+        main = "Discrete SIR model - stochastic - 100 realisations without infection", type = "l", col = rep(alpha(sir_col[1:4], 0.1), 100),
+        lwd = 3, lty = 1, xaxt = "n")
+axis(side = 1, at = seq(from = 0, to = 3600, by = 360), labels = seq(from = 0, to = 10, by = 1))
+legend("right", lwd = 3, col = sir_col, legend = c("S", "I", "R", "N"), bty = "n")
+```
+
+
+### Suggested next steps
+
+1. continue sanity checks to confirm model is reacting as expected
+
+2. Play around with dynamics exploring questions in a non systematic way to get a feel for the model:
+
+  + look at the age distribution of first infection
+
+  + look at seroprevalence - this is another reason to rethink how reinfection is modelled. Having R --> S makes it hard to calculate seroprevalence (even if we count the cumulative sum of 'new-waned' + I + R this could lead to overestimation as a new-waned could have become infected again and be counted twice, and using death rate as an estimation is hard since death rate is age dependent) One idea would be to have R--> I2 (then we can build in lower susceptibility and lower infectivity) but paramterising this will be hard due to little quantitative data on how much less susceptible and infectious 'R' and 'I2' individuals actually are.
+
+  + look at the effect rate of waning immunity (or indeed birth rate) has on MERS becoming endemic rather than burning out - also would benefit from seperating reinfetcion in the model
+
+3. Continue scanning the literature but more thoroughly to get some more robustly citable parameters/think about how to get more insight into some of the necessary parameters - data sources)
+
+4. Decide what to do about modelling the level of maternal antibody protection, and reinfection and shedding from reinfected individuals (//what are the implications of not distinguishing this from first infections in the model as it is currently)
+
+5. Once this is all done, we have all met about it and I have made any changes discussed, prepare to expand the model --> multipatch, potentially editing the model for speed in parallel to this.
+

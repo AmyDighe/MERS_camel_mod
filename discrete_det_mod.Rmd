@@ -1,0 +1,190 @@
+---
+title: "Simple deterministic discrete MSIR model"
+author: "Amy Dighe"
+date: "6 March 2018"
+output: html_document
+---
+
+## This is the first draft using *odin* to write a discrete-time deterministic MSIR model  for MERS-CoV in camels
+
+1. Individuals are born into **'M'** where they are protected by maternal antibodies
+    + Currently all camels are born into this, which will need to be changed to be a function of the number of adult camels that have been exposed to MERS-CoV, with an option for camels to be born to susceptible mothers, and be immediately susceptible themselves
+
+2. Individuals in **'M'** move through age categories (width 30 days), until they become susceptible **'S'** at ~6 months old
+
+3. **'S'** individuals may become infectious **'I'**, and **'I'** individuals may recover at a rate inversely proportional to the estimated duration of infection and become **'R'**.
+    + Currently individuals in **'R'** are modelled to be completely immune, in reality there is some incidences of recurring infection so this will be made more nuanced at some point
+    
+At the moment there are multiple flows out of compartments which could in theory result in negative numbers of individuals in each compartment. This will be adapted alongside development of the stochastic version of the model
+
+Firstly load the model to run using odin (I've sent this script to you)
+
+```{r}
+
+sir_model <- odin::odin("ageing_complete_det.R", verbose = FALSE)
+
+```
+
+Within this script is the following model
+
+```{r, eval = FALSE}
+
+## A simple deterministic discrete time model with ageing
+
+N_age <- 6 ## number of age categories between 0 and 6 months
+N_age2 <- 6 ## number of age categories between 6 months and 2 years
+
+## the proportion of individuals in each age category
+## 6m-9m, 9m-12m, 12m-15m, 15m-18m, 18m-21, 21-24m, 2yr+
+den_age2[1:6]<- 0.1
+den_age2[7] <- 0.4
+
+## equations for transitions between compartments
+## M = individuals protected by maternal antibodies (<6 months of age)
+## S = susceptible individuals
+## I = infectious individuals
+## R = recovered individuals
+
+update(M[1]) <- if((tt %% 30) == 0) M[1] - M[1] + alpha * N_0 - mu * M[1] else M[1] + alpha * N_0 - mu * M[1]
+update(M[2:N_age]) <- if(tt %% 30 == 0) M[i] - M[i] + M[i-1] - mu * M[i] else M[i] - mu * M[i]
+
+update(S[N_age2 + 1]) <- if((tt %% 91) == 0) S[N_age2 + 1] + S[N_age2] else S[N_age2 + 1] - beta * S[N_age2 + 1] * sum(I[1:(N_age2 + 1)]) / N - mu * S[N_age2 + 1]
+update(S[2:N_age2]) <- if((tt %% 91) == 0) S[i] - S[i] + S[i - 1] else S[i] - beta * S[i] * sum(I[1:(N_age2+1)]) / N - mu * S[i]
+update(S[1]) <- if((tt %% 91) == 0) S[1] - S[1] else if ((tt %% 30) == 0) S[1] + M[N_age] else S[1] - ((beta * S[1] * sum(I[1:(N_age2+1)])) / N) - mu * S[1]
+
+update(I[1]) <- if ((tt %% 91) == 0) 0 else if(tt == ttt) imported_cases + I[1] + beta * S[1] * sum(I[1:(N_age2+1)]) / N - gamma * I[1] - mu * I[1] else I[1] + beta * S[1] * sum(I[1:(N_age2+1)]) / N - gamma * I[1] - mu * I[1]
+update(I[2:N_age2]) <- if((tt %% 91) == 0) 0 + I[i - 1] else I[i] + beta * S[i] * sum(I[1:(N_age2+1)]) / N - gamma * I[i] - mu * I[i]
+update(I[N_age2 + 1]) <- if(tt %% 91 == 0) I[N_age2 + 1] + I[N_age2] else I[N_age2 + 1] + beta * S[N_age2 + 1] * sum(I[1:(N_age2+1)]) / N - gamma * I[N_age2 + 1] - mu * I[N_age2 + 1]
+
+update(R[1]) <- if((tt %% 91) == 0) 0 else R[1] + gamma * I[1] - mu * R[1]
+update(R[2:N_age2]) <- if((tt %% 91) == 0) 0 + R[i - 1] else R[i] + gamma * I[i] - mu * R[i]
+update(R[N_age2 + 1]) <- if(tt %% 91 == 0) R[N_age2 + 1] + R[N_age2] else R[N_age2 + 1]+ gamma * I[N_age2 + 1] - mu * R[N_age2 + 1]
+
+update(tt) <- tt + 1 # used to count time, must start at one for %% conditioning to work
+
+
+## record total population size
+
+N <- (sum(M[1:N_age]) + sum(S[1:(N_age2+1)]) + sum(I[1:(N_age2+1)]) + sum(R[1:(N_age2+1)]))
+
+
+## initial states
+
+initial(M[1:N_age]) <- M_ini # will be user-defined
+initial(S[1:(N_age2 + 1)]) <- S_ini[i] # will be user-defined
+initial(I[1:(N_age2 + 1)]) <- I_ini # will be user-defined
+initial(R[1:(N_age2 + 1)]) <- 0
+initial(tt) <- 1
+
+## initial population size for use in birthrate
+
+N_0 <- sum(S_ini[1:7]) + I_ini*(N_age2 + 1)
+
+M_ini <- user(0) # user-defined, default = 0
+S_ini[1:7] <- 1000 * den_age2[i]
+I_ini <- user(1) # user-defined, default = 1
+
+## rates of transition
+
+alpha <- user(0) # birth rate, user-defined, default = 0
+beta <- user(0.3) # infection rate, user-defined, default =  0.3
+mu <- user(0) # death rate, user-defined, default = 0
+gamma <- user(0.05) # recovery rate, user-defined, default = 0.1
+
+ttt <- user(1500) # time of importation of cases, user-defined, default day 1500
+imported_cases <- user(0) # imported cases, user-defined, default = 0
+
+## useful outputs
+
+output(MM) <- sum(M[1:N_age]) # total number of individuals still protected by maternal immunity
+output(SS) <- sum(S[1:(N_age2 + 1)]) # total number of susceptible individuals
+output(II) <- sum(I[1:(N_age2 + 1)]) # total number of infectious individuals
+output(RR) <- sum(R[1:(N_age2 + 1)]) # total number of recovered individuals (modelled to be immune)
+output(N) <- N # total number of individuals
+
+output(SJ) <- sum(S[1:N_age2]) # total number of susceptible juveniles
+output(IJ) <- sum(I[1:N_age2]) # total number of infectious juveniles
+output(RJ) <- sum(R[1:N_age2]) # total number of recovered juveniles (modelled to be immune)
+
+output(SA) <- S[N_age2 + 1] # total number of susceptible adults
+output(IA) <- I[N_age2 + 1] # total number of infectious adults
+output(RA) <- R[N_age2 + 1] # total number of recovered adults (modelled to be immune)
+
+## dim calls needed for arrays
+
+dim(M) <- N_age
+dim(S) <- 7
+dim(I) <- 7
+dim(R) <- 7
+dim(S_ini) <- 7
+dim(den_age2) <- 7
+```
+
+I run this model from a seperate script in which changes to scenarios (key parameters including an option for importing cases) can be made simply within a short amount of code
+
+```{r}
+
+#sir_model <- odin::odin("ageing_complete_det.R", verbose = FALSE)
+
+alpha <- 0.001 ## input a value for birth rate (default = 0)
+mu <- 0.001 ## input a value for death rate (default = 0)
+ttt <- 2000 ## time for importation of cases
+imported_cases <- 1 ## input a value for imported cases at time, ttt
+time_period <- 2000 ## input the time period that you wish to run the model for
+
+t <- seq(0:time_period)
+x <- sir_model(mu = mu, alpha = alpha, imported_cases = imported_cases, ttt = ttt) ## include any updated paramters as arguments in the model function
+
+mod_run <- x$run(t) ## run the model
+```
+
+Here are some basic time series plots showing the dynamics of this model
+
+```{r}
+sir_col <- c("aquamarine2", "#8c8cd9", "#cc0044", "black", "pink", "gold", "dimgrey")
+```
+
+##Figure 1.
+```{r}
+matplot(x = mod_run[, 1], y = mod_run[, 30:34], xlab = "Time (days)", ylab = "Number of individuals",
+        main = "Discrete MSIR model - deterministic", type = "l", col = sir_col,
+        lwd = 3, lty = 1, xlim = c(0, 1000))
+legend("topright", lwd = 3, col = sir_col, legend = c("M", "S", "I", "R", "N"))
+```
+
+## Figure 2.
+This shows a bit more how the ageing is working (in the absence of infection, the S compartment is shown alone for clarity) - individuals born into M are being added into S1 every 30 days, and individuals are moving through the S compartments to an older age class every 91 days, with intermediate age class remaining almost constant size, except the final age class where adults accumulate, and decrease at death rate **mu**.
+```{r}
+
+
+alpha <- 0.001 ## input a value for birth rate (default = 0)
+mu <- 0.001 ## input a value for death rate (default = 0)
+ttt <- 2000 ## time for importation of cases
+imported_cases <- 1 ## input a value for imported cases at time, ttt
+time_period <- 2000 ## input the time period that you wish to run the model for
+I_ini <- 0
+
+t <- seq(0:time_period)
+x <- sir_model(mu = mu, alpha = alpha, imported_cases = imported_cases, ttt = ttt, I_ini = I_ini) ## include any updated paramters as arguments in the model function
+
+mod_run <- x$run(t) ## run the model
+
+
+
+matplot(x = mod_run[, 1], y = mod_run[, c(3,4,9)], xlab = "Time (days)", ylab = "Number of individuals",
+        main = "Discrete MSIR model - deterministic", type = "l", col = sir_col,
+        lwd = 3, lty = 1, ylim = c(0,600), xlim = c(730, 2000))
+legend("topright", lwd = 3, col = sir_col, legend = c("S1", "S2", "S7"))
+```
+
+## Next steps __*alongside developing a stochastic version of this model*__
+
+1. Sort out what is going wrong with **mu**
+
+2. Set up the model so it starts running from a demographic equilibrium so that we don't have to wait years for births and deaths to equilibriate
+
+3. Make births seasonal
+
+4. Write the model equations so that there is a single outflow from the compartment and this is then seperated into destination compartments
+
+5. Put in the infrastructure for **mu** to vary for different age compartments

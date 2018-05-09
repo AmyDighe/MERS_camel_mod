@@ -1,9 +1,9 @@
 
-sir_modell <- odin::odin("outflows.R", verbose = FALSE)
+sir_modell <- odin::odin("outflows.R", verbose = FALSE, skip_cache = TRUE)
 
 alpha <- 0.001 ## input a value for birth rate (default = 0)
 mu <- 0.001 ## input a value for death rate (default = 0)
-ttt <- 2000 ## time for importation of cases
+ttt <- 1170 ## time for importation of cases
 imported_cases <- 1 ## input a value for imported cases at time, ttt
 time_period <- 2000 ## input the time period that you wish to run the model for
 I_ini <- 0

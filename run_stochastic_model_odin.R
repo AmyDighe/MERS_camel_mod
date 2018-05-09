@@ -1,16 +1,15 @@
 
-sir_model <- odin::odin("stochastic_model_odin_v1.R", verbose = FALSE)
+sir_model <- odin::odin("stochastic_model_odin_v3.R", verbose = FALSE, skip_cache = TRUE)
 
 alpha <- 0.001 ## input a value for birth rate (default = 0)
 mu <- 0.001 ## input a value for death rate (default = 0)
-ttt <- 2000 ## time for importation of cases
+ttt <- 1170 ## time for importation of cases
 imported_cases <- 1 ## input a value for imported cases at time, ttt
 time_period <- 2000 ## input the time period that you wish to run the model for
-I_ini <- 1
+I_ini <- 0
 
 t <- seq(0:time_period)
 x <- sir_model(mu = mu, alpha = alpha, imported_cases = imported_cases, ttt = ttt, I_ini = I_ini) ## include any updated paramters as arguments in the model function
-
 mod_run <- x$run(t) ## run the model
 
 
